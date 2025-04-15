@@ -1,48 +1,25 @@
 import React from "react";
-import { GoogleOAuthProvider } from "@react-oauth/google"; // Import the GoogleOAuthProvider
-import Signup from "./components/Signup"; // Import your Signup component
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Signup from "./components/Signup";
+import Login from "./components/Login";
+import Dashboard from "./components/Dashboard";
+import Home from "./components/Home";
+import ProfileSetup from "./components/ProfileSetup"; // Import ProfileSetup component
 
 function App() {
   return (
-    <GoogleOAuthProvider clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}>
-      <div className="App">
-        <Signup />
-      </div>
-    </GoogleOAuthProvider>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Signup />} />
+        <Route path="/signup" element={<Signup />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/home" element={<Home />} /> {/* ✅ new route */}
+        <Route path="/profile-setup" element={<ProfileSetup />} />{" "}
+        {/* Profile setup route */}
+      </Routes>
+    </Router>
   );
 }
 
 export default App;
-
-// import React from "react";
-// import { Routes, Route, Link } from "react-router-dom";
-// // import Login from "./components/Login";
-// import Signup from "./components/Signup";
-// // import Dashboard from "./components/Dashboard";
-
-// function App() {
-//   return (
-//     <div className="App">
-//       <nav>
-//         <ul>
-//           {/* <li>
-//             <Link to="/login">Login</Link>
-//           </li> */}
-//           <li>
-//             <Link to="/signup">Signup</Link>
-//           </li>
-//           {/* <li>
-//             <Link to="/dashboard">Dashboard</Link>
-//           </li> */}
-//         </ul>
-//       </nav>
-//       <Routes>
-//         {/* <Route path="/login" element={<Login />} /> */}
-//         <Route path="/signup" element={<Signup />} />
-//         {/* <Route path="/dashboard" element={<Dashboard />} /> */}
-//       </Routes>
-//     </div>
-//   );
-// }
-
-// export default App;

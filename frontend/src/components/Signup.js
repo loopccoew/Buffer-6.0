@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { GoogleLogin } from "@react-oauth/google"; // Import the Google Login component
+import { GoogleLogin } from "@react-oauth/google";
+import { useNavigate } from "react-router-dom";
 import "./Signup.css";
 
 function Signup() {
@@ -8,21 +9,20 @@ function Signup() {
   const [password, setPassword] = useState("");
   const [message, setMessage] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
 
   const handleSignup = async (event) => {
-    event.preventDefault(); // Prevent page reload
+    event.preventDefault();
     const userCredentials = { username, password };
 
-    setIsLoading(true); // Show loading state
+    setIsLoading(true);
 
     try {
-      // Make API call to signup
       const response = await axios.post(
         "http://localhost:9191/api/auth/users/signup",
         userCredentials
       );
 
-      // If successful, display success message
       if (response.data.message) {
         setMessage(response.data.message);
       } else {
@@ -31,16 +31,15 @@ function Signup() {
     } catch (error) {
       console.log("Error during signup:", error);
 
-      // Handle 409 conflict error (e.g. username/email already taken)
       if (error.response && error.response.status === 409) {
         setMessage("This username is already taken. Please try another one.");
       } else if (error.response) {
-        setMessage(error.response.data.message); // Display backend error message
+        setMessage(error.response.data.message);
       } else {
         setMessage("An unexpected error occurred");
       }
     } finally {
-      setIsLoading(false); // Reset loading state
+      setIsLoading(false);
     }
   };
 
@@ -50,15 +49,19 @@ function Signup() {
     axios
       .post("http://localhost:9191/api/auth/google", googleData)
       .then((res) => {
-        setMessage(res.data.message); // Handle success
+        setMessage(res.data.message);
       })
       .catch((err) => {
         setMessage("Error with Google signup");
       });
   };
 
-  const handleGoogleFailure = (error) => {
+  const handleGoogleFailure = () => {
     setMessage("Google login failed");
+  };
+
+  const handleGoToLogin = () => {
+    navigate("/login");
   };
 
   return (
@@ -88,15 +91,24 @@ function Signup() {
             {isLoading ? "Signing up..." : "Signup"}
           </button>
         </form>
+
         <div className="or-divider">OR</div>
-        {/* Google Login */}
+
         <GoogleLogin
           onSuccess={handleGoogleSuccess}
           onError={handleGoogleFailure}
           useOneTap
-          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID} // Ensure you're using the environment variable for Google Client ID
+          clientId={process.env.REACT_APP_GOOGLE_CLIENT_ID}
         />
-        <p>{message}</p> {/* Show success or error message */}
+
+        <p>{message}</p>
+
+        {/* Go to Login button at bottom */}
+        <div style={{ marginTop: "20px" }}>
+          <button onClick={handleGoToLogin} className="switch-button">
+            Already have an account? Login
+          </button>
+        </div>
       </div>
     </div>
   );

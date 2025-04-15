@@ -5,44 +5,6 @@ controller: API endpoints (REST controllers)
 Utils : Helper functions for formatting ,validation
 PhonepeApp.java : main spring Boot Application
 
-PHONEPE
-└── backend2/
-    └── phonepe/
-        ├── .mvn/
-        ├── .vscode/
-        ├── src/
-        │   └── main/
-        │       └── java/
-        │           └── com/
-        │               └── phonepe/
-        │                   ├── controller/
-        │                   │   ├── HomeController.java
-        │                   │   └── UserController.java
-        │                   ├── model/
-        │                   │   └── Accept.java
-        │                   ├── repository/
-        │                   │   └── UserRepository.java
-        │                   ├── service/
-        │                   │   └── UserService.java
-        │                   ├── storage/
-        │                   │   └── UserStorage.java
-        │                   ├── utils/
-        │                   └── PhonepeApp.java
-        │
-        │   └── resources/
-        │       └── (application.properties or .yml goes here)
-        │
-        └── test/
-            └── java/
-                └── com/
-                    └── example/
-                        └── phonepe/
-                            └── PhonepeApplicationTests.java
-
-        ├── target/
-        ├── .gitattributes
-        └── .gitignore
-
 
 want to build phonepe clone website where frontend will be react and backend will be pure java and dsa based how the file structure and how to create in vs code
 phonepe :
