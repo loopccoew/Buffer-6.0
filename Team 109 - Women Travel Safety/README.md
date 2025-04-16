@@ -45,7 +45,10 @@ Chatbot Integration to guide users interactively
 -------------------------------------------------------------------------------------------------------------------------------------------------
 ## 🔍 Requirements
 
-1. C++17 or later standard libraries: <bits/stdc++.h>, <iostream>, <fstream>, <sstream>
+1. C++17 or later standard libraries: <bits/stdc++.h>, 
+<iostream>, 
+<fstream>, 
+<sstream>
 2. Python 3.13.3 installed.
 3. pip install google-generativeai
 
