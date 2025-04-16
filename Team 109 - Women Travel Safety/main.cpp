@@ -215,7 +215,11 @@ vector<string> bfs(const unordered_map<string, vector<string>>& adjacencyList, c
     return nearby;
 }
 
-void displayTopKSafeDangerousPlaces(const string& filename, int k) {
+void displayTopKSafeDangerousPlaces(string& filename, int k) {
+    if (filename == "crime_indices/pune.csv") {
+        filename = "pune_cities_crime_index.csv";
+    }
+
     ifstream file(filename);
     if (!file) {
         cerr << "Error: File '" << filename << "' could not be opened!" << endl;
@@ -339,7 +343,7 @@ void runTopKModule(const string& city) {
     cout << "Enter value of K: ";
     cin >> k;
     cin.ignore();
-    string filename = "police_stations/" + city + ".csv";
+    string filename = (city == "pune") ? "crime_indices/pune.csv" : "police_stations/" + city + ".csv";
     displayTopKSafeDangerousPlaces(filename, k);
     cout << "\nPress Enter to return to menu..."; cin.get();
 }
