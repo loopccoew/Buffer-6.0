@@ -29,6 +29,27 @@ struct Neighbor {
     int crimeIndex;
 };
 
+string selectCity() {
+    clearScreen();
+    cout << "====== SELECT YOUR CITY ======\n";
+    cout << "1. Mumbai\n2. Pune\n3. Hyderabad\n4. Delhi\n5. Bangalore\n";
+    cout << "Enter your choice (1-5): ";
+    int choice;
+    cin >> choice;
+    cin.ignore();
+
+    switch (choice) {
+        case 1: return "mumbai";
+        case 2: return "pune";
+        case 3: return "hyderabad";
+        case 4: return "delhi";
+        case 5: return "bangalore";
+        default:
+            cout << "Invalid choice. Defaulting to Pune.\n";
+            return "pune";
+    }
+}
+
 unordered_map<string, vector<Neighbor>> createAdjacencyList(const string& filename) {
     ifstream file(filename);
     if (!file) {
@@ -115,10 +136,10 @@ vector<string> findSafestRoute(unordered_map<string, vector<Neighbor>>& adjList,
     return path;
 }
 
-unordered_map<string, vector<string>> create_adjList() {
-    ifstream iFile("pune_police_stations.csv");
+unordered_map<string, vector<string>> create_adjList(const string& filename) {
+    ifstream iFile(filename);
     if (!iFile) {
-        cerr << "Error: File 'pune_police_stations.csv' could not be opened!" << endl;
+        cerr << "Error: File '" << filename << "' could not be opened!" << endl;
         return {};
     }
 
@@ -132,7 +153,7 @@ unordered_map<string, vector<string>> create_adjList() {
 
         location = line.substr(0, loc);
         nearby = line.substr(loc + 1);
-        location.erase(remove(location.begin(), location.end(), '\"'), location.end());
+        location.erase(remove(location.begin(), location.end(), '"'), location.end());
         location = normalize(location);
 
         if (adjacencyList.find(location) == adjacencyList.end()) {
@@ -254,10 +275,11 @@ void displayTopKSafeDangerousPlaces(const string& filename, int k) {
     }
 }
 
-void runBFSModule() {
+void runBFSModule(const string& city) {
     clearScreen();
     cout << "=========== FIND NEAREST POLICE STATIONS ===========" << endl;
-    unordered_map<string, vector<string>> adjList = create_adjList();
+    string filename = "police_stations/" + city + ".csv";
+    unordered_map<string, vector<string>> adjList = create_adjList(filename);
 
     string start;
     cout << "Enter your current location: ";
@@ -280,10 +302,10 @@ void runBFSModule() {
     cout << "\nPress Enter to return to main menu..."; cin.get();
 }
 
-void runDijkstraModule() {
+void runDijkstraModule(const string& city) {
     clearScreen();
     cout << "=============== FIND SAFEST ROUTE ===============" << endl;
-    string filename = "pune_cities_crime_index.csv";
+    string filename = "police_stations/" + city + ".csv";
     unordered_map<string, vector<Neighbor>> adjList = createAdjacencyList(filename);
 
     string start, destination;
@@ -303,6 +325,17 @@ void runDijkstraModule() {
     cout << "\nPress Enter to return to main menu..."; cin.get();
 }
 
+void runTopKModule(const string& city) {
+    clearScreen();
+    int k;
+    cout << "Enter value of K: ";
+    cin >> k;
+    cin.ignore();
+    string filename = "police_stations/" + city + ".csv";
+    displayTopKSafeDangerousPlaces(filename, k);
+    cout << "\nPress Enter to return to menu..."; cin.get();
+}
+
 void runChatbotModule() {
     clearScreen();
     cout << "========= WOMEN'S SAFETY CHATBOT =========\n";
@@ -315,13 +348,15 @@ void displayMenu() {
     cout << "======== WOMEN'S SAFETY APPLICATION ========\n";
     cout << "1. Find Nearest Police Stations\n";
     cout << "2. Find Safest Route\n";
-    cout << "3. Chat with Safety Assistant\n";
-    cout << "4. Display Top K Safe and Dangerous Places\n";
+    cout << "3. Display Top K Safe and Dangerous Places\n";
+    cout << "4. Chat with Safety Assistant\n";
     cout << "5. Exit\n";
     cout << "Enter your choice (1-5): ";
 }
 
 int main() {
+    string selectedCity = selectCity();
+
     int choice;
     bool running = true;
 
@@ -331,18 +366,10 @@ int main() {
         cin.ignore();
 
         switch (choice) {
-            case 1: runBFSModule(); break;
-            case 2: runDijkstraModule(); break;
-            case 3: runChatbotModule(); break;
-            case 4: {
-                int k;
-                cout << "Enter value of K: ";
-                cin >> k;
-                cin.ignore();
-                displayTopKSafeDangerousPlaces("pune_cities_crime_index.csv", k);
-                cout << "\nPress Enter to return to menu..."; cin.get();
-                break;
-            }
+            case 1: runBFSModule(selectedCity); break;
+            case 2: runDijkstraModule(selectedCity); break;
+            case 3: runTopKModule(selectedCity); break;
+            case 4: runChatbotModule(); break;
             case 5:
                 cout << "Thank you. Stay safe!" << endl;
                 running = false;
