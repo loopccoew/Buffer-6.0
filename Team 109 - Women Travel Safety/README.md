@@ -1,6 +1,6 @@
-# Women's Safety Application 
+# Women's Travel Safety Application 
 
-A command-line based C++ application to assist with women's safety by providing functionalities such as:
+A command-line based C++ application to assist with women's travel safety by providing functionalities such as:
 Finding the nearest police stations
 Calculating the safest route between two locations
 Ranking areas by safety
