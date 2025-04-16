@@ -278,7 +278,11 @@ void displayTopKSafeDangerousPlaces(const string& filename, int k) {
 void runBFSModule(const string& city) {
     clearScreen();
     cout << "=========== FIND NEAREST POLICE STATIONS ===========" << endl;
-    string filename = "police_stations/" + city + ".csv";
+    string filename;
+    if(city == "pune") filename = "pune_police_stations.csv";
+    else {
+        filename = "police_stations/" + city + ".csv";
+    }
     unordered_map<string, vector<string>> adjList = create_adjList(filename);
 
     string start;
@@ -305,7 +309,11 @@ void runBFSModule(const string& city) {
 void runDijkstraModule(const string& city) {
     clearScreen();
     cout << "=============== FIND SAFEST ROUTE ===============" << endl;
-    string filename = "police_stations/" + city + ".csv";
+    string filename;
+    if(city == "pune") filename = "pune_cities_crime_index.csv";
+    else {
+        filename = "police_stations/" + city + ".csv";
+    }
     unordered_map<string, vector<Neighbor>> adjList = createAdjacencyList(filename);
 
     string start, destination;
