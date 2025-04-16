@@ -45,17 +45,18 @@ Chatbot Integration to guide users interactively
 -------------------------------------------------------------------------------------------------------------------------------------------------
 ## 🔍 Requirements
 
-1. C++17 or later standard libraries: <bits/stdc++.h>, 
-<iostream>, 
-<fstream>, 
-<sstream>
-2. Python 3.13.3 installed.
+1. C++17 or later standard libraries:
+    a. <bits/stdc++.h>, 
+    b. <iostream>, 
+    c. <fstream>, 
+    d. <sstream>
+2. Python 3.13.3 installed
 3. pip install google-generativeai
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 ## ▶️ How to Run
-g++ main.cpp -o safety_app
-./safety_app
+1. g++ main.cpp -o safety_app
+2. ./safety_app
 
 -------------------------------------------------------------------------------------------------------------------------------------------------
 ## 💻 Demo Video Link:
