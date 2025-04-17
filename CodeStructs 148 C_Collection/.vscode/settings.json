@@ -1,0 +1,13 @@
+{
+    "files.associations": {
+        "arraylist.h": "c",
+        "array": "c",
+        "initializer_list": "c",
+        "type_traits": "c",
+        "xutility": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c",
+        "stack.h": "c",
+        "utility.h": "c"
+    }
+}
