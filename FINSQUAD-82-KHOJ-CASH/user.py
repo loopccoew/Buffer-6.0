@@ -125,12 +125,7 @@ if menu == "Dashboard":
     income = sum(float(t['amount']) for t in transactions if t['type'].lower() == "income")
     expense = sum(float(t['amount']) for t in transactions if t['type'].lower() == "expense")
     total_savings = sum(float(goal["saved_amount"]) for goal in goals) if goals else 0.0
-    total_debt_paid = sum(
-    float(debt["amount"])
-    for debt in debts
-    if debt.get("status") and debt["status"].lower() == "paid"
-    ) if debts else 0.0
-
+    total_debt_paid = sum(float(debt["amount"]) for debt in debts if debt["status"].lower() == "paid") if debts else 0.0
 
     balance = float(income) - float(expense) - float(total_savings) - float(total_debt_paid)
 
