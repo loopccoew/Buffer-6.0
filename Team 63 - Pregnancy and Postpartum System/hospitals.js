@@ -11,8 +11,7 @@ document.addEventListener('DOMContentLoaded', () => {
         return;
       }
   
-      // You can replace this with a real API or Java backend response
-      // For now, using dummy hospital info
+      
       const dummyHospitals = [
         { name: "City Hospital", distance: "2.3 km", safety: "High" },
         { name: "MotherCare Clinic", distance: "3.1 km", safety: "Medium" },
