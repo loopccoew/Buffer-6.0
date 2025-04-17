@@ -1,0 +1,5 @@
+What is Encapsulation?|Utkarsha Parmale
+What is Abstraction?|Anonymous
+What is Inheritance?|Utkarsha
+Difference between Stack and Queue?|Anonymous
+What is 'this'pointer?|Anonymous

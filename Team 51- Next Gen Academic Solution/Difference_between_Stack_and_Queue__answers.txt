@@ -1,0 +1,1 @@
+Stack  Last thing added is the first to go out.Queue  First thing added is the first to go out.

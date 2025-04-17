@@ -1,0 +1,1 @@
+Wrapping data and methods into a single unit (class).
