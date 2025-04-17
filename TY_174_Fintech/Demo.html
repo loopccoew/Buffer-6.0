@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BidSure Auction Platform</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #e0f7fa, #fce4ec);
+      padding: 30px;
+      color: #333;
+    }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      background-color: #fff;
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #2c3e50;
+    }
+    h2 {
+      color: #34495e;
+      border-bottom: 2px solid #ddd;
+      padding-bottom: 5px;
+      margin-top: 30px;
+    }
+    input, select, button {
+      padding: 10px 14px;
+      margin-top: 10px;
+      width: 100%;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      font-size: 14px;
+    }
+    button {
+      background-color: #3498db;
+      color: white;
+      font-weight: bold;
+      border: none;
+      transition: 0.2s;
+    }
+    button:hover {
+      background-color: #2c80b4;
+    }
+    .section {
+      margin-top: 30px;
+    }
+    ul {
+      margin-top: 15px;
+    }
+    li {
+      background-color: #f9f9f9;
+      padding: 15px;
+      border-radius: 10px;
+      margin-bottom: 10px;
+      border-left: 5px solid #3498db;
+      line-height: 1.6;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+    .timer {
+      font-weight: bold;
+      color: #e74c3c;
+      margin-top: 5px;
+    }
+    .btn {
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .bid-inputs {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-top: 10px;
+    }
+    .winner {
+      color: green;
+      font-weight: bold;
+    }
+    .highest {
+      color: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>BidSure Auction Platform</h1>
+
+    <div class="section">
+      <h2>1. Register User</h2>
+      <input type="text" id="username" placeholder="Username">
+      <input type="number" id="balance" placeholder="Balance">
+      <select id="currency">
+        <option value="USD">USD</option>
+        <option value="INR">INR</option>
+        <option value="EUR">EUR</option>
+      </select>
+      <button onclick="registerUser()">Register</button>
+      <ul id="userList"></ul>
+    </div>
+
+    <div class="section">
+      <h2>2. Create Auction</h2>
+      <input type="text" id="itemName" placeholder="Item Name">
+      <input type="number" id="startPrice" placeholder="Start Price">
+      <input type="number" id="duration" placeholder="Duration (seconds)">
+      <label><input type="checkbox" id="antiSniping"> Anti-sniping</label>
+      <label><input type="checkbox" id="suddenDeath"> Sudden Death</label>
+      <label><input type="checkbox" id="reverseAuction"> Reverse Auction</label>
+      <button onclick="createAuction()">Create Auction</button>
+    </div>
+
+    <div class="section">
+      <h2>3. Live Auctions</h2>
+      <ul id="liveAuctions"></ul>
+    </div>
+
+    <div class="section">
+      <h2>4. Transaction History</h2>
+      <input type="text" id="historyUser" placeholder="Enter Username">
+      <button onclick="viewHistory()">View History</button>
+      <ul id="historyLog"></ul>
+    </div>
+  </div>
+
+  <script>
+    const users = {};
+    const auctions = [];
+    const exchangeRates = {
+      USD: 1,
+      INR: 0.012,
+      EUR: 1.1
+    };
+
+    function registerUser() {
+      const username = document.getElementById('username').value.trim();
+      const balance = parseFloat(document.getElementById('balance').value);
+      const currency = document.getElementById('currency').value;
+
+      if (!username || isNaN(balance)) return alert("Please fill all fields.");
+      if (users[username]) return alert("Username already exists.");
+
+      users[username] = { balance, currency, history: [] };
+      alert(✅ Registered: ${username});
+      renderUserList();
+    }
+
+    function renderUserList() {
+      const userList = document.getElementById('userList');
+      userList.innerHTML = '';
+      for (const [user, data] of Object.entries(users)) {
+        const li = document.createElement('li');
+        li.textContent = ${user}: ${data.currency} ${data.balance.toFixed(2)};
+        userList.appendChild(li);
+      }
+    }
+
+    function createAuction() {
+      const itemName = document.getElementById('itemName').value;
+      const startPrice = parseFloat(document.getElementById('startPrice').value);
+      const duration = parseInt(document.getElementById('duration').value);
+      const antiSniping = document.getElementById('antiSniping').checked;
+      const suddenDeath = document.getElementById('suddenDeath').checked;
+      const reverseAuction = document.getElementById('reverseAuction').checked;
+
+      if (!itemName || isNaN(startPrice) || isNaN(duration)) return alert("Fill all auction fields.");
+
+      const auction = {
+        itemName,
+        startPrice,
+        duration,
+        remaining: duration,
+        antiSniping,
+        suddenDeath,
+        reverseAuction,
+        bids: [],
+        closed: false
+      };
+
+      auctions.push(auction);
+      alert("🛍 Auction Created");
+      renderLiveAuctions();
+
+      auction.timer = setInterval(() => {
+        if (auction.remaining > 0) {
+          auction.remaining--;
+          document.getElementById(timer_${auctions.indexOf(auction)}).textContent = Time Left: ${auction.remaining}s;
+        } else {
+          clearInterval(auction.timer);
+          closeAuction(auctions.indexOf(auction));
+        }
+      }, 1000);
+
+      if (auction.reverseAuction) {
+        runReverseAuction(auction);
+      }
+    }
+
+    function convertToUSD(amount, currency) {
+      return amount * exchangeRates[currency];
+    }
+
+    function renderLiveAuctions() {
+      const list = document.getElementById('liveAuctions');
+      list.innerHTML = '';
+      auctions.forEach((a, i) => {
+        if (!a.closed) {
+          const li = document.createElement('li');
+          li.innerHTML = `
+            <strong>${a.itemName}</strong><br>
+            Starting Price: USD ${a.startPrice}<br>
+            <div class="timer" id="timer_${i}">Time Left: ${a.remaining}s</div>
+            <div class="bid-inputs">
+              <input type="text" id="bidUser_${i}" placeholder="Username">
+              <input type="number" id="bidAmount_${i}" placeholder="Your Bid">
+              <button class="btn" onclick="placeBid(${i})">Place Bid</button>
+              <button class="btn" onclick="closeAuction(${i})">Close Auction</button>
+            </div>
+            <ul id="bids_${i}"></ul>
+          `;
+          list.appendChild(li);
+          updateBidList(i);
+        }
+      });
+    }
+
+    function placeBid(index) {
+      const user = document.getElementById(bidUser_${index}).value;
+      const amount = parseFloat(document.getElementById(bidAmount_${index}).value);
+      const auction = auctions[index];
+      if (!users[user]) return alert("User not found.");
+      if (users[user].balance < amount) return alert("Insufficient balance.");
+      if (auction.suddenDeath && auction.bids.length > 0) return alert("Sudden death: only one bid allowed.");
+
+      const converted = convertToUSD(amount, users[user].currency);
+      auction.bids.push({ bidder: user, amount, converted, currency: users[user].currency });
+      users[user].history.push(Bid ${users[user].currency} ${amount} on ${auction.itemName});
+
+      if (auction.antiSniping && auction.remaining < 10) {
+        auction.remaining += 10;
+      }
+
+      updateBidList(index);
+      renderUserList();
+    }
+
+    function updateBidList(index) {
+      const list = document.getElementById(bids_${index});
+      const bids = auctions[index].bids;
+      bids.sort((a, b) => b.converted - a.converted);
+      list.innerHTML = '';
+      bids.forEach((bid, i) => {
+        const li = document.createElement('li');
+        li.innerHTML = ${bid.bidder}: ${bid.currency} ${bid.amount} (USD ${bid.converted.toFixed(2)}) +
+          (i === 0 ? ' <span class="highest">🏆 Highest</span>' : '');
+        list.appendChild(li);
+      });
+    }
+
+    function closeAuction(index) {
+      const auction = auctions[index];
+      if (!auction || auction.closed) return;
+      auction.closed = true;
+      clearInterval(auction.timer);
+      if (auction.bids.length === 0) return alert("❌ No bids placed.");
+
+      auction.bids.sort((a, b) => b.converted - a.converted);
+      const winner = auction.bids[0];
+      if (users[winner.bidder].balance >= winner.amount) {
+        users[winner.bidder].balance -= winner.amount;
+        users[winner.bidder].history.push(✅ Won ${auction.itemName} for ${winner.currency} ${winner.amount});
+        alert(🎉 ${winner.bidder} wins the auction for ${winner.currency} ${winner.amount});
+      } else {
+        alert("❌ Insufficient balance, auction closed without winner.");
+      }
+      renderLiveAuctions();
+    }
+
+    function viewHistory() {
+      const user = document.getElementById('historyUser').value.trim();
+      const log = document.getElementById('historyLog');
+      log.innerHTML = '';
+      if (users[user]) {
+        users[user].history.forEach(entry => {
+          const li = document.createElement('li');
+          li.textContent = entry;
+          log.appendChild(li);
+        });
+      } else {
+        log.innerHTML = "User not found.";
+      }
+    }
+
+    function runReverseAuction(auction) {
+      const decrement = auction.startPrice / auction.duration;
+      auction.timer = setInterval(() => {
+        if (auction.remaining > 0) {
+          auction.startPrice -= decrement;
+          document.getElementById(bids_${auctions.indexOf(auction)}).innerHTML = `
+            <strong>Current Price:</strong> USD ${auction.startPrice.toFixed(2)}`;
+        } else {
+          clearInterval(auction.timer);
+          closeAuction(auctions.indexOf(auction));
+        }
+      }, 1000);
+    }
+  </script>
+</body>
+</html>
