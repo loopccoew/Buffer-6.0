@@ -1,5 +1,9 @@
 # 📱 WishWallet – A Goal-Based Digital Piggy Bank
 
+**WishWallet** is a smart savings Android application designed to help users set financial goals and automatically allocate their saved money toward those goals using classic DSA concepts like Priority Queue, HashMap, and a Greedy Algorithm.
+
+---
+
 ## 🧩 Problem Statement
 
 Saving money is a habit most people struggle with—especially students and young earners who often lack structured saving tools. Traditional budgeting apps can be too complex or overwhelming for users with simple goals like buying a gadget, funding a trip, or building emergency funds.
@@ -12,9 +16,6 @@ Saving money is a habit most people struggle with—especially students and youn
 - Visualize their progress in a simple, motivating way  
 
 By gamifying and simplifying saving, WishWallet helps users stay focused and consistent with their financial goals.
----
-
-**WishWallet** is a smart savings Android application designed to help users set financial goals and automatically allocate their saved money toward those goals using classic DSA concepts like Priority Queue, HashMap, and a Greedy Algorithm.
 
 ---
 
