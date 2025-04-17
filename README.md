@@ -9,15 +9,6 @@
 > 🚀 **Submitted as part of [Buffer 6.0](https://buffer6.example.com)**  
 > 🧠 **Theme Chosen**: **FinTech**
 
-**Karz** was developed for **Buffer 6.0**, a multi-theme hackathon with tracks including:
-
-1. FinTech  
-2. Women Safety  
-3. Next-Gen Academic Solutions  
-4. Custom Data Structures  
-
-Our project addresses the **FinTech** theme by building a secure and transparent **peer-to-peer money lending platform**, empowering users with automated credit scoring, smart loan matching, and seamless document management.
-
 ---
 
 ## 🌟 Highlights
