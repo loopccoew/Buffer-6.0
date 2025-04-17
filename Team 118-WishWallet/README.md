@@ -50,45 +50,99 @@ WishWallet allows users to:
 
 ---
 
-🖥️ Screenshots
-Includes screenshots of:
 
-Home screen
-![WhatsApp Image 2025-04-17 at 17 27 15_83291917](https://github.com/user-attachments/assets/b8460bf5-ca52-41d8-81e5-c78005d52626)
+## 🖥️ Screenshots
 
-Add Goal screen
-![WhatsApp Image 2025-04-17 at 17 27 16_8db27ebe](https://github.com/user-attachments/assets/5bdf5cdc-f6f2-4516-b36d-04eab3a3d54c)
-![WhatsApp Image 2025-04-17 at 17 27 16_a0557117](https://github.com/user-attachments/assets/c3488512-bbdb-4658-9244-4b26f43beaea)
+<table>
+  <tr>
+    <td><b>🏠 Home Screen</b></td>
+    <td><b>➕ Add Goal</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/b8460bf5-ca52-41d8-81e5-c78005d52626" width="100%"/></td>
+    <td><img src="https://github.com/user-attachments/assets/5bdf5cdc-f6f2-4516-b36d-04eab3a3d54c" width="100%"/></td>
+  </tr>
+  <tr>
+    <td><b>➕ Add Goal (Details)</b></td>
+    <td><b>💸 Add Money</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/c3488512-bbdb-4658-9244-4b26f43beaea" width="100%"/></td>
+    <td><img src="https://github.com/user-attachments/assets/4bda54b7-6d2f-41ff-a71e-896e32220fef" width="100%"/></td>
+  </tr>
+  <tr>
+    <td><b>📊 View Goals</b></td>
+    <td><b>✅ Goal Completed Toast</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/0d2f15fd-2388-4ab5-b837-568e3eb5a6a7" width="100%"/></td>
+    <td><img src="https://github.com/user-attachments/assets/44014c66-f669-4385-a89b-dd0544f4d661" width="100%"/></td>
+  </tr>
+</table>
 
-
-Add Money: 
-![WhatsApp Image 2025-04-17 at 17 27 16_2ace6ca5](https://github.com/user-attachments/assets/4bda54b7-6d2f-41ff-a71e-896e32220fef)
-
-View Goals with progress bars
-![WhatsApp Image 2025-04-17 at 17 27 16_162825f8](https://github.com/user-attachments/assets/0d2f15fd-2388-4ab5-b837-568e3eb5a6a7)
-
-Completed goal toast
-![WhatsApp Image 2025-04-17 at 17 30 17_0aba6c7c](https://github.com/user-attachments/assets/44014c66-f669-4385-a89b-dd0544f4d661)
 ---
 
 📂 Folder Structure
+# 💰 WishWallet - Digital Piggy Bank App
 
+WishWallet helps users set saving goals, track their progress with visual cues, and smartly distribute savings using DSA concepts like **PriorityQueue** and **Greedy Algorithms**. Perfect for students or anyone aiming to manage small savings effectively.
+
+---
+
+## 🖥️ Screenshots
+
+<table>
+  <tr>
+    <td><b>🏠 Home Screen</b></td>
+    <td><b>➕ Add Goal</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/b8460bf5-ca52-41d8-81e5-c78005d52626" width="100%"/></td>
+    <td><img src="https://github.com/user-attachments/assets/5bdf5cdc-f6f2-4516-b36d-04eab3a3d54c" width="100%"/></td>
+  </tr>
+  <tr>
+    <td><b>➕ Add Goal - More</b></td>
+    <td><b>💸 Add Money</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/c3488512-bbdb-4658-9244-4b26f43beaea" width="100%"/></td>
+    <td><img src="https://github.com/user-attachments/assets/4bda54b7-6d2f-41ff-a71e-896e32220fef" width="100%"/></td>
+  </tr>
+  <tr>
+    <td><b>📊 View Goals</b></td>
+    <td><b>✅ Goal Completed Toast</b></td>
+  </tr>
+  <tr>
+    <td><img src="https://github.com/user-attachments/assets/0d2f15fd-2388-4ab5-b837-568e3eb5a6a7" width="100%"/></td>
+    <td><img src="https://github.com/user-attachments/assets/44014c66-f669-4385-a89b-dd0544f4d661" width="100%"/></td>
+  </tr>
+</table>
+
+---
+
+## 📂 Folder Structure
+
+```bash
 WishWallet/
 ├── app/
-│   ├── java/com/example/piggybank/
-│   │   ├── MainActivity.java
-│   │   ├── AddGoalActivity.java
-│   │   ├── GoalManager.java
-│   │   ├── Goal.java
-│   │   └── GoalAdapter.java
+│   ├── java/
+│   │   └── com/example/piggybank/
+│   │       ├── MainActivity.java            # 🏠 Entry point
+│   │       ├── AddGoalActivity.java         # ➕ Add Goal screen logic
+│   │       ├── GoalManager.java             # 🔄 Manages and distributes funds
+│   │       ├── Goal.java                    # 🎯 Goal model with priority
+│   │       └── GoalAdapter.java             # 📦 RecyclerView adapter
+│
 │   └── res/
 │       ├── layout/
-│       │   └── activity_main.xml
-│       │   └── activity_add_goal.xml
-│       │   └── activity_view_goals.xml
+│       │   ├── activity_main.xml            # UI for main screen
+│       │   ├── activity_add_goal.xml        # UI for adding a goal
+│       │   └── activity_view_goals.xml      # UI for viewing goal cards
+│       │
 │       └── values/
-│           └── styles.xml
+│           └── styles.xml                   # App theming
 
+```
 ---
 
 📦 Tools & Technologies
