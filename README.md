@@ -8,3 +8,5 @@ We have included a rescue van which can be tracked by the victim time to time.
 
 In volunteer section, we have included 3 options (after filling their information) for aids of victim,that is financial,food and 
 medical facilities. Djikstara's Algorithm is used for volunteers to find the shortest distance from their place to the place of disaster.
+
+Video link - https://drive.google.com/drive/folders/1SzdjAmFki7DzT9DLeBI94_XrZ0d4oxto?usp=sharing
