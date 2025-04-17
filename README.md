@@ -134,20 +134,10 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 
 ---
 
-## 🖼️ Visualization
-
-- Integrated with **Graphviz** to generate dynamic graph visualizations of the citation network.
-- Clear, intuitive visuals with citation direction, isolated nodes, and highlighting based on filters.
-
-> ⚙️ *Ensure Graphviz is installed and added to your system's PATH.*
-
----
-
 ## 📦 Tech Stack
 
 - **Java 8+**
 - **Eclipse IDE**
-- **Graphviz** (for visualization)
 - **Git** (version control)
 
 ---
