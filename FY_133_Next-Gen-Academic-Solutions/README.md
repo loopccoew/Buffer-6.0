@@ -1,4 +1,6 @@
-# Automated Timetable Generator (Java)
+# Team Byte Knights
+
+## Automated Timetable Generator (Java)
 
 This project is a Java-based solution for generating a weekly lecture timetable for a classroom. It automatically schedules subjects, manages faculty assignments, and respects important constraints like breaks and classroom availability. The system reduces the need for manual planning and helps avoid scheduling conflicts.
 
