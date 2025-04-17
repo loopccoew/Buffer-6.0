@@ -66,8 +66,7 @@ To make financial literacy **fun**, **accessible**, and **practical** for young 
 
 ## 🎥 Demo Video  
 > 📌 **Watch the demo here:**  
-[![Watch the demo](https://img.youtube.com/vi/VIDEO_ID_HERE/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID_HERE)  
-*(Replace `VIDEO_ID_HERE` with your actual YouTube video ID)*
+[Click to Watch on Google Drive](https://drive.google.com/file/d/1DRNbLtApPmJEiGrxc36YR455r7uLXsPu/view?usp=sharing)
 
 ---
 
