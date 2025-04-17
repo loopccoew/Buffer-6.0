@@ -63,7 +63,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 | Main         | List<Paper>       | Used for filterable paper results                              | Stream Filtering              | Filter by author name and publication year                      |
 | Main         | Regex Matcher     | Extract year from date strings                                 | Regex Pattern Matching        | Match publication year from publication date string             |
 
-<details> <summary>🌐 <strong>Data Structures & Algorithms Used in <code>ArvixCrawler.java</code></strong></summary>
+<details> <summary>🌐 <strong>Data Structures & Algorithms Used in <code>ArvixCrawler.java</code></strong></summary></details>
 | Class Name     | DS Used           | Purpose of DS                                               | Algorithm Used          | Purpose of Algorithm                                              |
 |----------------|------------------|-------------------------------------------------------------|-------------------------|-------------------------------------------------------------------|
 | ArvixCrawler   | List<Paper>       | To store the parsed paper objects from search results       | Iteration & Parsing     | Loop over HTML elements to extract paper data                    |
@@ -72,9 +72,9 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 | ArvixCrawler   | Elements          | Stores multiple HTML elements selected from DOM             | Tag Selection           | Collect matching tags like title, authors, abstract, etc.        |
 | ArvixCrawler   | Element           | Individual HTML tag representing a paper section            | Attribute Access        | Retrieve specific fields like `href`, `text`, etc.               |
 | ArvixCrawler   | String Builder*   | Used during string operations (e.g., cleaning text)         | Regex Matching          | Clean and format abstract and date strings                       |
-</details>
 
-<details> <summary>🔎 <strong>Data Structures & Algorithms Used in <code>GoogleScholarCrawler.java</code></strong></summary>
+
+<details> <summary>🔎 <strong>Data Structures & Algorithms Used in <code>GoogleScholarCrawler.java</code></strong></summary></details>
 | Class Name             | DS Used           | Purpose of DS                                                    | Algorithm Used           | Purpose of Algorithm                                             |
 |------------------------|------------------|------------------------------------------------------------------|--------------------------|------------------------------------------------------------------|
 | GoogleScholarCrawler   | List<Paper>       | To collect and return paper search results                       | Iteration & Parsing      | Loop through HTML content and convert to Paper objects           |
@@ -82,9 +82,9 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 | GoogleScholarCrawler   | Jsoup Document    | To represent the HTML content of the search result page          | HTML Parsing             | Parse Google Scholar's response into a DOM structure             |
 | GoogleScholarCrawler   | Elements          | To store multiple DOM nodes (e.g., paper entries)                | DOM Selection            | Select all result containers using class selectors (`.gs_r`)     |
 | GoogleScholarCrawler   | Element           | To represent a single HTML tag (e.g., title, abstract, link)     | Attribute/Text Access     | Extract title, abstract, and links from relevant HTML tags       |
-</details>
 
-<details> <summary>🧠 <strong>Data Structures & Algorithms Used in <code>CitationGraph.java</code></strong></summary>
+
+<details> <summary>🧠 <strong>Data Structures & Algorithms Used in <code>CitationGraph.java</code></strong></summary></details>
 | Class Name      | DS Used                     | Purpose of DS                                                                 | Algorithm Used         | Purpose of Algorithm                                                  |
 |------------------|------------------------------|--------------------------------------------------------------------------------|--------------------------|------------------------------------------------------------------------|
 | CitationGraph    | Map<String, Set<String>>     | To represent a directed graph: paper ➝ set of cited papers                     | DFS (Depth-First Search) | Traverse graph to find related papers recursively                     |
@@ -92,9 +92,9 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 | CitationGraph    | List<String>                 | To collect suggestions and isolated papers                                     | Result Collection        | Store results of traversal or filtering                               |
 | CitationGraph    | HashMap, HashSet             | Fast insert and lookup for paper nodes and citations                           | Map-based Adjacency List | Efficient graph representation                                        |
 | CitationGraph    | Map.Entry iteration          | Iterate through key-value pairs of citation graph                              | Reverse Lookup           | Find all nodes citing a given paper                                   |
-</details>
 
-<details> <summary>🔤 <strong>Data Structures & Algorithms Used in <code>Trie.java</code></strong></summary>
+
+<details> <summary>🔤 <strong>Data Structures & Algorithms Used in <code>Trie.java</code></strong></summary></details>
 | Class Name | DS Used                     | Purpose of DS                                                                  | Algorithm Used            | Purpose of Algorithm                                                   |
 |------------|-----------------------------|---------------------------------------------------------------------------------|---------------------------|-------------------------------------------------------------------------|
 | Trie       | TrieNode                     | Represents nodes in the Trie, storing character links and word-ending markers    | Depth-First Search (DFS)  | Traverse the Trie to suggest words with the given prefix               |
@@ -102,16 +102,16 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 | Trie       | List<String>                 | To collect word suggestions based on a prefix                                  | String Construction       | Build and return the list of complete words from the Trie               |
 | Trie       | StringBuilder                | Efficiently manage word construction during DFS traversal                      | Path Building             | Build suggested words by appending and removing characters during DFS   |
 | TrieNode   | boolean                      | Marks the end of a word in the Trie                                            | Word Termination          | Flag whether the current node marks the end of a word                  |
-</details>
 
-<details> <summary>🔤 <strong>Data Structures Used in <code>TrieNode.java</code></strong></summary>
+
+<details> <summary>🔤 <strong>Data Structures Used in <code>TrieNode.java</code></strong></summary></details>
 | Class Name   | DS Used                     | Purpose of DS                                                |
 |--------------|-----------------------------|--------------------------------------------------------------|
 | TrieNode     | Map<Character, TrieNode>     | To store child nodes for each character                       |
 | TrieNode     | boolean                      | To mark whether the current node is the end of a word        |
-</details>
 
-<details> <summary>📄 <strong>Data Structures Used in <code>Paper.java</code></strong></summary>
+
+<details> <summary>📄 <strong>Data Structures Used in <code>Paper.java</code></strong></summary></details>
 | Class Name | DS Used             | Purpose of DS                                                 |
 |------------|---------------------|---------------------------------------------------------------|
 | Paper      | String              | To store the title of the paper                                |
@@ -120,7 +120,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 | Paper      | String              | To store the publication date of the paper                     |
 | Paper      | String              | To store the link to the paper                                 |
 | Paper      | String              | To store the source of the paper (e.g., IEEE, ArXiv)           |
-</details>
+
 
 ---
 
