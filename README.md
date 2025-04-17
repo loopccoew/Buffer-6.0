@@ -35,6 +35,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 
 - **Trie**  
   Efficient keyword auto-completion based on user input.
+  ![image](https://github.com/user-attachments/assets/30df98ae-3f26-4051-bd23-1aea531b0567)
 
 - **Graph**  
   Used to model citation relationships between academic papers.
