@@ -1,0 +1,10 @@
+Saujanya;8329284037;Baner;pune;money;20000.0
+Anushree;7894561230;Pashan;pune;money;30000.0
+Shreeya;7418520963;Peth;mumbai;food;0.0
+Sanjana;8329284037;Baner;pune;money;20000.0
+Aditya;7845129630;Ravet;pune;80000;0.0
+Niraj;741852964;SantaCruz;mumbai;money;1000.0
+Vinayak;8833007637;Makhmalabad;nashik;food;0.0
+Vinaya;9823399551;SantaCruz;mumbai;medical;0.0
+Yashasvi;7894561234;Gangapur;nashik;money;800.0
+Saujanya;8329284037;Baner;pune;money;9000.0
