@@ -4,6 +4,7 @@ The themes for Buffer 6.0 are -
 
 
 1. Women Safety
+ 2. EXPLANATION VIDEO LINK: https://drive.google.com/file/d/1FsyE_twvCq1a2x1LjYIJF9jXVgIfvDlO/view?usp=sharing
 
 🚨 Problem Statement Women often face challenges in accessing immediate legal help when dealing with harassment, domestic violence, or workplace discrimination. Legal systems are often complex, slow, and intimidating, leaving many unaware of their rights or hesitant to seek support.
 Domain-Women Safety 
@@ -33,4 +34,6 @@ Domain-Women Safety
 
 These DSA features are not just backend logic—they also power visible features like chatbot responses, UI flows, and legal suggestions.
 
-EXPLANATION VIDEO LINK: https://drive.google.com/file/d/1FsyE_twvCq1a2x1LjYIJF9jXVgIfvDlO/view?usp=sharing
+
+Here is the full code files :
+https://github.com/divyaaa16/buffer6.0
