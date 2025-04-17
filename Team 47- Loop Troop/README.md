@@ -42,4 +42,9 @@ The project is implemented using core Java with a **console interface** (extenda
 - Update password
 - Submit queries or concerns to admin
 
+
+### Link to video
+
+https://drive.google.com/file/d/1TxCw3dhRaimcw964hlk7AwSawnGlzpsV/view
+
 ---
