@@ -1,11 +1,23 @@
 # Buffer-6.0
 
-The themes for Buffer 6.0 are -
+# Financial Portfolio Manager
 
-1. FinTech
+A desktop application built with Java Swing that helps users manage their stocks and investments, with personalized dashboards and a simple login system.
 
-2. Women Safety
+Features
+- Login Screen – Enter your name to personalize your dashboard.
+- Stock Manager
+  - Fetch real-time stock data (dummy/mock logic for now)
+  - View all stocks
+  - View best-performing stocks
+- Investment Manager
+  - Add, search, view, and delete personal investments
+- Seamless navigation between modules with back buttons
+- Colorful, user-friendly Java Swing GUI
 
-3. Next-Gen Academic Solutions
+Tech Stack
+- Language: Java
+- GUI: Java Swing
+- Architecture: Modular (separate classes for Stock, Investment, UI, Login, etc.)
 
-4. Custom Data Structure
+
