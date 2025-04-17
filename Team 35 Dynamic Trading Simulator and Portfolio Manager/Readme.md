@@ -64,4 +64,4 @@ The Stock Simulator is an ideal platform for both beginners and experienced user
 
 ---
 
-Let me know if you’d like to include screenshots, sample code, contributor credits, or how to run the project!
+
