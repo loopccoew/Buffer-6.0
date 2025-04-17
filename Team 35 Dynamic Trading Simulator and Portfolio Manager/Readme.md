@@ -52,6 +52,8 @@ The Stock Simulator is a comprehensive Java-based application designed to provid
 - Uses **file I/O** to store and retrieve stock data from `stocks.dat`, ensuring persistent storage and easy recovery.
 
 ---
+## Portfolio Analysis Dashboard
+Provides an interactive analysis dashboard with candlestick pattern visualization, sector-wise portfolio distribution, and simulated profit/loss summaries. Built using Java Swing and JFreeChart, this module helps users evaluate performance trends and diversify their investment strategy effectively.
 
 ##  Benefits
 
