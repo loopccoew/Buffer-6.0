@@ -1,9 +1,11 @@
----
-### Video Link : https://drive.google.com/drive/folders/18RsVmOT71FL1C_V2yZXf_W-ADPadFt_H?usp=drive_link
-### Drive Link : https://drive.google.com/drive/folders/1XGKgUPozFdUUSngjnxsbVj9ospnDXLx6?usp=sharing
 # 📄 Report Buffer
 
 **Flask-Based Research Summarization & Citation Web App**
+
+---
+
+🔗 **Video Link**: [Watch Demo](https://drive.google.com/drive/folders/18RsVmOT71FL1C_V2yZXf_W-ADPadFt_H?usp=drive_link)  
+📁 **Drive Link**: [Access Project Files](https://drive.google.com/drive/folders/1XGKgUPozFdUUSngjnxsbVj9ospnDXLx6?usp=sharing)
 
 ---
 
