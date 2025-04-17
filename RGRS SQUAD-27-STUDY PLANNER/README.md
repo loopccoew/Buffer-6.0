@@ -2,7 +2,7 @@ Our problem statement comprises of the creation of a study planner that will hel
 
 
 
-The data structures that we have used in this project are : Maps,HashMap,Array(for Snakes and Ladders mini game and tic-tac-toe) and ArrayList(study planner).
+The data structures that we have used in this project are : Maps, HashMap, Array(for Snakes and Ladders mini game and tic-tac-toe) and ArrayList(study planner).
 
 
 
