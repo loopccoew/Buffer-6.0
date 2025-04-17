@@ -1,3 +1,8 @@
+Group no.119
+Group name: Coders
+Theme: Custom Datastructure
+Project Name:3D Collision Detection Visualiser
+
 🧩 Project Description
 
 This is a 3D Collision Detection Visualizer using JavaFX and an Octree for efficient spatial partitioning. It simulates moving 3D objects, each with an Axis-Aligned Bounding Box (AABB), and detects collisions in real-time.
