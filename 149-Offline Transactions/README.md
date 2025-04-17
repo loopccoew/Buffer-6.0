@@ -37,6 +37,6 @@ Utilized to hash user passwords and transaction IDs. SHA ensures data integrity 
 3. QR Code Generation (QR Code Writer Algorithm) 
 Uses the QR Code Writer class to encode transaction details (e.g., UPI ID, transaction amount) into a QR code. This QR code can be scanned to facilitate offline peer-to-peer transactions without requiring an internet connection. 
 
- Video link: 
+ Video link: https://drive.google.com/file/d/1WOc2hOydTWkUQF8Edbpr-defkggVpOv6/view?usp=drive_link
 
  
