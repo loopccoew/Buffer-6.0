@@ -19,6 +19,9 @@ Fraudulent money laundering through small transactions - Fraudsters break up lar
 The dataset is too large for GitHub, so we have uploaded it to Google Drive.
 👉 [Click here to access the dataset](https://drive.google.com/file/d/1SbZmJy2kRPVOLruMnHdiqlYOeAhp0pqp/view?usp=sharing)
 
+A video walkthrough explaining the code structure, logic, and how the detection works is available here:
+👉 [Click here to watch the video](https://drive.google.com/file/d/1vq8SI1a8V4LmwDCaQYKd1Abyzrf5LPsu/view?usp=sharing)
+
 ## 📝 How to Run the Code
 1. Download the dataset from the above link.
 2. Open the `.ipynb` file in Google Colab.
