@@ -37,36 +37,3 @@ public class CreditRoleService {
     }
 }
 
-
-// package com.phonepe.service;
-
-// import com.phonepe.model.CreditRole;
-// import com.phonepe.repository.CreditRoleRepository;
-// import org.springframework.stereotype.Service;
-
-// import java.util.List;
-
-// @Service
-// public class CreditRoleService {
-//     private final CreditRoleRepository creditRoleRepository;
-
-//     public CreditRoleService(CreditRoleRepository creditRoleRepository) {
-//         this.creditRoleRepository = creditRoleRepository;
-//     }
-
-//     public CreditRole saveCreditRole(CreditRole creditRole) {
-//         return creditRoleRepository.save(creditRole);
-//     }
-
-//     public List<CreditRole> getRolesByUser(String userId) {
-//         return creditRoleRepository.findByUserId(userId);
-//     }
-
-//     public List<CreditRole> getAllRoles() {
-//         return creditRoleRepository.findAll();
-//     }
-
-//     public void deleteRole(String id) {
-//         creditRoleRepository.deleteById(id);
-//     }
-// }

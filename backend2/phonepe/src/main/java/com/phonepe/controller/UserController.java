@@ -1,6 +1,5 @@
 package com.phonepe.controller;
-
-import com.phonepe.model.Accept;  // Assuming Accept represents the User model
+import com.phonepe.model.Accept; 
 import com.phonepe.service.UserService;
 import org.springframework.web.bind.annotation.*;
 

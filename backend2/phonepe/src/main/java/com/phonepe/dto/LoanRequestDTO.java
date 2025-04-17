@@ -13,10 +13,4 @@ public class LoanRequestDTO {
     private double creditScore;
     private double rating;
 
-    // Lombok will automatically generate getters, setters, toString, equals, and hashCode
-    // No need to manually define them
-
-    // If you need a no-args constructor (required for some frameworks like JPA), 
-    // you can use the @NoArgsConstructor annotation:
-    // @NoArgsConstructor
 }

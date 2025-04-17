@@ -7,9 +7,9 @@ import org.springframework.boot.autoconfigure.orm.jpa.HibernateJpaAutoConfigurat
 
 @SpringBootApplication(exclude = {DataSourceAutoConfiguration.class, HibernateJpaAutoConfiguration.class})
 
-public class PhonepeApp {
+public class Main {
     public static void main(String[] args) {
-        SpringApplication.run(PhonepeApp.class, args);
+        SpringApplication.run(Main.class, args);
         System.out.println("Hi Vaishnavi App Started");
     }
 }

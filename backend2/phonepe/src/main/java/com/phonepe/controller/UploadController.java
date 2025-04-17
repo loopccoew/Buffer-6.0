@@ -46,7 +46,7 @@ import java.util.UUID;
 
 @RestController
 @RequestMapping("/uploads")
-@CrossOrigin(origins = "http://localhost:5000") // or 3000 depending on frontend port
+@CrossOrigin(origins = "http://localhost:5000") 
 public class UploadController {
 
     private final UploadService uploadService;
@@ -62,12 +62,12 @@ public class UploadController {
         String username = LoginStorage.getLoginCredentials().keySet().stream().findFirst().orElse(null);
         if (username == null) return ResponseEntity.status(401).body("User not logged in");
 
-        Accept user = UserStorage.getUser(username); // assuming you have this in UserStorage
+        Accept user = UserStorage.getUser(username);
         if (user == null) return ResponseEntity.status(404).body("User not found");
 
         // 2. Save file to disk (you can change path)
         String fileName = UUID.randomUUID() + "_" + file.getOriginalFilename();
-        String uploadDir = "uploads/" + user.getUserId(); // per-user directory
+        String uploadDir = "uploads/" + user.getUserId(); 
         File dir = new File(uploadDir);
         if (!dir.exists()) dir.mkdirs();
 
