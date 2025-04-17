@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Historical Version Control System</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #343a40;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #007bff;
+        }
+        .list-group-item {
+            transition: background-color 0.3s;
+        }
+        .list-group-item:hover {
+            background-color: #e9ecef;
+        }
+        .footer {
+            margin-top: 40px;
+            padding: 20px;
+            text-align: center;
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="text-center">Welcome to the Historical Version Control System</h1>
+        
+        <h2>Available Manuscripts</h2>
+        <ul id="graphList" class="list-group"></ul>
+
+        <h2>Available Versions</h2>
+        <ul id="versionList" class="list-group"></ul>
+
+        <h2>Reconstruction Theories</h2>
+        <ul id="theoryList" class="list-group"></ul>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Historical Version Control System. All rights reserved.</p>
+    </div>
+    
+    <script>
+        // Fetch and display graphs
+        fetch('/graphs')
+            .then(response => response.json())
+            .then(data => {
+                const graphList = document.getElementById('graphList');
+                data.forEach(graph => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.innerHTML = `<a href="/graph/${graph.id}">${graph.id}</a>`;
+                    graphList.appendChild(li);
+                });
+            });
+
+        // Fetch and display versions
+        fetch('/versions')
+            .then(response => response.json())
+            .then(data => {
+                const versionList = document.getElementById('versionList');
+                data.forEach(version => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.innerHTML = `<a href="/version/${version.id}">${version.name}</a>`;
+                    versionList.appendChild(li);
+                });
+            });
+
+        // Fetch and display theories
+        fetch('/theories')
+            .then(response => response.json())
+            .then(data => {
+                const theoryList = document.getElementById('theoryList');
+                data.forEach(theory => {
+                    const li = document.createElement('li');
+                    li.className = 'list-group-item';
+                    li.innerHTML = `<a href="/theory/${theory.id}">${theory.name}</a>`;
+                    theoryList.appendChild(li);
+                });
+            });
+    </script>
+</body>
+</html>

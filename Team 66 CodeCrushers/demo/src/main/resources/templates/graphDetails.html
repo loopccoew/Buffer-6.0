@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Graph Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f8f9fa;
+        }
+        h1 {
+            margin-bottom: 30px;
+            color: #343a40;
+        }
+        h2 {
+            margin-top: 20px;
+            color: #007bff;
+        }
+        h3 {
+            margin-top: 20px;
+            color: #6c757d;
+        }
+        .list-group-item {
+            transition: background-color 0.3s;
+        }
+        .list-group-item:hover {
+            background-color: #e9ecef;
+        }
+        .back-link {
+            margin-top: 20px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Graph Details</h1>
+        <h2>Graph ID: <span th:text="${graph.id}"></span></h2> <!-- Display the graph ID -->
+        
+        <h3>Versions</h3>
+        <ul id="versionList" class="list-group">
+            <!-- Iterate over versions passed from the controller -->
+            <th:block th:each="version : ${versions}">
+                <li class="list-group-item">
+                    <a th:href="@{/version/{id}(id=${version.id})}" th:text="${version.name}"></a>
+                </li>
+            </th:block>
+        </ul>
+
+        <h3>Theories</h3>
+        <ul id="theoryList" class="list-group">
+            <!-- Theories can be added similarly if you pass them to the model -->
+            <th:block th:each="theory : ${theories}">
+                <li class="list-group-item">
+                    <a th:href="@{/theory/{id}(id=${theory.id})}" th:text="${theory.name}"></a>
+                </li>
+            </th:block>
+        </ul>
+
+        <a href="/" class="btn btn-primary back-link">Back to Home</a>
+    </div>
+</body>
+</html>
