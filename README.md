@@ -1,11 +1,12 @@
-# Buffer-6.0
+# Team100_Disaster-Relief-Resource-Reallocation
 
-The themes for Buffer 6.0 are -
+This is a disaster relief resource allocation project which is divided into two parts volunteer and victim
+Victim part consists of hashmap and array list to store nearby, farby, shopping centres and shelters according to severity of disaster
+We have also included graphs to help the victims find the shortest path from one area to other.
 
-1. FinTech
+We have included a rescue van which can be tracked by the victim time to time.
 
-2. Women Safety
+In volunteer section, we have included 3 options (after filling their information) for aids of victim,that is financial,food and 
+medical facilities. Djikstara's Algorithm is used for volunteers to find the shortest distance from their place to the place of disaster.
 
-3. Next-Gen Academic Solutions
-
-4. Custom Data Structure
+Video link - https://drive.google.com/drive/folders/1SzdjAmFki7DzT9DLeBI94_XrZ0d4oxto?usp=sharing
