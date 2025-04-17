@@ -16,7 +16,7 @@ Fraudulent money laundering through small transactions - Fraudsters break up lar
 - Google Colab
 
 ## 🗂️ Dataset
-The dataset is too large for GitHub, so we have uploaded it to Google Drive.  
+The dataset is too large for GitHub, so we have uploaded it to Google Drive.
 👉 [Click here to access the dataset](https://drive.google.com/file/d/1SbZmJy2kRPVOLruMnHdiqlYOeAhp0pqp/view?usp=sharing)
 
 ## 📝 How to Run the Code
