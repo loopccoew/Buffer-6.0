@@ -82,44 +82,6 @@ WishWallet allows users to:
 
 ---
 
-📂 Folder Structure
-# 💰 WishWallet - Digital Piggy Bank App
-
-WishWallet helps users set saving goals, track their progress with visual cues, and smartly distribute savings using DSA concepts like **PriorityQueue** and **Greedy Algorithms**. Perfect for students or anyone aiming to manage small savings effectively.
-
----
-
-## 🖥️ Screenshots
-
-<table>
-  <tr>
-    <td><b>🏠 Home Screen</b></td>
-    <td><b>➕ Add Goal</b></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/b8460bf5-ca52-41d8-81e5-c78005d52626" width="100%"/></td>
-    <td><img src="https://github.com/user-attachments/assets/5bdf5cdc-f6f2-4516-b36d-04eab3a3d54c" width="100%"/></td>
-  </tr>
-  <tr>
-    <td><b>➕ Add Goal - More</b></td>
-    <td><b>💸 Add Money</b></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/c3488512-bbdb-4658-9244-4b26f43beaea" width="100%"/></td>
-    <td><img src="https://github.com/user-attachments/assets/4bda54b7-6d2f-41ff-a71e-896e32220fef" width="100%"/></td>
-  </tr>
-  <tr>
-    <td><b>📊 View Goals</b></td>
-    <td><b>✅ Goal Completed Toast</b></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/user-attachments/assets/0d2f15fd-2388-4ab5-b837-568e3eb5a6a7" width="100%"/></td>
-    <td><img src="https://github.com/user-attachments/assets/44014c66-f669-4385-a89b-dd0544f4d661" width="100%"/></td>
-  </tr>
-</table>
-
----
-
 ## 📂 Folder Structure
 
 ```bash
