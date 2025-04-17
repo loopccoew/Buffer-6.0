@@ -5,6 +5,9 @@
      making smarter financial decisions. Powered by core data structures and 
      a clean, intuitive interface, it delivers accurate results, 
      smart suggestions, and insightful visuals — all in one place.
+## 🚀 Project Demo
+
+👉 [Watch the working demo here!](https://drive.google.com/file/d/1zkg9Hk4BulfqtZ_um8c7RM4Wb9aqGfyC/view)
 
 
 **🔧 Features**
