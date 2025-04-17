@@ -1,4 +1,5 @@
-🧠 Skin Disease Analyzer & Severity Predictor using Custom Data Structures 🩺 Overview This project is a hybrid intelligence system for analyzing skin disease images, assessing severity, and recommending treatments. It is uniquely designed using custom-built data structures that integrate trees, graphs, tries, hash maps, and lists — tailored to optimize medical image analysis, data retrieval, and adaptive decision-making.
+🧠 **Skin Disease Analyzer & Severity Predictor using Custom Data Structures** 
+🩺 Overview: This project is a hybrid intelligence system for analyzing skin disease images, assessing severity, and recommending treatments. It is uniquely designed using custom-built data structures that integrate trees, graphs, tries, hash maps, and lists — tailored to optimize medical image analysis, data retrieval, and adaptive decision-making.
 
 🔍 Key Features Multi-scale lesion detection via a hybrid Segment Tree and Quadtree.
 
