@@ -19,7 +19,7 @@ The primary goal of this project is to simulate how data integrity and consensus
 ---
 
 ## *Project Structure*
-
+```
 BlockPackage/
 ├── Block.java          // Represents each block in the chain
 ├── Blockchain.java     // Handles chain logic, mining, validation
@@ -29,7 +29,7 @@ Applications/
 ├── expense/            // Decentralized expense logging
 ├── certificates/       // Certificate verification system
 ├── crypto/             // Basic cryptocurrency simulation
-
+```
 
 ---
 
