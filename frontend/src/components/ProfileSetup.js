@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import "./Signup.css";
+import "./Signup.css"; // Reuse the same styles as Signup
 
 function ProfileSetup() {
   const [name, setName] = useState("");
@@ -12,6 +12,17 @@ function ProfileSetup() {
   const [area, setArea] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
+
+  // Get stored username and password from localStorage
+  const username = localStorage.getItem("username");
+  const password = localStorage.getItem("password");
+
+  // If username and password are not found, redirect to login page
+  useEffect(() => {
+    if (!username || !password) {
+      navigate("/login");
+    }
+  }, [username, password, navigate]);
 
   const areaOptions = {
     Pune: [
@@ -60,11 +71,26 @@ function ProfileSetup() {
       return;
     }
 
-    const profileData = { name, dob, mobile, profession, city, area };
+    const profileData = {
+      name,
+      dob,
+      mobileNo: mobile,
+      profession,
+      city,
+      area,
+      // we DON'T need to send username & password in the body now
+    };
 
     try {
-      await axios.post("YOUR_BACKEND_API_URL_HERE", profileData);
-      navigate("/home");
+      // ✅ Username passed as query param
+      const response = await axios.put(
+        `http://localhost:9191/users/complete-profile?username=${username}`,
+        profileData
+      );
+
+      if (response.status === 200) {
+        navigate("/home");
+      }
     } catch (error) {
       console.error("Error saving profile:", error);
       setErrorMessage("Failed to save profile. Please try again.");

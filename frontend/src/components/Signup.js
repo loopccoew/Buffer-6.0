@@ -49,9 +49,12 @@ function Signup() {
     axios
       .post("http://localhost:9191/api/auth/google", googleData)
       .then((res) => {
-        setMessage(res.data.message);
+        setMessage(res.data);
+        localStorage.setItem("username", googleData.token); // Store email if needed after parsing
+        navigate("/profile-setup"); // You can redirect them to profile
       })
       .catch((err) => {
+        console.error("Google signup error:", err);
         setMessage("Error with Google signup");
       });
   };

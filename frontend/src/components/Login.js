@@ -1,4 +1,3 @@
-// Login.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
@@ -24,6 +23,11 @@ function Login() {
 
       // Check if login was successful
       if (response.status === 200) {
+        // Save username and password to localStorage
+        localStorage.setItem("username", username);
+        localStorage.setItem("password", password);
+
+        // Redirect to profile-setup
         navigate("/profile-setup");
       }
     } catch (error) {

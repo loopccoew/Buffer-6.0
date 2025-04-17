@@ -6,7 +6,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-
+@CrossOrigin(origins = "http://localhost:3000")
 @RestController
 @RequestMapping("/users")
 public class UserController {
@@ -63,4 +63,20 @@ public class UserController {
             return "User not found!";
         }
     }
+
+    // Update Profile Details (called after login for completing profile)
+@PutMapping("/complete-profile")
+public String completeProfile(@RequestParam String username, @RequestBody Accept updatedData) {
+    try {
+        boolean updated = userService.completeProfile(username, updatedData);
+        if (updated) {
+            return "Profile updated and saved successfully!";
+        } else {
+            return "User not found!";
+        }
+    } catch (Exception e) {
+        return "Error while updating profile: " + e.getMessage();
+    }
+}
+
 }

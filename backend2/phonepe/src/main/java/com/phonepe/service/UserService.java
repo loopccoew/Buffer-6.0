@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.phonepe.model.Accept;
 import com.phonepe.repository.UserRepository;
+import com.phonepe.storage.UserStorage;
 
 @Service
 public class UserService {
@@ -45,5 +46,31 @@ public class UserService {
         }
         return Optional.empty();
     }
+
+    public boolean completeProfile(String username, Accept updatedData) {
+    Optional<Accept> optionalUser = userRepository.findByUsername(username);
+
+    if (optionalUser.isPresent()) {
+        Accept existingUser = optionalUser.get();
+
+        // Update fields
+        existingUser.setName(updatedData.getName());
+        existingUser.setDob(updatedData.getDob());
+        existingUser.setMobileNo(updatedData.getMobileNo());
+        existingUser.setProfession(updatedData.getProfession());
+        existingUser.setCity(updatedData.getCity());
+        existingUser.setArea(updatedData.getArea());
+
+        // Update in DS
+        UserStorage.addUser(existingUser);
+
+        // Update in MongoDB
+        userRepository.save(existingUser);
+
+        return true;
+    }
+    return false;
+}
+
     
 }
