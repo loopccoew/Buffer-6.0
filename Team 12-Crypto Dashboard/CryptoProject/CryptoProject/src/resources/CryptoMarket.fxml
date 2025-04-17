@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ui.CryptoMarketController" styleClass="dark-theme" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchBar" promptText="Search cryptocurrency..." HBox.hgrow="ALWAYS"/>
+        <Button text="Search" onAction="#search"/>
+        <Button text="Refresh" onAction="#refreshData"/>
+        <ChoiceBox fx:id="languageChoice"/>
+    </HBox>
+
+    <TableView fx:id="marketTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="iconCol" text="" prefWidth="50"/>
+            <TableColumn fx:id="nameCol" text="Name" prefWidth="200"/>
+            <TableColumn fx:id="symbolCol" text="Symbol" prefWidth="100"/>
+            <TableColumn fx:id="priceCol" text="Price (USD)" prefWidth="120"/>
+            <TableColumn fx:id="changeCol" text="24h Change (%)" prefWidth="120"/>
+            <TableColumn fx:id="volumeCol" text="Volume" prefWidth="150"/>
+            <TableColumn fx:id="marketCapCol" text="Market Cap" prefWidth="150"/>
+            <TableColumn fx:id="trendCol" text="Trend" prefWidth="200"/>
+        </columns>
+    </TableView>
+
+    <Label fx:id="statusBar" text="Ready"/>
+</VBox>

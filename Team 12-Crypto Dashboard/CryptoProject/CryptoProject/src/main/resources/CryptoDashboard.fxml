@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="ui.CryptoDashboardController">
+    <top>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TextField fx:id="searchBar" promptText="Search cryptocurrency..." HBox.hgrow="ALWAYS"/>
+            <Button text="Search" onAction="#search" tooltip="Search for a cryptocurrency by symbol or name"/>
+            <Button text="Refresh Data" onAction="#refreshData" tooltip="Reload all cryptocurrency data"/>
+            <Button text="Refresh Arbitrage" onAction="#refreshArbitrage" tooltip="Find arbitrage opportunities"/>
+            <Button text="Trending" onAction="#showTrending" tooltip="View trending cryptocurrencies"/>
+            <CheckBox fx:id="autoRefreshToggle" text="Auto-Refresh" selected="true" tooltip="Toggle live auto-refresh"/>
+        </HBox>
+    </top>
+
+    <center>
+        <TabPane>
+            <tabs>
+                <!-- Crypto Market Overview Tab -->
+                <Tab text="Crypto Market Overview">
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <Label text="Crypto Market Overview" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        <TableView fx:id="cryptoTable" prefHeight="400">
+                            <columns>
+                                <TableColumn fx:id="symbolCol" text="Symbol"/>
+                                <TableColumn fx:id="nameCol" text="Name"/> <!-- Added Name column -->
+                                <TableColumn fx:id="currencyNameCol" text="Currency Name"/>
+                                <TableColumn fx:id="priceCol" text="Price"/>
+                                <TableColumn fx:id="percentChangeCol" text="% Change"/>
+                                <TableColumn fx:id="changeCol" text="Change (%)"/>
+                                <TableColumn fx:id="highCol" text="24h High"/>
+                                <TableColumn fx:id="lowCol" text="24h Low"/>
+                                <TableColumn fx:id="readableNameCol" text="Readable Name"/>
+                                <TableColumn fx:id="graphCol" text="Trend"/> <!-- Ensure graphCol is defined -->
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <!-- Arbitrage Opportunities Tab -->
+                <Tab text="Arbitrage Opportunities">
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <Label text="Arbitrage Opportunities" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        <TableView fx:id="arbitrageTable" prefHeight="400">
+                            <columns>
+                                <TableColumn fx:id="marketCol" text="Market"/>
+                                <TableColumn fx:id="pairCol" text="Pair"/>
+                                <TableColumn fx:id="buyPriceCol" text="Buy Price"/>
+                                <TableColumn fx:id="sellPriceCol" text="Sell Price"/>
+                                <TableColumn fx:id="profitCol" text="Profit (%)"/>
+                            </columns>
+                        </TableView>
+                    </VBox>
+                </Tab>
+
+                <!-- Conversion Max Profit Tab -->
+                <Tab text="Conversion Max Profit">
+                    <VBox spacing="10">
+                        <padding>
+                            <Insets top="10" right="10" bottom="10" left="10"/>
+                        </padding>
+                        <Label text="Conversion Max Profit" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+                        <GridPane hgap="10" vgap="10">
+                            <Label text="Amount:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                            <TextField fx:id="currencyInput" promptText="Amount" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                            <Label text="From:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                            <ChoiceBox fx:id="currencyFrom" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                            <Label text="To:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                            <ChoiceBox fx:id="currencyTo" prefWidth="150" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                            <Button text="Find Max Profit" onAction="#findMaxProfit" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                        </GridPane>
+                        <Label fx:id="conversionResult" text="Conversion Result: " style="-fx-font-size: 16px;"/>
+                    </VBox>
+                </Tab>
+            </tabs>
+        </TabPane>
+    </center>
+
+    <bottom>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <!-- Currency Conversion Section -->
+            <GridPane hgap="10" vgap="10">
+                <TextField fx:id="currencyInput" promptText="Amount" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <ChoiceBox fx:id="currencyFrom" prefWidth="100" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <ChoiceBox fx:id="currencyTo" prefWidth="100" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+                <Button text="Convert" onAction="#convertCurrency" GridPane.columnIndex="3" GridPane.rowIndex="0"
+                        tooltip="Convert the entered amount from one currency to another"/>
+            </GridPane>
+            <Label fx:id="conversionResult" text="Conversion Result: " style="-fx-font-size: 16px;"/>
+
+            <!-- Best Conversion Path -->
+            <HBox spacing="10">
+                <Button text="Find Best Conversion Path" onAction="#findBestConversion" tooltip="Find the most profitable conversion path"/>
+            </HBox>
+
+            <!-- Detailed Cryptocurrency View -->
+            <Label text="Detailed Cryptocurrency View" style="-fx-font-size: 18px; -fx-font-weight: bold;"/>
+            <GridPane hgap="10" vgap="10">
+                <Label text="Symbol:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+                <Label fx:id="detailedSymbol" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+                <Label text="Name:" GridPane.columnIndex="0" GridPane.rowIndex="1"/>
+                <Label fx:id="detailedName" GridPane.columnIndex="1" GridPane.rowIndex="1"/>
+                <Label text="Price:" GridPane.columnIndex="0" GridPane.rowIndex="2"/>
+                <Label fx:id="detailedPrice" GridPane.columnIndex="1" GridPane.rowIndex="2"/>
+                <Label text="% Change:" GridPane.columnIndex="0" GridPane.rowIndex="3"/>
+                <Label fx:id="detailedChange" GridPane.columnIndex="1" GridPane.rowIndex="3"/>
+                <Label text="24h High:" GridPane.columnIndex="0" GridPane.rowIndex="4"/>
+                <Label fx:id="detailedHigh" GridPane.columnIndex="1" GridPane.rowIndex="4"/>
+                <Label text="24h Low:" GridPane.columnIndex="0" GridPane.rowIndex="5"/>
+                <Label fx:id="detailedLow" GridPane.columnIndex="1" GridPane.rowIndex="5"/>
+            </GridPane>
+
+            <Label fx:id="statusBar" text="Status: Ready"/>
+        </VBox>
+    </bottom>
+</BorderPane>
