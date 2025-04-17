@@ -1,3 +1,12 @@
+# Team 47- Loop Troop
+- Second Year Domain- FinTech
+-Team Members
+    - Feyoni Shah
+    - Srushti Tarate
+    - Gauri Bankar
+    - Girija Joshi
+
+
 # 🏠 TokenVest - Real Estate Token Investment Platform
 
 ## 📌 Problem Statement
