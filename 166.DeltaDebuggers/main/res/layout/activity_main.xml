@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="32dp"
+    android:background="@android:color/white">
+
+    <!-- App title or welcome message -->
+    <TextView
+        android:id="@+id/welcomeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Welcome to Women's Safety App"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="40dp"
+        android:textStyle="bold"/>
+
+    <!-- Login button -->
+    <Button
+        android:id="@+id/btnLoginPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Login"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/holo_blue_dark"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:padding="14dp"/>
+
+    <!-- Register button -->
+    <Button
+        android:id="@+id/btnRegisterPage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Register"
+        android:textColor="@android:color/white"
+        android:backgroundTint="@android:color/holo_orange_dark"
+        android:layout_marginTop="10dp"
+        android:padding="14dp"/>
+
+    <!-- Optional small instructions or description below buttons -->
+    <TextView
+        android:id="@+id/descriptionText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Join us today for a safer tomorrow!"
+        android:textSize="14sp"
+        android:textColor="@android:color/darker_gray"
+        android:layout_marginTop="20dp"/>
+
+</LinearLayout>

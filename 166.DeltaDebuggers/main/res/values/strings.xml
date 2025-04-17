@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">SimpleWomenSafetyApp</string>
+    <string name="send_emergency_alert">Send Emergency Alert</string>
+    <string name="title_activity_maps">MapsActivity</string>
+    <string name="show_help_centers_on_map">Show Help Centers on Map</string>
+    <string name="show_help_centers">Show Help Centers</string>
+
+</resources>
