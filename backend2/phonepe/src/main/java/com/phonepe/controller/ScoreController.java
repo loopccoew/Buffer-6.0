@@ -31,7 +31,9 @@ public class ScoreController {
 
     // New endpoint to handle file upload for score calculation
     @PostMapping("/upload")
-    public String uploadAndCalculateScore(@RequestParam("file") MultipartFile file, @RequestParam("userId") String userId) {
-        return scoreService.uploadAndCalculateScore(file, userId);
+    public Score uploadAndCalculateScore(@RequestParam("file") MultipartFile file, @RequestParam("userName") String userName) {
+        return scoreService.uploadAndCalculateScore(file, userName);
     }
+    
+
 }

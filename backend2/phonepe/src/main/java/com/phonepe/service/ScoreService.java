@@ -16,7 +16,7 @@ public class ScoreService {
 
     private final ScoreRepository scoreRepository;
 
-    @Autowired
+    // @Autowired
     public ScoreService(ScoreRepository scoreRepository) {
         this.scoreRepository = scoreRepository;
     }
@@ -29,10 +29,10 @@ public class ScoreService {
         return scoreRepository.findByUserId(userId);
     }
 
-    public String uploadAndCalculateScore(MultipartFile file, String userId) {
+    public Score uploadAndCalculateScore(MultipartFile file, String userId) {
         int transactionCount = 0;
         double totalSpent = 0;
-
+    
         try (BufferedReader br = new BufferedReader(new InputStreamReader(file.getInputStream()))) {
             String line;
             br.readLine(); // Skip header
@@ -50,14 +50,13 @@ public class ScoreService {
             }
         } catch (Exception e) {
             System.err.println("File processing error: " + e.getMessage());
-            return "Failed to process bank statement.";
+            throw new RuntimeException("Failed to process bank statement.");
         }
-
+    
         double calculatedScore = 600 + (transactionCount * 0.5) + (totalSpent / 10000);
-
+    
         Score score = new Score(userId, calculatedScore, LocalDateTime.now());
-        saveScore(score);
-
-        return "New credit score for user " + userId + ": " + calculatedScore;
+        return saveScore(score); // 👈 Return the saved Score object
     }
+    
 }

@@ -89,7 +89,7 @@ function ProfileSetup() {
       );
 
       if (response.status === 200) {
-        navigate("/home");
+        navigate("/Dashboard");
       }
     } catch (error) {
       console.error("Error saving profile:", error);

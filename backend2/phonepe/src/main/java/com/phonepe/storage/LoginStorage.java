@@ -5,7 +5,10 @@ import java.util.HashMap;
 public class LoginStorage {
     // In-memory storage for login credentials (temporary)
     private static HashMap<String, String> loginCredentials = new HashMap<>();
-
+    public static HashMap<String, String> getLoginCredentials() {
+        return loginCredentials;
+    }
+    
     // Store login credentials temporarily
     public static void addCredentials(String username, String password) {
         System.out.println("Storing login credentials for: " + username);
