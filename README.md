@@ -13,17 +13,17 @@ Data Structures used:
 
 Key Features:
 	1.	Triple-Click SOS Trigger:
-	•	Users must press the SOS button 3 times within 5 seconds to avoid accidental activation.
-	•	Ensures quick access in emergency scenarios with minimal interaction.
+		• Users must press the SOS button 3 times within 5 seconds to avoid accidental activation.
+		• Ensures quick access in emergency scenarios with minimal interaction.
 	2.	Automatic Alert System:
-	•	Sends a real-time notification message to predefined emergency contacts (like family and friends).
-	•	Also sends the alert to the 3 nearest police stations, based on geolocation.
+		• Sends a real-time notification message to predefined emergency contacts (like family and friends).
+		• Also sends the alert to the 3 nearest police stations, based on geolocation.
 	3.	Distance-Based Alerting:
-	•	Uses the Haversine formula to calculate the geographical distance between the user and each police station.
-	•	Sorts police stations by proximity to prioritize the nearest help.
+		• Uses the Haversine formula to calculate the geographical distance between the user and each police station.
+		• Sorts police stations by proximity to prioritize the nearest help.
 	4.	Real-Time Log Display:
-	•	A clean console-like JTextArea shows the status of button presses, contact notifications, and police alerts.
-	•	Helps in debugging, transparency, and user feedback.
+		• A clean console-like JTextArea shows the status of button presses, contact notifications, and police alerts.
+		• Helps in debugging, transparency, and user feedback.
 
  link to video:
  https://drive.google.com/drive/folders/12JcPHr4M53wiNs-GNcjZG9_YWQ9bfV6B?usp=sharing
