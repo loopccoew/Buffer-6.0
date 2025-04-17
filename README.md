@@ -125,5 +125,9 @@ npm run dev
 - 👩‍💻 **Shravni Garde**  
 - 👩‍💻 **Bhakti Chaudhari**
 
+## 🎥 Working Demo and Presentation
+You can find the working demo and the presentation in the given drive link below:
+[Click here to view the demo video and presentation](https://drive.google.com/drive/folders/1URsX9IWUJ9iU2RFXuUiwIorHW0JL-3FK?usp=drive_link)
+
 
 
