@@ -46,7 +46,69 @@ WishWallet allows users to:
    - Allocate as much money as needed
    - Move to the next goal once the current one is filled
 3. Internally, goal progress is tracked using the `savedAmount` vs `targetAmount`.
-4. Completed goals are removed using:
-   ```java
-   goalsMap.values().removeIf(goal -> goal.getRemainingAmount() <= 0);
+4. Completed goals are removed.
 
+---
+
+🖥️ Screenshots
+Includes screenshots of:
+
+Home screen
+![WhatsApp Image 2025-04-17 at 17 27 15_83291917](https://github.com/user-attachments/assets/b8460bf5-ca52-41d8-81e5-c78005d52626)
+
+Add Goal screen
+![WhatsApp Image 2025-04-17 at 17 27 16_8db27ebe](https://github.com/user-attachments/assets/5bdf5cdc-f6f2-4516-b36d-04eab3a3d54c)
+![WhatsApp Image 2025-04-17 at 17 27 16_a0557117](https://github.com/user-attachments/assets/c3488512-bbdb-4658-9244-4b26f43beaea)
+
+
+Add Money: 
+![WhatsApp Image 2025-04-17 at 17 27 16_2ace6ca5](https://github.com/user-attachments/assets/4bda54b7-6d2f-41ff-a71e-896e32220fef)
+
+View Goals with progress bars
+![WhatsApp Image 2025-04-17 at 17 27 16_162825f8](https://github.com/user-attachments/assets/0d2f15fd-2388-4ab5-b837-568e3eb5a6a7)
+
+Completed goal toast
+![WhatsApp Image 2025-04-17 at 17 30 17_0aba6c7c](https://github.com/user-attachments/assets/44014c66-f669-4385-a89b-dd0544f4d661)
+---
+
+📂 Folder Structure
+
+WishWallet/
+├── app/
+│   ├── java/com/example/piggybank/
+│   │   ├── MainActivity.java
+│   │   ├── AddGoalActivity.java
+│   │   ├── GoalManager.java
+│   │   ├── Goal.java
+│   │   └── GoalAdapter.java
+│   └── res/
+│       ├── layout/
+│       │   └── activity_main.xml
+│       │   └── activity_add_goal.xml
+│       │   └── activity_view_goals.xml
+│       └── values/
+│           └── styles.xml
+
+---
+
+📦 Tools & Technologies
+Language: Java
+
+Framework: Android SDK
+
+IDE: Android Studio
+
+DSA Concepts: HashMap, PriorityQueue, Greedy Strategy
+
+---
+
+🎯 Future Scope
+Add reminders to save daily/weekly
+
+Visual analytics of monthly savings
+
+Backup goals to cloud (Firebase)
+
+Voice command integration
+
+---
