@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theory Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Theory Details for <span th:text="${theory.name}"></span></h1>
+        <p><strong>Scholar:</strong> <span th:text="${theory.scholar}"></span></p>
+        <p><strong>Date:</strong> <span th:text="${theory.date}"></span></p>
+        <p><strong>Description:</strong> <span th:text="${theory.description}"></span></p>
+        <p><strong>Ordered Versions:</strong> <span th:text="${theory.versions}"></span></p>
+
+        <h2>Child Theories</h2>
+        <ul>
+            <li th:each="child : ${children}">
+                <strong>
+                    <a th:href="@{/theory/{id}(id=${child.id})}" th:text="${child.name}"></a>
+                </strong> - <span th:text="${child.description}"></span>
+                <p><strong>Scholar:</strong> <span th:text="${child.scholar}"></span></p>
+                <p><strong>Date:</strong> <span th:text="${child.date}"></span></p>
+                <p><strong>Ordered Versions:</strong> <span th:text="${child.versions}"></span></p>
+            </li>
+        </ul>
+    </div>
+</body>
+</html>

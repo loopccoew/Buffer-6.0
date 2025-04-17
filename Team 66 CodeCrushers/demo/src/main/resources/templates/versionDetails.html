@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Details</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Version Details for <span th:text="${version.name}"></span></h1>
+        <p>Region: <span th:text="${version.region}"></span></p>
+        <p>Date: <span th:text="${version.approximateDate}"></span></p>
+        <p>Verses: <span th:text="${version.verseCount}"></span></p>
+        <p>Unique Features: <span th:text="${version.uniqueFeatures}"></span></p>
+        <p>Completeness: <span th:text="${version.completeness * 100}"></span>%</p>
+
+        <h2>Annotations</h2>
+        <ul>
+            <th:block th:each="annotation : ${annotations}">
+                <li th:text="${annotation.author} + ': ' + ${annotation.content}"></li>
+            </th:block>
+        </ul>
+
+        <h2>Relationships</h2>
+        <ul>
+            <th:block th:each="relationship : ${relationships}">
+                <li th:text="${relationship.source.name} + ' -> ' + ${relationship.target.name} + ' (' + ${relationship.type} + ', Similarity: ' + ${relationship.similarity} + ')'"></li>
+            </th:block>
+        </ul>
+    </div>
+</body>
+</html>
