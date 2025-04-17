@@ -1,5 +1,5 @@
 
-# 📈 Stock Simulator
+# Stock Simulator
 
 **Link to Video:**  
 https://drive.google.com/file/d/1CEa_L-JlaUI1p7VpXDyshOKYKqqpns8P/view?usp=sharing
@@ -9,13 +9,13 @@ https://drive.google.com/file/d/1CEa_L-JlaUI1p7VpXDyshOKYKqqpns8P/view?usp=shari
 
 ---
 
-## 📝 Project Description Summary
+##  Project Description Summary
 
 The **Stock Simulator** is an interactive Java-based application designed to replicate a virtual stock market environment. It enables users to create, view, filter, and manage a variety of stocks, helping them understand the dynamics of market behavior in a simulated setting.
 
 ---
 
-## 🎯 Need and Purpose
+##  Need and Purpose
 
 The Stock Simulator is a comprehensive Java-based application designed to provide a realistic and interactive platform for understanding stock market dynamics. It empowers users to:
 
@@ -26,9 +26,9 @@ The Stock Simulator is a comprehensive Java-based application designed to provid
 
 ---
 
-## 🔑 Key Features and Implementations
+##  Key Features and Implementations
 
-### 🧠 Data Structures Used
+###  Data Structures Used
 
 - **Stack**: Stores buy and sell transactions for tracking historical data and analyzing investment performance.  
 - **Priority Queue**: Organizes stocks based on market capitalization for efficient retrieval of top-performing stocks.  
@@ -47,13 +47,13 @@ The Stock Simulator is a comprehensive Java-based application designed to provid
 
 ---
 
-## 💾 File Handling
+## File Handling
 
 - Uses **file I/O** to store and retrieve stock data from `stocks.dat`, ensuring persistent storage and easy recovery.
 
 ---
 
-## 🎁 Benefits
+##  Benefits
 
 The Stock Simulator is an ideal platform for both beginners and experienced users to:
 
