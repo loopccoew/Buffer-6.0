@@ -1,25 +1,75 @@
-\***\* 🚨 SecureHers - Women Safety Navigation System 🚨 \*\***
 
-Language: Java Algorithms Used: Dijkstra’s Algorithm, A\* Algorithm Data Structure Used: Hashmap, Graphs, PriorityQueues, ArrayList
 
-OVERVIEW: Our Women Safety Navigation System is a smart Path Finding tool designed to navigate Urban areas with enhanced security. Built using Graph based Algorithms and real time feedback with all important necessary features, It prioritises safety in every step.
+# 🚨 SecureHers - Women Safety Navigation System 🚨
 
-🧠 Core Technology: Utilizes Dijkstra’s Algorithm on a weighted graph where edges represent roads with safety ratings. Applies A\* Algorithm to locate the nearest safest spot from the user’s current location, considering both distance and safety.
+### 👩‍💻 Language:
+Java  
 
-📌 Key Features: ✅ Three-Parameter Safety Rating: Each road segment is rated based on: 🔑 Presence of Streetlights 🔑 Availability of CCTV Cameras 🔑 Crowd Density
+### 🧮 Algorithms Used:
+- Dijkstra’s Algorithm  
+- A* (A-Star) Algorithm  
 
-🧭 Safest Route Finder: Suggests routes that maximize safety using real-time weighted graph calculations.
+### 🧰 Data Structures Used:
+- HashMap  
+- Graphs  
+- PriorityQueues  
+- ArrayList  
 
-📍 Nearest Safe Location Finder: Quickly guides users to the nearest safe area in case of emergency.
+---
 
-🔐 Admin Login System: Enables admins to: 🔑 Modify or reset safety ratings 🔑 Oversee and manage feedback data
+## 🔍 Overview:
+**SecureHers** is a smart path-finding system built to enhance **women’s safety in urban areas**. It uses **graph-based algorithms** and **real-time user feedback** to prioritize safe navigation over just the shortest route.
 
-🙋‍♀ User Registration & Login: Required for: 🔑 Securing access 🔑 Submitting verified feedback
+---
 
-🧾 Encrypted Passwords: User credentials are stored securely using basic encryption.
+## 🧠 Core Technology:
+- Utilizes **Dijkstra’s Algorithm** on a weighted graph, where edges represent roads with safety ratings.
+- Applies **A\*** Algorithm to locate the **nearest safest spot** from the user’s current location, factoring in both **distance** and **safety levels**.
 
-📦 Modular Architecture: Clean separation of logic across multiple classes for scalability and ease of maintenance.
+---
 
-🌟 Unique Value Proposition (UVP): 📢 User Feedback System: After navigating a route, users can rate their experience based on safety. 📢 Feedback directly updates safety ratings, making the system community-driven, dynamic, and constantly improving.
+## 📌 Key Features:
 
-Demo Video Link:https://drive.google.com/file/d/1cTDppuRZ1Xx9-ao4cRYfJv6QjCfPiBU9/view?usp=drive_link
+### ✅ Three-Parameter Safety Rating:
+Each road segment is evaluated based on:
+- 🔦 Presence of Streetlights  
+- 📷 Availability of CCTV Cameras  
+- 👥 Crowd Density  
+
+### 🧭 Safest Route Finder:
+- Suggests routes that **maximize safety** using **real-time weighted graph calculations**.
+
+### 📍 Nearest Safe Location Finder:
+- Guides users to the **nearest safe area** in case of emergencies.
+
+### 🔐 Admin Login System:
+Admins can:
+- 🔧 Modify or reset safety ratings  
+- 📊 Manage and oversee feedback data  
+
+### 🙋‍♀️ User Registration & Login:
+Required for:
+- 🛡️ Secured access  
+- 🗣️ Submitting verified safety feedback  
+
+### 🧾 Encrypted Passwords:
+- User credentials are stored securely using **basic encryption mechanisms**.
+
+### 📦 Modular Architecture:
+- Clean separation of logic across **multiple classes** for **scalability** and **maintainability**.
+
+---
+
+## 🌟 Unique Value Proposition (UVP):
+### 📢 Community-Driven Safety System:
+- After completing a route, users are prompted to **rate their experience based on safety**.
+- Feedback is used to **update safety ratings**, making the system:
+  - Dynamic  
+  - Evolving  
+  - User-informed  
+
+---
+
+## 🎥 Demo Video:
+🔗 [Watch Demo](https://drive.google.com/file/d/1cTDppuRZ1Xx9-ao4cRYfJv6QjCfPiBU9/view?usp=drive_link)
+
