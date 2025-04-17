@@ -1,33 +1,66 @@
-# Welcome to your Lovable project
+# Lumora
 
-## Project info
+### Project info
+An interactive **educational website** that delivers essential sexual education through fun, engaging gameplay — all while integrating **core Data Structures & Algorithms (DSA)** concepts.
 
-**URL**: https://lovable.dev/projects/2e639f94-910a-4de5-93cd-3f1765b640b7
+**WEB URL**: https://buffer20.vercel.app/
 
-## How can I edit this code?
+**DEMO URL**: https://drive.google.com/file/d/1lZiausc5b6QeAMKWrm5-Z-LeL0SIHueh/view?usp=sharing
 
-There are several ways of editing your application.
+### **Project Highlights**
 
-**Use Lovable**
+- 4 Topics, each with **10 Levels** of increasing difficulty
+- **Educational Content** and feedback for every wrong answer
+- **Coin Rewards** for correct answers
+- Retry system for progression
+- **Performance tracking**, leaderboard, and story mode
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/2e639f94-910a-4de5-93cd-3f1765b640b7) and start prompting.
+### **DSA Concepts Integrated**
 
-Changes made via Lovable will be committed automatically to this repo.
+This project combines learning with real-world DSA usage:
 
-**Use your preferred IDE**
+**1. Binary Tree – Level Unlocking**
+- *How it works*: Each level is a node; you can unlock the next level only by completing the current one.
+- *DSA*: Binary Tree Preorder Traversal (parent → left → right)
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
+**2. Stack – Navigation History**
+- *How it works*: Tracks previously visited questions for back navigation.
+- *DSA*: Stack (LIFO) mimics browser-style navigation.
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+**3. Queue – Timed Question Buffer**
+- *How it works*: Questions are served in order, with timers.
+- *DSA*: Queue or Circular Queue for FIFO flow control.
 
-Follow these steps:
+**4. Heap – Leaderboard**
+- *How it works*: Tracks top 10 users by coin score.
+- *DSA*: Min/Max Heap for efficient top-k user tracking.
+
+**5. HashMap – Performance Stats**
+- *How it works*: Tracks user accuracy, attempts, speed by topic.
+- *DSA*: Hash Table enables fast stat access and updates.
+
+**6. Decision Tree – Story Mode**
+- *How it works*: Interactive scenarios with multiple paths based on user choices.
+- *DSA*: Tree traversal through branching narrative paths.
+
+### **What technologies are used for this project?**
+
+This project is built with .
+
+- *Frontend*: React + TypeScript
+- *Styling*: TailwindCSS
+- *Bundler*: Vite
+- *State Management*: Context API
+- *Optional*: Firebase (for user auth and data)
+
+### **How to run this project?**
 
 ```sh
 # Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+git clone <GIT_URL>
 
 # Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+cd <PROJECT_NAME>
 
 # Step 3: Install the necessary dependencies.
 npm i
@@ -36,38 +69,4 @@ npm i
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with .
-
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-
-## How can I deploy this project?
-
-Simply open [Lovable](https://lovable.dev/projects/2e639f94-910a-4de5-93cd-3f1765b640b7) and click on Share -> Publish.
-
-## Can I connect a custom domain to my Lovable project?
-
-Yes, you can!
-
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
-
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
