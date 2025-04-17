@@ -68,6 +68,9 @@ WishWallet allows users to:
 
 ## 🖥️ Screenshots
 
+# Demo link: https://drive.google.com/file/d/1hsVx-OFvJtAhKm3uWfB1YB3z9qmNWoro/view?usp=sharing
+
+
 <table>
   <tr>
     <td><b>🏠 Home Screen</b></td>
