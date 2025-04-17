@@ -1,0 +1,313 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity3">
+
+        <LinearLayout
+            android:id="@+id/formContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+        <!-- Name -->
+                <ScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical" />
+                </ScrollView>
+
+                <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="20sp"
+            android:contentDescription="Label for Name field" />
+
+        <EditText
+            android:id="@+id/name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:contentDescription="Enter your name" />
+
+        <!-- Hours Available -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours Available"
+            android:textSize="20sp"
+            android:contentDescription="Label for hours available input" />
+
+        <EditText
+            android:id="@+id/duration"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:contentDescription="Enter the number of hours available" />
+
+        <!-- Start Time -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Start Time"
+            android:textSize="20sp"
+            android:contentDescription="Label for start time input" />
+
+        <EditText
+            android:id="@+id/startTime"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:contentDescription="Enter start time of the schedule" />
+
+        <!-- Subject 1 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject 1"
+            android:textSize="20sp"
+            android:contentDescription="Label for subject 1" />
+
+        <EditText
+            android:id="@+id/subject1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:contentDescription="Enter name for subject 1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours for Subject 1"
+            android:textSize="20sp"
+            android:contentDescription="Label for hours input for subject 1" />
+
+        <EditText
+            android:id="@+id/editTextText8"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:contentDescription="Enter number of hours for subject 1" />
+
+        <CheckBox
+            android:id="@+id/checkbox1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:contentDescription="Mark subject 1 as completed" />
+
+        <!-- Subject 2 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject 2"
+            android:textSize="20sp"
+            android:contentDescription="Label for subject 2" />
+
+        <EditText
+            android:id="@+id/subject2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:contentDescription="Enter name for subject 2" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours for Subject 2"
+            android:textSize="20sp"
+            android:contentDescription="Label for hours input for subject 2" />
+
+        <EditText
+            android:id="@+id/editTextText9"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:contentDescription="Enter number of hours for subject 2" />
+
+        <CheckBox
+            android:id="@+id/checkbox2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:contentDescription="Mark subject 2 as completed" />
+
+        <!-- Subject 3 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject 3"
+            android:textSize="20sp"
+            android:contentDescription="Label for subject 3" />
+
+        <EditText
+            android:id="@+id/subject3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:contentDescription="Enter name for subject 3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours for Subject 3"
+            android:textSize="20sp"
+            android:contentDescription="Label for hours input for subject 3" />
+
+        <EditText
+            android:id="@+id/editTextText10"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:contentDescription="Enter number of hours for subject 3" />
+
+        <CheckBox
+            android:id="@+id/checkbox3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:contentDescription="Mark subject 3 as completed" />
+
+        <!-- Subject 4 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject 4"
+            android:textSize="20sp"
+            android:contentDescription="Label for subject 4" />
+
+        <EditText
+            android:id="@+id/subject4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:contentDescription="Enter name for subject 4" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours for Subject 4"
+            android:textSize="20sp"
+            android:contentDescription="Label for hours input for subject 4" />
+
+        <EditText
+            android:id="@+id/editTextText11"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:contentDescription="Enter number of hours for subject 4" />
+
+        <CheckBox
+            android:id="@+id/checkbox4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:contentDescription="Mark subject 4 as completed" />
+
+        <!-- Subject 5 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject 5"
+            android:textSize="20sp"
+            android:contentDescription="Label for subject 5" />
+
+        <EditText
+            android:id="@+id/subject5"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:contentDescription="Enter name for subject 5" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours for Subject 5"
+            android:textSize="20sp"
+            android:contentDescription="Label for hours input for subject 5" />
+
+        <EditText
+            android:id="@+id/editTextText12"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:contentDescription="Enter number of hours for subject 5" />
+
+        <CheckBox
+            android:id="@+id/checkbox5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:contentDescription="Mark subject 5 as completed" />
+
+        <!-- Subject 6 -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Subject 6"
+            android:textSize="20sp"
+            android:contentDescription="Label for subject 6" />
+
+        <EditText
+            android:id="@+id/subject6"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            android:contentDescription="Enter name for subject 6" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hours for Subject 6"
+            android:textSize="20sp"
+            android:contentDescription="Label for hours input for subject 6" />
+
+        <EditText
+            android:id="@+id/editTextText13"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="numberDecimal"
+            android:contentDescription="Enter number of hours for subject 6" />
+
+        <CheckBox
+            android:id="@+id/checkbox6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Completed"
+            android:contentDescription="Mark subject 6 as completed" />
+
+        <!-- Save Button -->
+                <Button
+                    android:id="@+id/saveButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:contentDescription="Button to save schedule"
+                    android:onClick="openTimeBasedSchedule"
+                    android:text="View Schedule" />
+
+        <!-- Schedule Output -->
+        <TextView
+            android:id="@+id/displayText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="16dp"
+            android:padding="12dp"
+            android:textColor="#000000"
+            android:textSize="16sp"
+            android:background="#FFEFD5"
+            android:visibility="visible"
+            android:contentDescription="Displays the created schedule" />
+
+</LinearLayout>
+    </ScrollView>
