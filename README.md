@@ -222,6 +222,10 @@ Send auto-generated reports with minimal manual effort.
 Allow users to flag false positives/negatives to improve model accuracy over time.
 Introduce feedback loops into model training pipeline.
 
+# Sample Simulation
+
+https://drive.google.com/drive/folders/1by1_dJPkAFGDlz5LYm7MY3uaH3umJ4yT
+
 # Refrences
 https://www.geeksforgeeks.org/huffman-coding-greedy-algo-3/
 
