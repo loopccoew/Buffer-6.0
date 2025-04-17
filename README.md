@@ -1,5 +1,5 @@
 # 📚Web Crawler – Buffer 6.0
-## team 4S_QUAD
+## Team 4S_QUAD - Custom Data Structure
 
 This Java-based research assistant crawls Google Scholar and arXiv in real-time, offering dynamic keyword search and auto-suggestions to enhance research efficiency. It provides customizable filters, smart ranking, and personalized alerts for the most relevant papers. Users can stay updated with the latest research, ensuring quick access to quality academic content. This tool enables users to explore citation paths, identify isolated works, and interactively filter results by author or year of publication.
 
