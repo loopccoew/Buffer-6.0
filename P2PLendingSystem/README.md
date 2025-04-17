@@ -19,3 +19,5 @@ Database: MySQL
 Database Access: JDBC
 IDE: Eclipse 
 GUI (Graphical User Interface) toolkit : Java Swing
+
+Video link : https://drive.google.com/file/d/1Qq8O79mFQySgL66B407CyxeEGntOZZLo/view?usp=sharing
