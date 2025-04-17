@@ -472,7 +472,7 @@ class user_management{
 	void receieve() {  
 		 sc.nextLine(); 
 		 System.out.println("Enter user id : ");
-		 int rec_uid = sc.nextInt();
+		 String rec_uid = sc.nextLine();
 		 System.out.println("Enter pin : ");
 		 int rec_pin = sc.nextInt();
 		 sc.nextLine();
@@ -500,7 +500,7 @@ class user_management{
 		        	System.out.println("Invalid pin , cannot proceed transaction !");
 		        	return;
 		        }
-		        if(!user_data.get(dec_receiver).equals(rec_uid)) 
+		        if(!(dec_receiver).equals(rec_uid)) 
 		        		{
 		        	System.out.println("Invalid recevier , cannot proceed transaction !");
 		        	return;
