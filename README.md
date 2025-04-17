@@ -137,6 +137,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 ## 📦 Tech Stack
 
 - **Java 8+**
+- **Jsoup**
 - **Eclipse IDE**
 - **Git** (version control)
 
