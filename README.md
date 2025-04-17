@@ -197,3 +197,28 @@ buffer-research-crawler/ ├── src/ │ └── buffer/ │ ├── core
 ```
 </details>
 
+## 📁 File Structure
+
+```
+buffer-research-crawler/  
+├── 📁 src/  
+│   └── 📁 buffer/  
+│       ├── 📁 core/  
+│       │   └── Main.java                   # Entry point  
+│       ├── 📁 Crawler/  
+│       │   ├── Crawler.java               # Base interface for crawlers  
+│       │   ├── ArvixCrawler.java          # Handles Arxiv scraping  
+│       │   └── GoogleScholarCrawler.java  # Handles Google Scholar scraping  
+│       ├── 📁 ds/  
+│       │   ├── CitationGraph.java         # Graph structure and logic  
+│       │   ├── Trie.java                  # Keyword suggestion via Trie  
+│       │   └── TrieNode.java              # Node structure for Trie  
+│       └── 📁 model/  
+│           └── Paper.java                 # Paper model containing metadata  
+├── keywords.csv  
+├── jsoup-1.19.1.jar                       # Library used for HTML parsing  
+├── README.md  
+└── .gitignore  
+```
+
+
