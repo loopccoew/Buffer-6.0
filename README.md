@@ -43,7 +43,10 @@ Built with **Python Flask (backend)** and **HTML/CSS (frontend)**, the platform 
 - **Game Idea:** Players make financial choices (e.g., paying bills on time, overspending) that influence their score.  
 - **Learning Outcome:** Demonstrates the impact of responsible financial decisions.  
 - **DSA Used:**  
-  - `Arrays` to simulate decision outcomes and score tracking
+  - `List` to store game tile scenario, previous position
+  - 'Dict' to map actions to score changes
+  - Stacks: LIFO,classic use of stack to revert moves
+  - Random
 
 ---
 
