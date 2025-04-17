@@ -1,4 +1,4 @@
-# Team Byte Knights
+# Team ByteKnights
 
 ## Automated Timetable Generator (Java)
 
