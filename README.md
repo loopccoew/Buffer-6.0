@@ -5,6 +5,9 @@ This Java-based research assistant crawls Google Scholar and arXiv in real-time,
 
 ---
 
+[Screen recording]([https://www.youtube.com/watch?v=VIDEO_ID](https://drive.google.com/file/d/1f-s0y7YYcN3L7SFid2SN9v4CV7c5wIxz/view?usp=drive_link )
+
+
 ## 🎯 Why This Project is Helpful
 
 🔬 **For Researchers**:  
