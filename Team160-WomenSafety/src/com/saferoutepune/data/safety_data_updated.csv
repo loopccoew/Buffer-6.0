@@ -1,0 +1,16 @@
+Area1,Area2,SafetyScore
+Swargate,Camp,2
+Camp,KoregaonPark,3
+Swargate,Hadapsar,5
+Hadapsar,KoregaonPark,2
+Kothrud,Swargate,4
+Swargate,Karvenagar,3
+Karvenagar,Hinjewadi,4
+Hinjewadi,Narhe,3
+Narhe,Wagholi,2
+Wagholi,Hadapsar,4
+Hinjewadi,KoregaonPark,3
+Kothrud,Narhe,3
+Wagholi,Kothrud,5
+Karvenagar,Narhe,2
+KoregaonPark,Wagholi,3
