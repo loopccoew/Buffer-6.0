@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Pregnancy Safety System</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <h1>Pregnancy & Postpartum Safety System</h1>
+
+  <!-- Hospital Finder -->
+  <section id="hospitalSection">
+    <h2>🏥 Find Nearest Hospital</h2>
+    <form id="hospitalForm">
+      <label for="location">Enter Your Location:</label>
+      <input type="text" id="location" required>
+      <button type="submit">Find Hospital</button>
+    </form>
+    <div id="hospitalResult"></div>
+  </section>
+
+  <!-- Reminder Section -->
+  <section id="reminderSection">
+    <h2>⏰ Set Reminder</h2>
+    <form id="reminderForm">
+      <label for="medicine">Medicine or Check-up:</label>
+      <input type="text" id="medicine" required>
+
+      <label>Reminder Time:</label>
+      <div style="display: flex; gap: 10px; margin-bottom: 10px;">
+        <input type="number" id="timeHour" min="1" max="12" placeholder="HH" required>
+        <input type="number" id="timeMin" min="0" max="59" placeholder="MM" required>
+        <select id="timePeriod">
+          <option value="AM">AM</option>
+          <option value="PM">PM</option>
+        </select>
+      </div>
+
+      <button type="submit">Set Reminder</button>
+    </form>
+
+    <h3>Today's Medicine Progress</h3>
+<div class="progress-container">
+  <div id="med-progress-bar" class="progress-bar" style="width: 40%;">40%</div>
+</div>
+
+
+    <h3>Your Reminders:</h3>
+    <ul id="reminderList"></ul>
+  </section>
+
+  <!-- Symptom Checker -->
+<section id="symptomChecker">
+    <h2>🩺 Symptom Checker</h2>
+    <form id="symptomForm">
+      <p>Select any symptoms you're experiencing:</p>
+      <label><input type="checkbox" name="symptom" value="nausea"> Nausea</label><br>
+      <label><input type="checkbox" name="symptom" value="headache"> Headache</label><br>
+      <label><input type="checkbox" name="symptom" value="dizziness"> Dizziness</label><br>
+      <label><input type="checkbox" name="symptom" value="bleeding"> Bleeding</label><br>
+      <label><input type="checkbox" name="symptom" value="abdominal pain"> Abdominal Pain</label><br>
+      <label><input type="checkbox" name="symptom" value="swelling"> Swelling</label><br>
+      <label><input type="checkbox" name="symptom" value="fatigue"> Fatigue</label><br>
+      <br>
+      <button type="submit">Check Symptoms</button>
+    </form>
+  
+    <div id="symptomResult"></div>
+  </section>
+  
+
+  <!-- Script files -->
+  <script src="js/hospitals.js"></script>
+  <script src="js/reminder.js"></script>
+  <script src="js/symptom.js"></script>
+
+</body>
+</html>
