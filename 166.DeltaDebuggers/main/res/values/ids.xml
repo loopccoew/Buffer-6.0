@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="etEmail" type="id" />
+    <item name="etAddress" type="id" />
+    <item name="etAge" type="id" />
+    <item name="btnNextStep" type="id" />
+</resources>

@@ -1,0 +1,115 @@
+{
+  "help_centers": [
+    {
+      "name": "Help Center 1",
+      "address": "Address 1",
+      "phone": "1234567890",
+      "latitude": 19.0760,
+      "longitude": 72.8777
+    },
+    {
+      "name": "Help Center 2",
+      "address": "Address 2",
+      "phone": "0987654321",
+      "latitude": 19.2870,
+      "longitude": 73.8777
+    },
+    {
+      "name": "Local Women's Support Center",
+      "address": "Shivaji Nagar, Pune",
+      "phone": "+911234567890",
+      "latitude": 18.5308,
+      "longitude": 73.8473
+    }, {
+      "name": "Safe Haven Support Center",
+      "address": "456 Park Lane, Thane",
+      "phone": "+911987654321",
+      "latitude": 19.2183,
+      "longitude": 72.9781
+    },
+    {
+      "name": "Mira Bhayandar Help Center",
+      "address": "789 Relief Avenue, Mira Road",
+      "phone": "+911122334455",
+      "latitude": 19.2952,
+      "longitude": 72.8543
+    },
+    {
+      "name": "Borivali Emergency Center",
+      "address": "Borivali West, Mumbai",
+      "phone": "+911112223333",
+      "latitude": 19.2290,
+      "longitude": 72.8567
+    },
+    {
+      "name": "Vashi Women's Shelter",
+      "address": "Sector 17, Vashi, Navi Mumbai",
+      "phone": "+911998877665",
+      "latitude": 19.0771,
+      "longitude": 72.9987
+    },
+    {
+      "name": "Dombivli Emergency Point",
+      "address": "Kalyan Shil Road, Dombivli East",
+      "phone": "+911912345678",
+      "latitude": 19.2183,
+      "longitude": 73.0940
+    },
+    {
+      "name": "Kandivali Women’s Aid",
+      "address": "MG Road, Kandivali West",
+      "phone": "+911976543210",
+      "latitude": 19.2047,
+      "longitude": 72.8422
+    },{
+      "name": "Pune Police Women's Cell",
+      "address": "Commissioner Office, Shivajinagar, Pune",
+      "phone": "+912025571211",
+      "latitude": 18.5308,
+      "longitude": 73.8474
+    },
+    {
+      "name": "Seva Sadan Society – Women’s Welfare",
+      "address": "Laxmi Road, Pune",
+      "phone": "+912026178426",
+      "latitude": 18.5149,
+      "longitude": 73.8560
+    },
+    {
+      "name": "Karve Nagar Women Support Center",
+      "address": "Karve Nagar, Pune",
+      "phone": "+912024217777",
+      "latitude": 18.4886,
+      "longitude": 73.8076
+    },
+    {
+      "name": "Swadhar IDWC Women’s Help",
+      "address": "Navi Peth, Pune",
+      "phone": "+912024544539",
+      "latitude": 18.5135,
+      "longitude": 73.8491
+    },
+    {
+      "name": "Center for Women Justice - Aastha",
+      "address": "Kothrud, Pune",
+      "phone": "+912025423535",
+      "latitude": 18.5097,
+      "longitude": 73.8278
+    },
+    {
+      "name": "Women’s Rescue Foundation",
+      "address": "Warje, Pune",
+      "phone": "+912024297660",
+      "latitude": 18.4901,
+      "longitude": 73.8005
+    },
+    {
+      "name": "Bharosa Cell – Pune Police",
+      "address": "Erandwane, Pune",
+      "phone": "+912025400000",
+      "latitude": 18.5050,
+      "longitude": 73.8295
+    }
+
+  ]
+}

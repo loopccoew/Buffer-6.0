@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:background="#FAFAFA"
+    android:padding="16dp">
+
+    <!-- Title -->
+    <TextView
+        android:id="@+id/tvDashboardTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Women's Safety Dashboard"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:textColor="#3F51B5"
+        android:layout_marginBottom="24dp" />
+
+    <!-- Open Map Button -->
+    <Button
+        android:id="@+id/btnDashboardMap"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📍 Open Map"
+        android:backgroundTint="#3F51B5"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Send Bulk Alert Button -->
+    <Button
+        android:id="@+id/btnDashboardBulkMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="🚨 Send Bulk Alert"
+        android:backgroundTint="#FF9800"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Emergency Signs & Laws Button -->
+    <Button
+        android:id="@+id/btnDashboardSigns"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📖 Emergency Signs and Laws"
+        android:backgroundTint="#4CAF50"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Fake Call Button -->
+    <Button
+        android:id="@+id/fakeCallButton"
+        android:text="📞 Fake Call"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#F44336"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:padding="12dp"
+        android:layout_marginTop="16dp" />
+
+    <!-- Logout Button -->
+    <Button
+        android:id="@+id/btnDashboardLogout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Logout"
+        android:backgroundTint="#9E9E9E"
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        android:padding="12dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="16dp" />
+
+</LinearLayout>
