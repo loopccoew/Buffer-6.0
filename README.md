@@ -154,48 +154,6 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
    ```bash
    git clone https://github.com/Shrutit051/Buffer-6.0.git
    cd Buffer-6.0
-<details> <summary> <strong>File Structure</strong></summary></details>
-
-Buffer-6.0/
-│
-├── src/
-│   ├── buffer.core/
-│   │   └── Main.java                   # Entry point
-│   │
-│   ├── buffer.Crawler/
-│   │   ├── ArxivCrawler.java          # Handles Arxiv scraping
-│   │   ├── GoogleScholarCrawler.java  # Handles Google Scholar scraping
-│   │   └── Crawler.java               # Base class for crawlers
-│   │
-│   ├── buffer.ds/
-│   │   ├── CitationGraph.java         # Graph structure and logic
-│   │   ├── Trie.java                  # Keyword suggestion via Trie
-│   │   └── TrieNode.java              # Node structure for Trie
-│   │
-│   └── buffer.model/
-│       └── Paper.java                 # Paper model containing metadata
-│
-├── Referenced Libraries/
-│   └── jsoup-1.19.1.jar               # Library used for HTML parsing
-│
-└── README.md
-
-<details> <summary>📁File Structure</summary>
-## 📂 Project Structure
-
-
-buffer-research-crawler/ │ ├── 📁 src/ │ ├── 📁 buffer/ │ │ ├── 📁 core/ │ │ │ └── Main.java │ │ ├── 📁 Crawler/ │ │ │ ├── Crawler.java │ │ │ ├── ArvixCrawler.java │ │ │ └── GoogleScholarCrawler.java │ │ ├── 📁 ds/ │ │ │ ├── CitationGraph.java │ │ │ ├── Trie.java │ │ │ └── TrieNode.java │ │ └── 📁 model/ │ │ └── Paper.java │ └── 📄 keywords.csv │ ├── 📄 README.md └── 📄 .gitignore
-
-</details>
-
-
-<details>
-<summary>📁 Click to view full file structure</summary>
-
-```text
-buffer-research-crawler/ ├── src/ │ └── buffer/ │ ├── core/ │ │ └── Main.java # Entry point │ ├── Crawler/ │ │ ├── Crawler.java # Base interface for crawlers │ │ ├── ArvixCrawler.java # Handles Arxiv scraping │ │ └── GoogleScholarCrawler.java# Handles Google Scholar scraping │ ├── ds/ │ │ ├── CitationGraph.java # Graph structure and logic │ │ ├── Trie.java # Keyword suggestion via Trie │ │ └── TrieNode.java # Node structure for Trie │ └── model/ │ └── Paper.java # Paper model containing metadata ├── keywords.csv ├── jsoup-1.19.1.jar # Library used for HTML parsing ├── README.md └── .gitignore
-```
-</details>
 
 ## 📁 File Structure
 
