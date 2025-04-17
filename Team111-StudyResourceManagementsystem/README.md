@@ -53,3 +53,8 @@ Project Description :
 - Integrate with external APIs for fetching study materials.
 - Add notifications for upcoming deadlines.
 - Implement user authentication with encryption for enhanced security.
+
+
+Video link:
+
+https://drive.google.com/file/d/1EWeTUblMClb47xrL0lKv9zL3gegckuGj/view?usp=sharing
