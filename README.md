@@ -47,8 +47,6 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 
 ---
 <details> <summary>📊 <strong>Data Structures & Algorithms Used in <code>Main.java</code></strong></summary>
-markdown
-Copy code
 | Class Name   | DS Used           | Purpose of DS                                                  | Algorithm Used              | Purpose of Algorithm                                             |
 |--------------|------------------|----------------------------------------------------------------|-----------------------------|------------------------------------------------------------------|
 | Main         | Trie              | To store and suggest keywords based on prefix                  | Prefix Matching              | Suggest relevant keywords using prefix-based search             |
@@ -62,6 +60,21 @@ Copy code
 | Main         | List<Paper>       | Used for filterable paper results                              | Stream Filtering              | Filter by author name and publication year                      |
 | Main         | Regex Matcher     | Extract year from date strings                                 | Regex Pattern Matching        | Match publication year from publication date string             |
 </details>
+
+
+| Class Name   | DS Used           | Purpose of DS                                                  | Algorithm Used              | Purpose of Algorithm                                             |
+|--------------|------------------|----------------------------------------------------------------|-----------------------------|------------------------------------------------------------------|
+| Main         | Trie              | To store and suggest keywords based on prefix                  | Prefix Matching              | Suggest relevant keywords using prefix-based search             |
+| Main         | List<String>      | To store and display keyword suggestions                       | Linear Iteration             | Iterate through suggestions for display and selection           |
+| Main         | List<Paper>       | To collect and store search results                            | Merge/AddAll                 | Combine results from Arxiv and Google Scholar crawlers          |
+| Main         | Scanner           | To read user input for prefix and filtering options            | N/A                          | Get inputs like keywords, filters from the user                 |
+| Main         | BufferedReader    | To read keywords from CSV file                                 | File Reading                 | Load keywords into Trie from a CSV file                         |
+| Main         | CitationGraph     | Graph of paper citations                                       | Graph Construction           | Build graph by adding papers and citations                      |
+| Main         | CitationGraph     | Graph of paper citations                                       | Related Paper Suggestion     | Traverse graph to find papers connected to a base paper         |
+| Main         | CitationGraph     | Graph of paper citations                                       | Isolated Node Detection      | Detect nodes with no incoming or outgoing edges                 |
+| Main         | List<Paper>       | Used for filterable paper results                              | Stream Filtering              | Filter by author name and publication year                      |
+| Main         | Regex Matcher     | Extract year from date strings                                 | Regex Pattern Matching        | Match publication year from publication date string             |
+
 ---
 
 ## 🖼️ Visualization
