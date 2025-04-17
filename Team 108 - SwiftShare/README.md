@@ -1,5 +1,5 @@
-Team name : Runtime Terrors
-Team Members : Harshada Dhas , Laxmi Palkar , Trupti Patil , Bhoomi Kathod
+Team name : Runtime Terrors  
+Team Members : Harshada Dhas , Laxmi Palkar , Trupti Patil , Bhoomi Kathod  
 Problem Statement : Group payments often lead to delays and confusion. There's a need for a seamless solution that enables instant settlement of transactions among friends to avoid reimbursement hassles and streamline the process.
 
 Solution :-
