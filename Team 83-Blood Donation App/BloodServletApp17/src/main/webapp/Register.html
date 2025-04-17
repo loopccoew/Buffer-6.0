@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Donor Registration Page</title>
+</head>
+<body style="align-content: center;">
+    <h1 style="text-align: center;">Donor Registration Page</h1>
+    <form method="post" action="./register-donor">
+        <table align="center">
+            <tr>
+                <th>Name</th>
+                <td><input type='text' name='name' required /></td>
+            </tr>
+            <tr>
+                <th>Age</th>
+                <td><input type='number' name='age' required /></td>
+            </tr>
+            <tr>
+                <th>Blood Group</th>
+                <td>
+                    <select name="bloodGroup" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <th>Address</th>
+                <td><input type='text' name='address' required /></td>
+            </tr>
+            <tr>
+    		<th>Pincode</th>
+    		<td><input type="text" name="pincode" required /></td>
+		</tr>
+<tr>
+    <th>Last Donation Date</th>
+    <td><input type="date" name="last_donation_date" required /></td>
+</tr>
+            
+            <tr>
+                <th></th>
+                <td><input type='submit' value='Register as Donor' /></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

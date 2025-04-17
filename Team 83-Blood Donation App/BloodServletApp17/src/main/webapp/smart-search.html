@@ -1,0 +1,50 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <meta charset="ISO-8859-1">
+    <title>Smart Donor Search</title>
+</head>
+<body>
+    <h2 style="text-align:center;">Smart Donor Search</h2>
+    <form method="post" action="./smartsearch">
+        <table align="center">
+            <tr>
+                <td>Blood Group:</td>
+                <td>
+                    <select name="blood_group" required>
+                        <option value="">Select</option>
+                        <option value="A+">A+</option>
+                        <option value="A-">A-</option>
+                        <option value="B+">B+</option>
+                        <option value="B-">B-</option>
+                        <option value="AB+">AB+</option>
+                        <option value="AB-">AB-</option>
+                        <option value="O+">O+</option>
+                        <option value="O-">O-</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>Pincode:</td>
+                <td><input type="text" name="pincode" required></td>
+            </tr>
+            <tr>
+                <td>Urgency Level:</td>
+                <td>
+                    <select name="urgency_level" required>
+                        <option value="">Select</option>
+                        <option value="High">High</option>
+                        <option value="Medium">Medium</option>
+                        <option value="Low">Low</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2" style="text-align:center;">
+                    <input type="submit" value="Search Donors">
+                </td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
