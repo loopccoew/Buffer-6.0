@@ -190,8 +190,9 @@ def fetch_pool_contributions(pool_id):
     conn = connect()
     cursor = conn.cursor()
     cursor.execute("SELECT SUM(amount) FROM pool_contributions WHERE pool_id = %s", (pool_id,))
-    total = cursor.fetchone()[0]
+    result = cursor.fetchone()[0]
     conn.close()
-    return total or 0
+    return float(result) if result is not None else 0.0
+
 
 
