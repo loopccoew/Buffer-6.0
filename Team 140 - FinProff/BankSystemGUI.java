@@ -144,7 +144,7 @@ public class BankSystemGUI extends JFrame {
 
             String accountNumber = bankSystem.createAccount(username, password);
             if (accountNumber != null) {
-                JOptionPane.showMessageDialog(this, "✅ Account created successfully!\nYour Account Number: " + accountNumber, "Success", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, " Account created successfully!\nYour Account Number: " + accountNumber, "Success", JOptionPane.INFORMATION_MESSAGE);
                 userField.setText(""); // Clear fields
                 passField.setText("");
                 cardLayout.show(mainPanel, "Home"); // Go back home
@@ -190,7 +190,7 @@ public class BankSystemGUI extends JFrame {
             String password = new String(passField.getPassword());
 
             if (accNum.isEmpty() || password.isEmpty()) {
-                JOptionPane.showMessageDialog(this, "⚠️ Account number and password cannot be empty.", "Login Failed", JOptionPane.WARNING_MESSAGE);
+                JOptionPane.showMessageDialog(this, "Account number and password cannot be empty.", "Login Failed", JOptionPane.WARNING_MESSAGE);
                 return;
             }
 
@@ -205,9 +205,9 @@ public class BankSystemGUI extends JFrame {
             } else {
                 // Check if account exists before saying wrong password
                  if (!bankSystem.getAccounts().containsKey(accNum)) {
-                     JOptionPane.showMessageDialog(this, "⚠️ Invalid account number.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                     JOptionPane.showMessageDialog(this, " Invalid account number.", "Login Failed", JOptionPane.ERROR_MESSAGE);
                  } else {
-                     JOptionPane.showMessageDialog(this, "⚠️ Incorrect password.", "Login Failed", JOptionPane.ERROR_MESSAGE);
+                     JOptionPane.showMessageDialog(this, "Incorrect password.", "Login Failed", JOptionPane.ERROR_MESSAGE);
                  }
                  passField.setText(""); // Clear only password on failure
             }
@@ -250,12 +250,12 @@ public class BankSystemGUI extends JFrame {
             String password = new String(passField.getPassword());
 
             if (bankSystem.adminLogin(username, password)) {
-                 // JOptionPane.showMessageDialog(this, "👑 Welcome Admin!", "Admin Login Success", JOptionPane.INFORMATION_MESSAGE); // Can omit this popup
+                 // JOptionPane.showMessageDialog(this, " Welcome Admin!", "Admin Login Success", JOptionPane.INFORMATION_MESSAGE); // Can omit this popup
                  userField.setText(""); // Clear fields
                  passField.setText("");
                  cardLayout.show(mainPanel, "AdminDashboard");
             } else {
-                 JOptionPane.showMessageDialog(this, "⚠️ Access Denied. Invalid Credentials.", "Admin Login Failed", JOptionPane.ERROR_MESSAGE);
+                 JOptionPane.showMessageDialog(this, "Access Denied. Invalid Credentials.", "Admin Login Failed", JOptionPane.ERROR_MESSAGE);
                  passField.setText(""); // Clear only password
             }
         });
@@ -313,7 +313,7 @@ public class BankSystemGUI extends JFrame {
         checkBalanceBtn.addActionListener(e -> {
             if (loggedInAccount != null) {
                 updateBalanceLabel(); // Refresh the label
-                JOptionPane.showMessageDialog(this, "💰 Current Balance: " + String.format("%.2f", loggedInAccount.getBalance()), "Balance", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(this, " Current Balance: " + String.format("%.2f", loggedInAccount.getBalance()), "Balance", JOptionPane.INFORMATION_MESSAGE);
             }
         });
 
@@ -324,19 +324,19 @@ public class BankSystemGUI extends JFrame {
                  try {
                      double amount = Double.parseDouble(amountStr);
                      if (amount <= 0) {
-                         JOptionPane.showMessageDialog(this, "⚠️ Please enter a positive amount.", "Invalid Amount", JOptionPane.WARNING_MESSAGE);
+                         JOptionPane.showMessageDialog(this, " Please enter a positive amount.", "Invalid Amount", JOptionPane.WARNING_MESSAGE);
                          return;
                      }
                      double newBalance = bankSystem.performDeposit(loggedInAccount, amount);
                      if (newBalance >= 0) {
                          updateBalanceLabel();
-                         JOptionPane.showMessageDialog(this, "✅ Deposit Successful!\nNew Balance: " + String.format("%.2f", newBalance), "Success", JOptionPane.INFORMATION_MESSAGE);
+                         JOptionPane.showMessageDialog(this, " Deposit Successful!\nNew Balance: " + String.format("%.2f", newBalance), "Success", JOptionPane.INFORMATION_MESSAGE);
                      } else {
                          // This case shouldn't happen with current logic unless performDeposit changes
-                         JOptionPane.showMessageDialog(this, "⚠️ Deposit failed. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
+                         JOptionPane.showMessageDialog(this, " Deposit failed. Please try again.", "Error", JOptionPane.ERROR_MESSAGE);
                      }
                  } catch (NumberFormatException ex) {
-                     JOptionPane.showMessageDialog(this, "⚠️ Invalid amount entered. Please enter numbers only.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                     JOptionPane.showMessageDialog(this, " Invalid amount entered. Please enter numbers only.", "Input Error", JOptionPane.ERROR_MESSAGE);
                  }
              }
         });
@@ -348,19 +348,19 @@ public class BankSystemGUI extends JFrame {
                 try {
                     double amount = Double.parseDouble(amountStr);
                      if (amount <= 0) {
-                         JOptionPane.showMessageDialog(this, "⚠️ Please enter a positive amount.", "Invalid Amount", JOptionPane.WARNING_MESSAGE);
+                         JOptionPane.showMessageDialog(this, " Please enter a positive amount.", "Invalid Amount", JOptionPane.WARNING_MESSAGE);
                          return;
                      }
                     double newBalance = bankSystem.performWithdraw(loggedInAccount, amount);
                     if (newBalance >= 0) {
                         updateBalanceLabel();
-                        JOptionPane.showMessageDialog(this, "✅ Withdrawal Successful!\nNew Balance: " + String.format("%.2f", newBalance), "Success", JOptionPane.INFORMATION_MESSAGE);
+                        JOptionPane.showMessageDialog(this, " Withdrawal Successful!\nNew Balance: " + String.format("%.2f", newBalance), "Success", JOptionPane.INFORMATION_MESSAGE);
                     } else {
                         // Specific message for insufficient funds
-                        JOptionPane.showMessageDialog(this, "⚠️ Withdrawal Failed.\nInsufficient balance.", "Error", JOptionPane.ERROR_MESSAGE);
+                        JOptionPane.showMessageDialog(this, " Withdrawal Failed.\nInsufficient balance.", "Error", JOptionPane.ERROR_MESSAGE);
                     }
                 } catch (NumberFormatException ex) {
-                    JOptionPane.showMessageDialog(this, "⚠️ Invalid amount entered. Please enter numbers only.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                    JOptionPane.showMessageDialog(this, " Invalid amount entered. Please enter numbers only.", "Input Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
         });
@@ -390,36 +390,36 @@ public class BankSystemGUI extends JFrame {
                  String amountStr = amountField.getText().trim();
 
                  if (recipientAccNum.isEmpty() || amountStr.isEmpty()) {
-                     JOptionPane.showMessageDialog(this, "⚠️ Recipient Account# and Amount cannot be empty.", "Input Error", JOptionPane.WARNING_MESSAGE);
+                     JOptionPane.showMessageDialog(this, " Recipient Account# and Amount cannot be empty.", "Input Error", JOptionPane.WARNING_MESSAGE);
                      return;
                  }
 
                  try {
                      double amount = Double.parseDouble(amountStr);
                       if (amount <= 0) {
-                         JOptionPane.showMessageDialog(this, "⚠️ Please enter a positive amount.", "Invalid Amount", JOptionPane.WARNING_MESSAGE);
+                         JOptionPane.showMessageDialog(this, " Please enter a positive amount.", "Invalid Amount", JOptionPane.WARNING_MESSAGE);
                          return;
                      }
                      if (!bankSystem.getAccounts().containsKey(recipientAccNum)) {
-                         JOptionPane.showMessageDialog(this, "⚠️ Recipient account number does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
+                         JOptionPane.showMessageDialog(this, " Recipient account number does not exist.", "Error", JOptionPane.ERROR_MESSAGE);
                          return;
                      }
                      if (recipientAccNum.equals(loggedInAccount.getAccountNumber())) {
-                         JOptionPane.showMessageDialog(this, "⚠️ Cannot transfer to your own account.", "Error", JOptionPane.WARNING_MESSAGE);
+                         JOptionPane.showMessageDialog(this, " Cannot transfer to your own account.", "Error", JOptionPane.WARNING_MESSAGE);
                          return;
                      }
 
                      boolean success = bankSystem.performTransfer(loggedInAccount, recipientAccNum, amount);
                      if (success) {
                          updateBalanceLabel();
-                         JOptionPane.showMessageDialog(this, "💸 Transfer Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
+                         JOptionPane.showMessageDialog(this, " Transfer Successful!", "Success", JOptionPane.INFORMATION_MESSAGE);
                      } else {
                          // Specific message for insufficient funds during transfer
-                         JOptionPane.showMessageDialog(this, "⚠️ Transfer Failed. Insufficient balance.", "Error", JOptionPane.ERROR_MESSAGE);
+                         JOptionPane.showMessageDialog(this, " Transfer Failed. Insufficient balance.", "Error", JOptionPane.ERROR_MESSAGE);
                      }
 
                  } catch (NumberFormatException ex) {
-                     JOptionPane.showMessageDialog(this, "⚠️ Invalid amount entered. Please enter numbers only.", "Input Error", JOptionPane.ERROR_MESSAGE);
+                     JOptionPane.showMessageDialog(this, " Invalid amount entered. Please enter numbers only.", "Input Error", JOptionPane.ERROR_MESSAGE);
                  }
             }
         });
@@ -456,7 +456,7 @@ public class BankSystemGUI extends JFrame {
             if (destinationAccNum != null && !destinationAccNum.trim().isEmpty()) {
                 destinationAccNum = destinationAccNum.trim(); // Trim input
                  if (!bankSystem.getAccounts().containsKey(destinationAccNum)) {
-                    JOptionPane.showMessageDialog(this, "⚠️ Destination account does not exist.", "Error", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, " Destination account does not exist.", "Error", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
                  if (destinationAccNum.equals(loggedInAccount.getAccountNumber())) {
@@ -468,7 +468,7 @@ public class BankSystemGUI extends JFrame {
                 if (path != null) {
                     JOptionPane.showMessageDialog(this, "Path found:\n" + String.join(" -> ", path), "Trace Result", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                     JOptionPane.showMessageDialog(this, "⚠️ No direct or indirect transaction path found.", "Trace Result", JOptionPane.INFORMATION_MESSAGE);
+                     JOptionPane.showMessageDialog(this, " No direct or indirect transaction path found.", "Trace Result", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -554,11 +554,11 @@ public class BankSystemGUI extends JFrame {
                 String endAcc = endField.getText().trim();
 
                 if (startAcc.isEmpty() || endAcc.isEmpty()) {
-                     JOptionPane.showMessageDialog(this, "⚠️ Please enter both source and destination account numbers.", "Input Error", JOptionPane.WARNING_MESSAGE);
+                     JOptionPane.showMessageDialog(this, " Please enter both source and destination account numbers.", "Input Error", JOptionPane.WARNING_MESSAGE);
                      return;
                 }
                  if (!bankSystem.getAccounts().containsKey(startAcc) || !bankSystem.getAccounts().containsKey(endAcc)) {
-                    JOptionPane.showMessageDialog(this, "⚠️ One or both account numbers do not exist.", "Error", JOptionPane.WARNING_MESSAGE);
+                    JOptionPane.showMessageDialog(this, " One or both account numbers do not exist.", "Error", JOptionPane.WARNING_MESSAGE);
                     return;
                 }
                  if (startAcc.equals(endAcc)) {
@@ -570,7 +570,7 @@ public class BankSystemGUI extends JFrame {
                  if (path != null) {
                     JOptionPane.showMessageDialog(this, "Path found:\n" + String.join(" -> ", path), "Trace Result", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                     JOptionPane.showMessageDialog(this, "⚠️ No direct or indirect transaction path found between these accounts.", "Trace Result", JOptionPane.INFORMATION_MESSAGE);
+                     JOptionPane.showMessageDialog(this, " No direct or indirect transaction path found between these accounts.", "Trace Result", JOptionPane.INFORMATION_MESSAGE);
                 }
             }
         });
@@ -586,7 +586,7 @@ public class BankSystemGUI extends JFrame {
                      resultArea.setOpaque(false); // Make background transparent
                      JOptionPane.showMessageDialog(this, resultArea, "Search Result", JOptionPane.INFORMATION_MESSAGE);
                 } else {
-                     JOptionPane.showMessageDialog(this, "⚠️ Account not found.", "Search Result", JOptionPane.WARNING_MESSAGE);
+                     JOptionPane.showMessageDialog(this, " Account not found.", "Search Result", JOptionPane.WARNING_MESSAGE);
                 }
             }
         });
@@ -631,7 +631,7 @@ public class BankSystemGUI extends JFrame {
     private void updateBalanceLabel() {
          if (loggedInAccount != null && userBalanceLabel != null) {
              // Use String.format for consistent currency formatting
-             userBalanceLabel.setText(String.format("💰 Balance: %.2f", loggedInAccount.getBalance()));
+             userBalanceLabel.setText(String.format(" Balance: %.2f", loggedInAccount.getBalance()));
          }
     }
 
