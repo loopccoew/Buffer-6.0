@@ -1,0 +1,256 @@
+import java.util.*;
+import java.time.*;
+
+public class FinanceManager {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+        ExpenseTracker expenseTracker = new ExpenseTracker();
+        DebtSettler debtSettler = new DebtSettler();
+        RecurringExpenseManager recurringExpenseManager = new RecurringExpenseManager(expenseTracker);
+
+        boolean budgetSet = false;
+
+        while (true) {
+            System.out.println("\n===== College Student Finance Manager (₹) =====");
+            System.out.println("1. Set Budget");
+            System.out.println("2. Add Expense");
+            System.out.println("3. Add Recurring Expense");
+            System.out.println("4. View Expenses");
+            System.out.println("5. Settle Debts in a Group");
+            System.out.println("6. View Summary");
+            System.out.println("7. Exit");
+            System.out.print("Choose an option: ");
+            int choice = scanner.nextInt();
+            scanner.nextLine();
+
+            switch (choice) {
+                case 1:
+                    System.out.println("Enter category to set budget for (Ex: Food / Transport / Entertainment / Clothing / Accessories / Others):");
+                    String category = scanner.nextLine();
+                    System.out.print("Enter budget limit (₹): ");
+                    double limit = scanner.nextDouble();
+                    scanner.nextLine();
+                    expenseTracker.setBudget(category, limit);
+                    budgetSet = true;
+                    break;
+
+                case 2:
+                    if (!budgetSet) {
+                        System.out.println("⚠ Set your budget first!");
+                        break;
+                    }
+                    System.out.println("Enter category (Ex: Food / Transport / Entertainment / Clothing / Accessories / Others):");
+                    category = scanner.nextLine();
+                    System.out.print("Enter amount (₹): ");
+                    double amount = scanner.nextDouble();
+                    scanner.nextLine();
+                    System.out.print("Enter date (YYYY-MM-DD, blank for today): ");
+                    String dateStr = scanner.nextLine();
+                    LocalDate date = dateStr.isEmpty() ? LocalDate.now() : LocalDate.parse(dateStr);
+                    expenseTracker.addExpense(category, amount, date);
+                    break;
+
+                case 3:
+                    if (!budgetSet) {
+                        System.out.println("⚠ Set your budget first!");
+                        break;
+                    }
+                    System.out.println("Enter category:");
+                    category = scanner.nextLine();
+                    System.out.print("Enter amount per day (₹): ");
+                    double dailyAmount = scanner.nextDouble();
+                    System.out.print("Enter duration in days: ");
+                    int duration = scanner.nextInt();
+                    scanner.nextLine();
+                    recurringExpenseManager.addRecurringExpense(category, dailyAmount, duration);
+                    break;
+
+                case 4:
+                    expenseTracker.viewExpenses();
+                    break;
+
+                case 5:
+                    System.out.print("Enter number of friends: ");
+                    int friends = scanner.nextInt();
+                    scanner.nextLine();
+                    debtSettler.settleDebts(friends);
+                    break;
+
+                case 6:
+                    expenseTracker.showSummaryTable();
+                    break;
+
+                case 7:
+                    System.out.println("Bye! 👋");
+                    scanner.close();
+                    System.exit(0);
+                    break;
+
+                default:
+                    System.out.println("Invalid choice!");
+            }
+        }
+    }
+}
+
+class Expense {
+    private String category;
+    private double amount;
+    private LocalDate date;
+
+    public Expense(String category, double amount, LocalDate date) {
+        this.category = category;
+        this.amount = amount;
+        this.date = date;
+    }
+
+    public String getCategory() { return category; }
+    public double getAmount() { return amount; }
+    public LocalDate getDate() { return date; }
+}
+
+class ExpenseTracker {
+    private Map<String, List<Expense>> expenses = new HashMap<>();
+    private Map<String, Double> budgets = new HashMap<>();
+    private TreeMap<LocalDate, List<Expense>> expenseHistory = new TreeMap<>();
+
+    public void setBudget(String category, double limit) {
+        budgets.put(category, limit);
+        System.out.println("✅ Budget set for " + category + ": ₹" + limit);
+    }
+
+    public void addExpense(String category, double amount, LocalDate date) {
+        Expense exp = new Expense(category, amount, date);
+        expenses.computeIfAbsent(category, k -> new ArrayList<>()).add(exp);
+        expenseHistory.computeIfAbsent(date, k -> new ArrayList<>()).add(exp);
+
+        System.out.println("Expense added: ₹" + amount + " in " + category + " on " + date);
+
+        double total = expenses.get(category).stream().mapToDouble(Expense::getAmount).sum();
+        if (budgets.containsKey(category)) {
+            double remaining = budgets.get(category) - total;
+            System.out.println("Remaining budget for " + category + ": ₹" + remaining);
+            if (remaining < 0) {
+                System.out.println("⚠ Budget exceeded for " + category + "!");
+            }
+        }
+    }
+
+    public void viewExpenses() {
+        System.out.println("\n--- All Expenses ---");
+        expenses.forEach((category, list) -> {
+            double total = list.stream().mapToDouble(Expense::getAmount).sum();
+            System.out.println(category + ": ₹" + total + " (Budget: ₹" + budgets.getOrDefault(category, 0.0) + ")");
+            list.forEach(exp -> System.out.println("  - ₹" + exp.getAmount() + " on " + exp.getDate()));
+        });
+    }
+
+    public void showSummaryTable() {
+        System.out.println("\n====== Expense Summary ======");
+        System.out.printf("%-20s %-15s %-15s %-15s%n", "Category", "Spent (₹)", "Budget (₹)", "Status");
+        System.out.println("---------------------------------------------------------------");
+
+        Set<String> all = new HashSet<>();
+        all.addAll(expenses.keySet());
+        all.addAll(budgets.keySet());
+
+        for (String cat : all) {
+            double spent = expenses.getOrDefault(cat, new ArrayList<>()).stream().mapToDouble(Expense::getAmount).sum();
+            double budget = budgets.getOrDefault(cat, 0.0);
+            String status = (budget == 0.0) ? "No Budget" : (spent > budget ? "Over" : "Within");
+            System.out.printf("%-20s %-15.2f %-15.2f %-15s%n", cat, spent, budget, status);
+        }
+    }
+
+    public double getSpentForCategory(String category) {
+        return expenses.getOrDefault(category, new ArrayList<>()).stream().mapToDouble(Expense::getAmount).sum();
+    }
+
+    public double getBudgetForCategory(String category) {
+        return budgets.getOrDefault(category, 0.0);
+    }
+
+    public void autoAddRecurring(String category, double amount) {
+        this.addExpense(category, amount, LocalDate.now());
+    }
+}
+
+class DebtSettler {
+    public void settleDebts(int friends) {
+        Scanner scanner = new Scanner(System.in);
+        double[] balances = new double[friends];
+
+        for (int i = 0; i < friends; i++) {
+            System.out.print("Friend " + (i + 1) + " paid (₹): ");
+            balances[i] = scanner.nextDouble();
+        }
+
+        double total = Arrays.stream(balances).sum();
+        double perPerson = total / friends;
+
+        for (int i = 0; i < friends; i++) {
+            balances[i] -= perPerson;
+        }
+
+        System.out.println("\n--- Debts to be Settled ---");
+        for (int i = 0; i < friends; i++) {
+            for (int j = 0; j < friends; j++) {
+                if (balances[i] > 0 && balances[j] < 0) {
+                    double amount = Math.min(balances[i], -balances[j]);
+                    if (amount > 0.01) {
+                        System.out.printf("Friend %d owes Friend %d: ₹%.2f\n", j + 1, i + 1, amount);
+                        balances[i] -= amount;
+                        balances[j] += amount;
+                    }
+                }
+            }
+        }
+    }
+}
+
+class RecurringExpense {
+    private String category;
+    private double dailyAmount;
+    private int durationDays;
+
+    public RecurringExpense(String category, double dailyAmount, int durationDays) {
+        this.category = category;
+        this.dailyAmount = dailyAmount;
+        this.durationDays = durationDays;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public double getDailyAmount() {
+        return dailyAmount;
+    }
+
+    public int getDurationDays() {
+        return durationDays;
+    }
+}
+
+class RecurringExpenseManager {
+    private List<RecurringExpense> recurringExpenses = new ArrayList<>();
+    private ExpenseTracker expenseTracker;
+
+    public RecurringExpenseManager(ExpenseTracker tracker) {
+        this.expenseTracker = tracker;
+    }
+
+    public void addRecurringExpense(String category, double dailyAmount, int days) {
+        RecurringExpense r = new RecurringExpense(category, dailyAmount, days);
+        recurringExpenses.add(r);
+
+        double totalForPeriod = dailyAmount * days;
+        expenseTracker.autoAddRecurring(category, totalForPeriod);
+
+        System.out.printf("Expense added: ₹%.2f in %s for %d days on %s\n", totalForPeriod, category, days, LocalDate.now());
+        double budget = expenseTracker.getBudgetForCategory(category);
+        double remaining = budget - expenseTracker.getSpentForCategory(category);
+        System.out.printf("Remaining budget for %s: ₹%.2f\n", category, remaining);
+    }
+}
