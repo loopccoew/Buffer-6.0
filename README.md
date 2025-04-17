@@ -1,13 +1,13 @@
 
 
-# 💸 Smart FinEd – A Fintech Awareness Platform for Students  
+# 💸 BankBridge – A Fintech Awareness Platform for Students  
 **Team Name:** Finovators  
 **Team Number:** 74  
 
 ---
 
 ## 🧠 Project Overview  
-**Smart FinEd** is a gamified fintech awareness platform designed to educate middle school students (Grades 5–8) about essential financial concepts such as:
+**BankBridge** is a gamified fintech awareness platform designed to educate middle school students (Grades 5–8) about essential financial concepts such as:
 
 - Banking operations  
 - Fraud detection  
@@ -74,12 +74,13 @@ To make financial literacy **fun**, **accessible**, and **practical** for young 
 ## 🛠️ Technologies Used  
 - Python Flask (Backend)  
 - HTML/CSS (Frontend)  
-- Core DSA Concepts: Stacks, Queues, Arrays, Lists, Graphs  
+- Core DSA Concepts: Stacks, Queues, Arrays, Lists, Graphs
+
 
 ---
 
-## 🤝 Contact  
-For queries or collaboration opportunities, reach out to **Team Finovators**.
+## 🎯 Final Goal  
+To make financial literacy **fun**, **accessible**, and **practical** for young learners using storytelling, real-world fintech scenarios, and fundamental Data Structures and Algorithms — enhancing both financial and computational thinking.
 
 ---
 
