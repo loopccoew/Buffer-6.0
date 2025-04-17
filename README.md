@@ -92,7 +92,6 @@ Key innovations include:
 - Java 11+  
 - Node.js 14+  
 - MongoDB 4.4+  
-- Python 3.8+  
 - Google OAuth credentials (Client ID & Secret)
 
 ---
@@ -114,7 +113,7 @@ npm install
 npm start
 ```
 ```bash
-cd AlternativeCreditScore
+cd AlternativeCreditPlatform
 npm install
 npm run dev
 ```
