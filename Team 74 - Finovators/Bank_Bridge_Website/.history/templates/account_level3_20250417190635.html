@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 3: Withdrawal Wizardry</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive;
+      background: linear-gradient(to right, #e3f2fd, #f1f8e9);
+      text-align: center;
+      padding: 2rem;
+    }
+    h1 {
+      color: #1565c0;
+    }
+    .character {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+    .bank {
+      font-size: 5rem;
+      margin: 1rem;
+    }
+    .balance {
+      font-size: 1.4rem;
+      background: #bbdefb;
+      padding: 1rem;
+      border-radius: 10px;
+      display: inline-block;
+    }
+    input {
+      padding: 0.5rem;
+      border: 2px solid #1976d2;
+      border-radius: 8px;
+      margin-top: 1rem;
+      width: 160px;
+    }
+    button {
+      background: #1976d2;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 1rem;
+    }
+    button:hover {
+      background: #0d47a1;
+    }
+    .message {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #0d47a1;
+    }
+    .progress-bar {
+      width: 80%;
+      height: 20px;
+      background: #e0e0e0;
+      margin: 1rem auto;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+    .progress {
+      height: 100%;
+      background-color: #42a5f5;
+      width: 100%;
+      transition: width 0.5s ease;
+    }
+    .nav-buttons {
+      margin-top: 2rem;
+    }
+    .nav-buttons button {
+      margin: 0 1rem;
+      padding: 0.6rem 1.4rem;
+      font-size: 1rem;
+      border-radius: 8px;
+      background-color: #64b5f6;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+    .nav-buttons button:hover {
+      background-color: #1e88e5;
+    }
+  </style>
+</head>
+<body>
+  <h1>💸 Level 3: Withdrawal Wizardry</h1>
+  <div class="character" id="npcRequest">👨‍👩‍👧 A family needs ₹____ for groceries. Can you help?</div>
+
+  <div class="bank">🏦</div>
+
+  <div class="balance" id="bankBalance">Bank Balance: ₹1000</div><br>
+
+  <input type="number" id="withdrawInput" placeholder="Enter withdrawal amount">
+  <button onclick="withdraw()">Withdraw</button>
+
+  <div class="message" id="messageBox"></div>
+
+  <div class="progress-bar">
+    <div class="progress" id="progressLevel"></div>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <button onclick="location.href='level2_deposit.html'">⬅️ Back</button>
+    <button onclick="location.href='level4_2balance.html'">Next ➡️</button>
+  </div>
+
+  <script>
+    let balance = 1000;
+    let requestAmount = getRandomRequest();
+
+    const npcRequest = document.getElementById("npcRequest");
+    const bankBalance = document.getElementById("bankBalance");
+    const messageBox = document.getElementById("messageBox");
+    const progressLevel = document.getElementById("progressLevel");
+
+    function getRandomRequest() {
+      return Math.floor(Math.random() * 10 + 1) * 50; // ₹50 to ₹500
+    }
+
+    function updateRequest() {
+      npcRequest.innerText = `👨‍👩‍👧 A family needs ₹${requestAmount} for groceries. Can you help?`;
+    }
+
+    function withdraw() {
+      const input = document.getElementById("withdrawInput");
+      const amount = parseInt(input.value);
+
+      if (isNaN(amount) || amount <= 0) {
+        messageBox.innerText = "⚠️ Please enter a valid withdrawal amount!";
+        return;
+      }
+
+      if (amount !== requestAmount) {
+        messageBox.innerText = `😕 That’s not what they asked for! They need ₹${requestAmount}.`;
+        return;
+      }
+
+      if (amount > balance) {
+        messageBox.innerText = `🚫 You don’t have enough money in your bank!`;
+        return;
+      }
+
+      balance -= amount;
+      bankBalance.innerText = `Bank Balance: ₹${balance}`;
+      messageBox.innerText = `✅ Withdrawal of ₹${amount} successful! You helped a family!`;
+
+      progressLevel.style.width = (balance / 1000 * 100) + "%";
+
+      if (balance === 0) {
+        messageBox.innerText = "🎉 You helped everyone! Game Over: You're a true wizard!";
+      } else {
+        requestAmount = getRandomRequest();
+        updateRequest();
+      }
+
+      input.value = '';
+    }
+
+    updateRequest();
+  </script>
+</body>
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Level 1 – Spot the Phishing</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background: #0f2027;
+            color: white;
+            text-align: center;
+            padding: 50px;
+        }
+        .card {
+            background: white;
+            color: #2c3e50;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            max-width: 700px;
+            margin: auto;
+        }
+        .flag-btn {
+            width: 150px;
+            height: 150px;
+            margin: 20px;
+            border: none;
+            background: none;
+            cursor: pointer;
+        }
+        .feedback {
+            font-size: 18px;
+            padding: 10px;
+            margin-top: 20px;
+        }
+        .btn {
+            background: #16a085;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>🕵️ You are the Bank Detective!</h2>
+        <p>You are sitting at their computer in the bank's security room. Incoming messages appear below. Help identify real vs phishing!</p>
+
+        <h3>Message:</h3>
+        <p><i>{{ msg['text'] }}</i></p>
+
+        {% if feedback == "correct" %}
+            {% if user_choice == "red" %}
+                <div class="feedback" style="color: crimson;">Well done! 🎉<br>This is a phishing attempt. Never share sensitive info!</div>
+            {% else %}
+                <div class="feedback" style="color: green;">Correct! ✅<br>This is a legit transaction message.</div>
+            {% endif %}
+            <form method="GET" action="{{ url_for('level1') }}">
+                <button class="btn">Next ➡️</button>
+            </form>
+
+        {% elif feedback == "wrong" %}
+            <div class="feedback" style="color: orange;">Oops! That wasn’t right.</div>
+            {% if retry %}
+                <form method="POST">
+                    <input type="hidden" name="choice" value="red">
+                    <button class="flag-btn" type="submit"><img src="http://www.clipartbest.com/cliparts/nTX/xzB/nTXxzBMTB.png" width="100"><br>Red Flag</button>
+                </form>
+                <form method="POST">
+                    <input type="hidden" name="choice" value="green">
+                    <button class="flag-btn" type="submit"><img src="https://img.freepik.com/premium-vector/green-flag-vector_925557-2.jpg" width="100"><br>Green Flag</button>
+                </form>
+            {% endif %}
+
+        {% else %}
+            <form method="POST">
+                <input type="hidden" name="choice" value="red">
+                <button class="flag-btn" type="submit"><img src="http://www.clipartbest.com/cliparts/nTX/xzB/nTXxzBMTB.png" width="100"><br>Red Flag</button>
+            </form>
+            <form method="POST">
+                <input type="hidden" name="choice" value="green">
+                <button class="flag-btn" type="submit"><img src="https://img.freepik.com/premium-vector/green-flag-vector_925557-2.jpg" width="100"><br>Green Flag</button>
+            </form>
+        {% endif %}
+    </div>
+</body>
+</html>

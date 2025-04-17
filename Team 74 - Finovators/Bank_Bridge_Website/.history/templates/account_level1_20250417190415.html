@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bank Quest - Level 1</title>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      text-align: center;
+      padding: 2rem;
+      color: #333;
+    }
+    .nav-btn {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background-color: #4caf50;
+      color: white;
+      padding: 0.5rem 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+      text-decoration: none;
+    }
+    .nav-btn:hover {
+      background-color: #388e3c;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 1rem;
+    }
+    .option {
+      border: 2px solid #4caf50;
+      border-radius: 10px;
+      display: inline-block;
+      padding: 1rem;
+      margin: 1rem;
+      width: 200px;
+      cursor: pointer;
+      background-color: #f9f9f9;
+      transition: 0.3s ease;
+      box-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+    }
+    .option:hover {
+      background-color: #c8e6c9;
+    }
+    .dialog {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: #fff8dc;
+      border-left: 6px solid #4caf50;
+      border-radius: 10px;
+      display: none;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+      text-align: left;
+      line-height: 1.6;
+    }
+    .dialog h3 {
+      margin-top: 0;
+      color: #2e7d32;
+    }
+    .highlight {
+      background-color: #dcedc8;
+      padding: 0.5rem;
+      border-radius: 6px;
+      margin-top: 1rem;
+    }
+    #nextButton {
+      display: none;
+      margin-top: 2rem;
+      background-color: #4caf50;
+      color: white;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #nextButton:hover {
+      background-color: #388e3c;
+    }
+  </style>
+</head>
+<body>
+
+  <a href="level0_info.html" class="nav-btn">← Back to Level 0</a>
+
+  <h1>🏦 Welcome to Bank Quest</h1>
+  <p>You are the new bank assistant! Choose your first account to learn more:</p>
+
+  <div class="option" onclick="selectAccount('Savings')">🐖 Savings Account</div>
+  <div class="option" onclick="selectAccount('Current')">💼 Current Account</div>
+  <div class="option" onclick="selectAccount('Salary')">💰 Salary Account</div>
+
+  <div class="dialog" id="dialogBox"></div>
+
+  <button id="nextButton" onclick="goToLevel2()">Next: Level 2 →</button>
+
+  <script>
+    const dialog = document.getElementById('dialogBox');
+    const nextBtn = document.getElementById('nextButton');
+
+    function selectAccount(type) {
+      let message = "";
+
+      if (type === "Savings") {
+        message = `
+          <h3>🐖 Savings Account</h3>
+          Think of it like a piggy bank in a bank!<br><br>
+          You put your money in and the bank adds a little extra money (called <b>interest</b>) every few months.<br><br>
+          <b>👧 Example:</b><br>
+          A student named Riya saves her pocket money and gift money in a savings account. She doesn't use it every day—just keeps it safe and watches it grow!<br><br>
+          <div class="highlight">
+            🔹 You save money.<br>
+            🔹 The bank gives you more money (interest).<br>
+            🔹 Great for kids and grown-ups who want to save.
+          </div>
+        `;
+      } else if (type === "Current") {
+        message = `
+          <h3>💼 Current Account</h3>
+          This is for people who need to use money all the time—like shopkeepers!<br><br>
+          They can send and receive money many times a day without any limit.<br><br>
+          <b>🧑‍💼 Example:</b><br>
+          A shop owner named Ravi sells toys. He uses his current account to take money from customers and pay for toy supplies every day.<br><br>
+          <div class="highlight">
+            🔹 No limit on spending or receiving.<br>
+            🔹 No extra money from the bank (no interest).<br>
+            🔹 Made for businesses, not saving.
+          </div>
+        `;
+      } else if (type === "Salary") {
+        message = `
+          <h3>💰 Salary Account</h3>
+          This is like a special bank account just for your job!<br><br>
+          Every month, your company sends your salary (money for your work) straight into this account.<br><br>
+          <b>👩‍💻 Example:</b><br>
+          A teacher named Neha gets her monthly salary from the school into her salary account. She uses it to pay for food, clothes, and saving a little.<br><br>
+          <div class="highlight">
+            🔹 You get your job money here.<br>
+            🔹 No need to keep any minimum money.<br>
+            🔹 Works just like a savings account.
+          </div>
+        `;
+      }
+
+      dialog.innerHTML = message;
+      dialog.style.display = "block";
+      nextBtn.style.display = "inline-block";
+    }
+
+    function goToLevel2() {
+      window.location.href = "/account-game/level2";
+    }
+  </script>
+
+</body>
+</html>

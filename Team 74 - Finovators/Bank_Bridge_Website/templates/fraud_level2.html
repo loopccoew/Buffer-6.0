@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>ATM Maze - Level 2</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: #f5f5f5;
+      padding: 30px;
+      text-align: center;
+    }
+
+    .atm-box {
+      background-color: #ffffff10;
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px #00ffd5;
+      max-width: 600px;
+      margin: auto;
+    }
+
+    h1 {
+      color: #00ffc6;
+    }
+
+    .message {
+      font-weight: bold;
+      margin: 20px 0;
+      color: #ffda79;
+    }
+
+    .path {
+      font-style: italic;
+      margin-top: 10px;
+      color: #ccc;
+    }
+
+    select, button {
+      padding: 10px;
+      font-size: 16px;
+      margin-top: 15px;
+      border-radius: 8px;
+      border: none;
+    }
+
+    button {
+      background-color: #00ffc6;
+      color: #000;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #00cc99;
+    }
+  </style>
+</head>
+<body>
+  <div class="atm-box">
+    <h1>🕵️ ATM Maze: Follow the Safe Path</h1>
+    <p><strong>ATM {{ current_node }}:</strong> {{ description }}</p>
+
+    {% if message %}
+      <div class="message">{{ message }}</div>
+    {% endif %}
+
+    {% if next_options %}
+    <form method="post">
+        <label for="next_node">Where do you want to go next?</label><br>
+        <select name="next_node" id="next_node" onchange="showDescription(this.value)">
+          <option disabled selected value="">-- Select an ATM --</option>
+          {% for option in next_options %}
+            <option value="{{ option }}">{{ option }}</option>
+          {% endfor %}
+        </select><br>
+        <div id="optionDescription" style="margin-top: 15px; font-style: italic; color: #bbb;"></div>
+        <button type="submit">Go</button>
+      </form>
+      
+    {% else %}
+      <p><strong>No further ATMs from here.</strong></p>
+    {% endif %}
+
+    <div class="path">
+      Your Path So Far: {{ path }}
+    </div>
+  </div>
+
+  <script>
+    const descriptions = {
+      {% for node, desc in descriptions_level2.items() %}
+        '{{ node }}': `{{ desc }}`,
+      {% endfor %}
+    };
+  
+    function showDescription(value) {
+      const descDiv = document.getElementById('optionDescription');
+      descDiv.innerText = descriptions[value] || "";
+    }
+  </script>
+  
+
+
+</body>
+</html>

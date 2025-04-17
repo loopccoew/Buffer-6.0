@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Credit Score Simulator - Level 1</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      min-height: 100%;
+      font-family: 'Segoe UI', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body {
+      background: linear-gradient(to right, #d3f8e2, #e4c1f9);
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px 0;
+    }
+
+    .game-container {
+      width: 90%;
+      max-width: 800px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      padding: 20px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    h1 {
+      font-size: 24px;
+      margin: 0;
+      padding: 10px 0;
+    }
+
+    .score-display {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+    .event-card {
+      margin: 10px auto;
+      font-size: 18px;
+      padding: 20px;
+      transition: all 0.5s ease-in-out;
+      animation: fadeIn 1s;
+    }
+
+    .choice-buttons {
+      display: flex;
+      justify-content: space-around;
+      margin: 10px 0;
+    }
+
+    .choice-buttons button {
+      width: 30%;
+      padding: 10px;
+      font-size: 14px;
+      border-radius: 8px;
+      border: none;
+      background: #f1f1f1;
+      transition: 0.3s;
+      cursor: pointer;
+    }
+
+    .choice-buttons button:hover {
+      background: #0077b6;
+      color: white;
+    }
+
+    canvas {
+      margin-top: auto;
+    }
+
+    .next-level {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    .next-level button {
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      background-color: #28a745;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .next-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #198754;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .next-button:hover {
+      background-color: #145c32;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="game-container">
+    <h1>💳 Credit Score Challenge - Level 1</h1>
+    <p class="score-display">Credit Score: <span id="credit-score">700</span></p>
+
+    <div class="event-card" id="event-container">
+      <!-- Event and choices will be injected here -->
+    </div>
+
+    <canvas id="scoreChart" width="400" height="180"></canvas>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    let creditScore = 700;
+    let scoreHistory = [700];
+
+    const events = [
+      {
+        title: "You get a credit card offer with 0% APR for 6 months. Do you:",
+        choices: [
+          { text: "Accept it and use it for essentials", impact: +20 },
+          { text: "Reject it completely", impact: 0 },
+          { text: "Max it out on gadgets", impact: -50 }
+        ]
+      },
+      {
+        title: "You forget to pay your loan EMI. What do you do?",
+        choices: [
+          { text: "Pay it immediately with penalty", impact: -10 },
+          { text: "Ignore it for now", impact: -40 },
+          { text: "Set auto-debit for next time", impact: +20 }
+        ]
+      },
+      {
+        title: "You’re offered a personal loan. Do you:",
+        choices: [
+          { text: "Take it and repay quickly", impact: +10 },
+          { text: "Take it and miss payments", impact: -30 },
+          { text: "Don’t take any loan", impact: 0 }
+        ]
+      }
+    ];
+
+    let currentEvent = 0;
+    let scoreChart;
+
+    function showEvent() {
+      if (currentEvent >= events.length) {
+        document.getElementById("event-container").innerHTML = `
+          <h2>🎉 Game Over!</h2>
+          <p>Your final credit score: <strong>${creditScore}</strong></p>
+          <button class="next-button" onclick="goToNextLevel()">Proceed to Level 2</button>
+        `;
+        return;
+      }
+
+      const ev = events[currentEvent];
+      let html = `<p>${ev.title}</p><div class="choice-buttons">`;
+      ev.choices.forEach((choice) => {
+        html += `<button onclick="applyChoice(${choice.impact})">${choice.text}</button>`;
+      });
+      html += `</div>`;
+      document.getElementById("event-container").innerHTML = html;
+    }
+
+    function applyChoice(impact) {
+      creditScore += impact;
+      scoreHistory.push(creditScore);
+      document.getElementById("credit-score").innerText = creditScore;
+      updateChart();
+      currentEvent++;
+      showEvent();
+    }
+
+    function updateChart() {
+      scoreChart.data.labels.push(`Turn ${scoreChart.data.labels.length}`);
+      scoreChart.data.datasets[0].data.push(creditScore);
+      scoreChart.update();
+    }
+
+    function goToNextLevel() {
+      window.location.href = "level2.html"; // Adjust path or route as needed
+    }
+
+    window.onload = function () {
+      const ctx = document.getElementById('scoreChart').getContext('2d');
+      scoreChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+          labels: ['Start'],
+          datasets: [{
+            label: 'Credit Score',
+            data: [700],
+            fill: false,
+            borderColor: 'green',
+            tension: 0.3
+          }]
+        }
+      });
+
+      showEvent();
+    };
+  </script>
+</body>
+</html>

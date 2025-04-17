@@ -1,0 +1,112 @@
+<!-- <!DOCTYPE html>
+<html>
+<head>
+    <title>🎉 You Finished the Game!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #d9f9d9;
+            text-align: center;
+            padding: 40px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #28a745;
+            font-size: 36px;
+        }
+        p {
+            font-size: 20px;
+            color: #333;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+            border: none;
+            background-color: #0074D9;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #005fa3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Congratulations!</h1>
+        <p>You successfully climbed to the top and learned about credit scores along the way!</p>
+        <p>You're now a Credit Score Champion 🏆</p>
+        <a href="/" class="btn">Play Again</a>
+    </div>
+</body>
+</html> -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>🎉 You Finished the Game!</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', sans-serif;
+            background-color: #d9f9d9;
+            text-align: center;
+            padding: 40px;
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            margin: auto;
+        }
+        h1 {
+            color: #28a745;
+            font-size: 36px;
+        }
+        p {
+            font-size: 20px;
+            color: #333;
+        }
+        .btn {
+            margin-top: 20px;
+            padding: 10px 25px;
+            font-size: 16px;
+            border: none;
+            background-color: #0074D9;
+            color: white;
+            border-radius: 12px;
+            cursor: pointer;
+        }
+        .btn:hover {
+            background-color: #005fa3;
+        }
+        .btn-secondary {
+            background-color: #f44336;
+        }
+        .btn-secondary:hover {
+            background-color: #d32f2f;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎉 Congratulations!</h1>
+        <p>You successfully climbed to the top and learned about credit scores along the way!</p>
+        <p>You're now a Credit Score Champion 🏆</p>
+
+        <div>
+            <a href="{{ url_for('restart') }}" class="btn">Play Again</a>
+            <a href="{{ url_for('index') }}" class="btn btn-secondary">End Game</a>
+        </div>
+    </div>
+</body>
+</html>
