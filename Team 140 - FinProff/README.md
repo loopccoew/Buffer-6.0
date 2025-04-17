@@ -60,9 +60,9 @@ This project leverages several key data structures and algorithms:
 
 ## Demo Video
 
-*[Link to Video Walkthrough - Replace this text with your actual video link]*
+*https://drive.google.com/file/d/1exBkJqYAWLkcHlgxjD2cdJUraeAeVJFr/view?usp=sharing*
 
-(Optional: Briefly describe what the video shows, e.g., "Watch a demonstration of user registration, login, transactions, and admin features.")
+
 
 ## Getting Started
 
@@ -78,11 +78,11 @@ Follow these instructions to get a copy of the project up and running on your lo
 1.  **Clone the repository:**
     Open your terminal or command prompt and run:
     ```bash
-    git clone [URL_OF_YOUR_REPOSITORY] # Replace with your repo URL
+    git clone [https://github.com/parnavi04/Buffer-6.0.git]
     ```
 2.  **Navigate to the project directory:**
     ```bash
-    cd [NAME_OF_THE_CLONED_FOLDER] # Usually the repository name
+    cd [Buffer-6.0] 
     ```
 
 ## Running the Application
