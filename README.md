@@ -4,7 +4,7 @@
 
 ---
 
-## 📣 Buffer 6.0 Hackathon Submission
+## 📣 Buffer 6.0 Submission
 
 > 🚀 **Submitted as part of [Buffer 6.0](https://buffer6.example.com)**  
 > 🧠 **Theme Chosen**: **FinTech**
