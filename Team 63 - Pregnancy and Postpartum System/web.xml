@@ -1,0 +1,8 @@
+<servlet>
+  <servlet-name>HospitalFinderServlet</servlet-name>
+  <servlet-class>your.package.HospitalFinderServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+  <servlet-name>HospitalFinderServlet</servlet-name>
+  <url-pattern>/findHospitals</url-pattern>
+</servlet-mapping>
