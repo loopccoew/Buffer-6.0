@@ -154,6 +154,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
    ```bash
    git clone https://github.com/Shrutit051/Buffer-6.0.git
    cd Buffer-6.0
+<details> <summary> <strong>File Structure</strong></summary></details>
 
 Buffer-6.0/
 │
@@ -179,3 +180,10 @@ Buffer-6.0/
 │
 └── README.md
 
+<details> <summary>📁File Structure</summary>
+## 📂 Project Structure
+
+
+buffer-research-crawler/ │ ├── 📁 src/ │ ├── 📁 buffer/ │ │ ├── 📁 core/ │ │ │ └── Main.java │ │ ├── 📁 Crawler/ │ │ │ ├── Crawler.java │ │ │ ├── ArvixCrawler.java │ │ │ └── GoogleScholarCrawler.java │ │ ├── 📁 ds/ │ │ │ ├── CitationGraph.java │ │ │ ├── Trie.java │ │ │ └── TrieNode.java │ │ └── 📁 model/ │ │ └── Paper.java │ └── 📄 keywords.csv │ ├── 📄 README.md └── 📄 .gitignore
+
+</details>
