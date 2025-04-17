@@ -11,7 +11,8 @@ class SubjectNode:
 class StudyPlan:
     def __init__(self):
         self.head = None
-    
+
+    #adds subject to the linked list
     def add_subject(self, name, difficulty):
         new_subject = SubjectNode(name, difficulty)
         
@@ -44,7 +45,8 @@ class StudyPlan:
             current.allocated_minutes = round(percentage * total_available_min)
             current = current.next
         return True
-    
+
+    #displays time in the readable format Ex., 1hours 15 mins
     def format_time(self, minutes):
         """Convert minutes to clean hours and minutes format"""
         hours = minutes // 60
