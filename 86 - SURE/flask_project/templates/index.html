@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>SURE - Syllabus-based Useful Resource Explorer</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+  <script src="https://unpkg.com/cytoscape@3.24.0/dist/cytoscape.min.js"></script>
+</head>
+<body>
+  <div class="header">
+    <div class="logo">S</div>
+    <div class="title">SURE</div>
+  </div>
+  
+  <!-- Card for Upload Form -->
+  <div class="card">
+    <h2>Syllabus-based Useful Resource Explorer</h2>
+    <form id="uploadForm" enctype="multipart/form-data">
+      <label for="syllabus_pdf">Upload your syllabus:</label>
+      <div class="upload-area" id="uploadArea">
+        <label for="syllabus_pdf" class="upload-label">
+            <img src="{{ url_for('static', filename='image.png') }}" alt="Upload" class="upload-icon" />
+        </label>
+        
+        <p><strong>Click to upload</strong> or drag & drop your PDF here</p>
+        <span id="file-name">No file selected</span>
+        </label>
+        <input type="file" id="syllabus_pdf" name="syllabus_pdf" accept="application/pdf" hidden required />
+      </div>
+      <input type="submit" value="Upload and Analyze" />
+    </form>
+  </div>
+  
+  <!-- Loading Spinner -->
+  <div id="loading" class="loading" style="display: none;">
+    <div class="loading-spinner"></div>
+    <p>Processing syllabus, please wait...</p>
+  </div>
+    
+  <!-- Card for Results -->
+  <div id="output-container" class="output-container" style="display: none;">
+    <div class="results-container">
+      <div class="video-list card">
+        <h2>YouTube Videos:</h2>
+        <ul id="videoResults"></ul>
+      </div>
+      
+      <div class="website-list card">
+        <h2 style="
+        margin-left: 22px;
+        margin-top: 34px;
+    ">Relevant Websites:</h2>
+        <div id="websiteResults"></div>
+      </div>
+    </div>
+  </div>
+  
+  <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
