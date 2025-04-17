@@ -64,6 +64,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 | Main         | Regex Matcher     | Extract year from date strings                                 | Regex Pattern Matching        | Match publication year from publication date string             |
 
 <details> <summary>🌐 <strong>Data Structures & Algorithms Used in <code>ArvixCrawler.java</code></strong></summary></details>
+
 | Class Name     | DS Used           | Purpose of DS                                               | Algorithm Used          | Purpose of Algorithm                                              |
 |----------------|------------------|-------------------------------------------------------------|-------------------------|-------------------------------------------------------------------|
 | ArvixCrawler   | List<Paper>       | To store the parsed paper objects from search results       | Iteration & Parsing     | Loop over HTML elements to extract paper data                    |
@@ -75,6 +76,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 
 
 <details> <summary>🔎 <strong>Data Structures & Algorithms Used in <code>GoogleScholarCrawler.java</code></strong></summary></details>
+
 | Class Name             | DS Used           | Purpose of DS                                                    | Algorithm Used           | Purpose of Algorithm                                             |
 |------------------------|------------------|------------------------------------------------------------------|--------------------------|------------------------------------------------------------------|
 | GoogleScholarCrawler   | List<Paper>       | To collect and return paper search results                       | Iteration & Parsing      | Loop through HTML content and convert to Paper objects           |
@@ -85,6 +87,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 
 
 <details> <summary>🧠 <strong>Data Structures & Algorithms Used in <code>CitationGraph.java</code></strong></summary></details>
+
 | Class Name      | DS Used                     | Purpose of DS                                                                 | Algorithm Used         | Purpose of Algorithm                                                  |
 |------------------|------------------------------|--------------------------------------------------------------------------------|--------------------------|------------------------------------------------------------------------|
 | CitationGraph    | Map<String, Set<String>>     | To represent a directed graph: paper ➝ set of cited papers                     | DFS (Depth-First Search) | Traverse graph to find related papers recursively                     |
@@ -95,6 +98,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 
 
 <details> <summary>🔤 <strong>Data Structures & Algorithms Used in <code>Trie.java</code></strong></summary></details>
+
 | Class Name | DS Used                     | Purpose of DS                                                                  | Algorithm Used            | Purpose of Algorithm                                                   |
 |------------|-----------------------------|---------------------------------------------------------------------------------|---------------------------|-------------------------------------------------------------------------|
 | Trie       | TrieNode                     | Represents nodes in the Trie, storing character links and word-ending markers    | Depth-First Search (DFS)  | Traverse the Trie to suggest words with the given prefix               |
@@ -105,6 +109,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 
 
 <details> <summary>🔤 <strong>Data Structures Used in <code>TrieNode.java</code></strong></summary></details>
+
 | Class Name   | DS Used                     | Purpose of DS                                                |
 |--------------|-----------------------------|--------------------------------------------------------------|
 | TrieNode     | Map<Character, TrieNode>     | To store child nodes for each character                       |
@@ -112,6 +117,7 @@ This tool serves as both a **research aid** and an **educational demo**, bridgin
 
 
 <details> <summary>📄 <strong>Data Structures Used in <code>Paper.java</code></strong></summary></details>
+
 | Class Name | DS Used             | Purpose of DS                                                 |
 |------------|---------------------|---------------------------------------------------------------|
 | Paper      | String              | To store the title of the paper                                |
