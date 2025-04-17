@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>🎯 Level 4 - Smart Transaction Game</title>
+  <style>
+    body {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      background: linear-gradient(135deg, #a8edea, #fed6e3);
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      position: relative;
+    }
+
+    .game-container {
+      background-color: #fffefa;
+      border-radius: 20px;
+      padding: 2rem;
+      width: 90%;
+      max-width: 750px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+      transition: transform 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    .game-container:hover {
+      transform: scale(1.02);
+    }
+
+    h1 {
+      color: #2c6e49;
+      margin-bottom: 1rem;
+      text-align: center;
+      font-size: 2rem;
+    }
+
+    p {
+      font-size: 1.1rem;
+      background-color: #e8f5e9;
+      padding: 1rem;
+      border-left: 6px solid #66bb6a;
+      border-radius: 10px;
+    }
+
+    .statement {
+      background-color: #fff3e0;
+      border-left: 6px solid #ffb74d;
+      padding: 1rem;
+      margin: 1rem 0;
+      border-radius: 10px;
+      font-size: 1.05rem;
+      transition: background 0.3s ease;
+    }
+
+    .statement:hover {
+      background-color: #ffe0b2;
+    }
+
+    select, button {
+      padding: 0.7rem;
+      margin-top: 0.5rem;
+      border-radius: 8px;
+      border: 2px solid #aaa;
+      font-size: 1rem;
+      width: 100%;
+      max-width: 200px;
+    }
+
+    button {
+      background-color: #4caf50;
+      color: white;
+      font-weight: bold;
+      border: none;
+      margin-top: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background-color: #388e3c;
+    }
+
+    .game-over-box {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 90%;
+      max-width: 600px;
+      background: #ffffff;
+      border-radius: 15px;
+      box-shadow: 0 0 30px rgba(0, 0, 0, 0.2);
+      padding: 2rem;
+      z-index: 999;
+      text-align: left;
+      animation: fadeIn 0.5s ease-in-out;
+    }
+
+    .game-over-box.success {
+      border-left: 8px solid #66bb6a;
+      background-color: #e8f5e9;
+      color: #2e7d32;
+    }
+
+    .game-over-box.error {
+      border-left: 8px solid #e57373;
+      background-color: #ffcdd2;
+      color: #c62828;
+    }
+
+    .final-message {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #d32f2f;
+    }
+
+    .try-again-button {
+      display: inline-block;
+      margin-top: 1.5rem;
+      background-color: #f44336;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .try-again-button:hover {
+      background-color: #c62828;
+    }
+
+    .home-button {
+      display: inline-block;
+      margin-top: 1rem;
+      background-color: #2196f3;
+      color: white;
+      padding: 0.7rem 1.2rem;
+      border-radius: 10px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .home-button:hover {
+      background-color: #1976d2;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translate(-50%, -60%); }
+      to { opacity: 1; transform: translate(-50%, -50%); }
+    }
+
+    .overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background-color: rgba(0, 0, 0, 0.4);
+      z-index: 998;
+    }
+
+    .back-button {
+      margin-top: 1.5rem;
+      display: inline-block;
+      background-color: #888;
+      color: white;
+      padding: 0.6rem 1rem;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      text-align: center;
+      width: fit-content;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background-color: #555;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="game-container">
+    <h1>💸 Level 4: Smart Transaction Challenge</h1>
+    <p><strong>Starting Balance: ₹500</strong><br>
+    🏦 Minimum Balance Rule: Always keep at least ₹500!<br>
+    💡 Arrange the first two events in the right order and decide if the third action is safe. <br>
+    ✨ <em>Put on your money manager hat and think smart!</em></p>
+
+    <div class="statement">
+      📱 <strong>Statement A:</strong> You bought a phone worth ₹1000.<br>
+      👉 When did this happen?
+      <select id="stepA">
+        <option value="">--Select--</option>
+        <option value="1">First</option>
+        <option value="2">Second</option>
+      </select>
+    </div>
+
+    <div class="statement">
+      💼 <strong>Statement B:</strong> You got ₹1000 as your pocket money.<br>
+      👉 When did this happen?
+      <select id="stepB">
+        <option value="">--Select--</option>
+        <option value="1">First</option>
+        <option value="2">Second</option>
+      </select>
+    </div>
+
+    <div class="statement">
+      ⚡ <strong>Statement C:</strong> You want to pay your electricity bill of ₹200.<br>
+      ❓ Should you do it?
+      <select id="decision">
+        <option value="">--Select--</option>
+        <option value="yes">Yes, pay the bill</option>
+        <option value="no">No, skip it</option>
+      </select>
+    </div>
+
+    <button onclick="checkAnswer()">🚀 Submit Your Answer</button>
+    <a href="level3_withdrawal.html" class="back-button"> Back </a>
+  </div>
+
+  <div class="overlay" id="overlay"></div>
+  <div class="game-over-box" id="resultBox"></div>
+
+  <script>
+    function resetGame() {
+      document.getElementById("stepA").value = "";
+      document.getElementById("stepB").value = "";
+      document.getElementById("decision").value = "";
+      document.getElementById("resultBox").style.display = "none";
+      document.getElementById("overlay").style.display = "none";
+    }
+
+    function checkAnswer() {
+      const stepA = document.getElementById("stepA").value;
+      const stepB = document.getElementById("stepB").value;
+      const decision = document.getElementById("decision").value;
+      const resultBox = document.getElementById("resultBox");
+      const overlay = document.getElementById("overlay");
+
+      if (!stepA || !stepB || stepA === stepB || !decision) {
+        resultBox.className = 'game-over-box error';
+        resultBox.innerHTML = "⚠️ Please choose a different order for both and make your decision.<br><br>" +
+                              "<div class='try-again-button' onclick='resetGame()'>🔁 Try Again</div>" +
+                              "<br><a class='home-button' href='homepage.html'>🏠 Go to Home Page</a>";
+        overlay.style.display = "block";
+        resultBox.style.display = "block";
+        return;
+      }
+
+      let balance = 500;
+      let sequence = [];
+
+      if (stepA === "1") sequence.push({type: "withdraw", amount: 1000, label: "📱 Statement A"});
+      else sequence.push({type: "deposit", amount: 1000, label: "💼 Statement B"});
+
+      if (stepA === "2") sequence.push({type: "withdraw", amount: 1000, label: "📱 Statement A"});
+      else sequence.push({type: "deposit", amount: 1000, label: "💼 Statement B"});
+
+      let log = [];
+      let valid = true;
+      const minBalance = 500;
+
+      for (let item of sequence) {
+        if (item.type === "deposit") {
+          balance += item.amount;
+          log.push(`✅ ${item.label}: Deposited ₹${item.amount}. Balance: ₹${balance}`);
+        } else {
+          if (balance - item.amount < minBalance) {
+            valid = false;
+            log.push(`❌ ${item.label}: Can't spend ₹${item.amount}. You’ll fall below ₹${minBalance}.`);
+            break;
+          } else {
+            balance -= item.amount;
+            log.push(`💸 ${item.label}: Spent ₹${item.amount}. Balance: ₹${balance}`);
+          }
+        }
+      }
+
+      if (!valid) {
+        resultBox.className = 'game-over-box error';
+        resultBox.innerHTML = log.join("<br>") +
+                              "<br><strong>🚫 Oops! Minimum balance not maintained.</strong>" +
+                              "<div class='try-again-button' onclick='resetGame()'>🔁 Try Again</div>" +
+                              "<br><a class='home-button' href='/'>🏠 Go to Home Page</a>";
+        overlay.style.display = "block";
+        resultBox.style.display = "block";
+        return;
+      }
+
+      if (decision === "yes") {
+        if (balance - 200 < minBalance) {
+          log.push(`⚠️ Statement C: Paying ₹200 drops balance below ₹${minBalance}.`);
+          resultBox.className = 'game-over-box error';
+          resultBox.innerHTML = log.join("<br>") +
+                                "<br><strong>❌ Try again! You broke the rule.</strong>" +
+                                "<div class='try-again-button' onclick='resetGame()'>🔁 Try Again</div>" +
+                                "<br><a class='home-button' href='/'>🏠 Go to Home Page</a>";
+        } else {
+          balance -= 200;
+          log.push(`✅ Statement C: Paid ₹200. Final Balance: ₹${balance}`);
+          resultBox.className = 'game-over-box success';
+          resultBox.innerHTML = log.join("<br>") +
+                                "<br><strong>🎉 Great job! You managed your money smartly!</strong>" +
+                                "<br><a class='home-button' href='/'>🏠 Go to Home Page</a>";
+        }
+      } else {
+        log.push("⏭️ Statement C: You skipped the electricity bill.");
+        resultBox.className = 'game-over-box success';
+        resultBox.innerHTML = log.join("<br>") +
+                              "<br><strong>💡 You chose safety over spending. Good thinking!</strong>" +
+                              "<br><a class='home-button' href='/'>🏠 Go to Home Page</a>";
+      }
+
+      overlay.style.display = "block";
+      resultBox.style.display = "block";
+    }
+  </script>
+</body>
+</html>

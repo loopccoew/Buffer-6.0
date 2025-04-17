@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Candy Coin Game</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <h1 class="animated">🍬 Candy Coin Game</h1>
+    <p>Scenario {{ scenario }} | Coins left: ₹{{ coins }}</p>
+
+    <h2>Candy Menu</h2>
+    <ul class="menu">
+        {% for key, candy in menu.items() %}
+            <li class="candy animated">{{ candy.emoji }} {{ candy.name }} - ₹{{ candy.price }}
+                <a href="/buy/{{ key }}" class="buy">[Buy]</a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <h2>Your Bag</h2>
+    <ul class="bag">
+        {% for item in bag %}
+            <li class="animated">{{ menu[item].emoji }} {{ menu[item].name }}</li>
+        {% endfor %}
+    </ul>
+    {% if scenario == 1 and coins == 0 %}
+    <h2 style="color: green;">🎉 You used all your coins wisely! Great job!</h2>
+{% elif scenario == 2 and bag|length == 4 and 'chocolate' in bag and bag.count('chocolate') == 2 %}
+    <h2 style="color: green;">🏆 You Win! Smart strategy and great planning!</h2>
+{% elif scenario == 2 and coins < 10 and bag.count('chocolate') < 2 %}
+    <h2 style="color: red;">❌ Try Again! You didn’t meet the goal. Use Undo to fix your plan.</h2>
+{% endif %}
+
+
+    <div class="actions">
+        <a href="/undo" class="button">🔁 Undo</a>
+        <a href="/reset" class="button">🔄 Change Scenario</a>
+    </div>
+</body>
+</html>

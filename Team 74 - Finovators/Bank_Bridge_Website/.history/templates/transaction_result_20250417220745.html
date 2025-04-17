@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Level Complete!</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #8decb4, #41c7c7);
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: #333;
+    }
+
+    .container {
+      background: #ffffff;
+      padding: 2rem 3rem;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+      text-align: center;
+      width: 500px;
+    }
+
+    h1 {
+      font-size: 2rem;
+      margin-bottom: 0.5rem;
+      color: #1c1c1c;
+    }
+
+    p {
+      font-size: 1.2rem;
+      margin: 0.5rem 0;
+    }
+
+    .score {
+      font-size: 1.5rem;
+      color: #2e7d32;
+      font-weight: bold;
+    }
+
+    .ledger {
+      text-align: left;
+      background: #f5f5f5;
+      padding: 1rem;
+      margin-top: 1rem;
+      border-radius: 10px;
+    }
+
+    .btn {
+      display: inline-block;
+      margin-top: 1.5rem;
+      padding: 0.8rem 2rem;
+      background-color: #41c7c7;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1rem;
+      transition: background-color 0.3s;
+    }
+
+    .btn:hover {
+      background-color: #2db6b6;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 Level 1 Complete!</h1>
+    <p class="score">Your Final Score: {{ score }}</p>
+
+    <div class="ledger">
+      <h3>📒 Final Ledger Balances:</h3>
+      <ul>
+        {% for user, balance in ledger.items() %}
+        <li><strong>{{ user }}:</strong> ₹{{ balance }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+
+    <a href="/transaction-game/level2" class="btn">➡️ Next Level</a>
+  </div>
+</body>
+</html>

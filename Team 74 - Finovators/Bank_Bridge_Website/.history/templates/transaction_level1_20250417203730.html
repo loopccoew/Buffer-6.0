@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 1 – Transaction Tracker</title>
+  <style>
+    body {
+      font-family: 'Georgia', serif;
+      background: linear-gradient(135deg, #9be15d, #00e3ae);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      width: 500px;
+      text-align: center;
+    }
+    h1 {
+      margin-bottom: 1rem;
+    }
+    .txn {
+      font-size: 1.1rem;
+      margin: 1rem 0;
+    }
+    .btn {
+      padding: 0.8rem 2rem;
+      margin: 0.5rem;
+      font-size: 1rem;
+      border-radius: 10px;
+      border: none;
+      cursor: pointer;
+    }
+    .apply {
+      background-color: #4CAF50;
+      color: white;
+    }
+    .skip {
+      background-color: #f44336;
+      color: white;
+    }
+    .ledger {
+      margin-top: 1rem;
+      background: #f4f4f4;
+      padding: 1rem;
+      border-radius: 10px;
+      text-align: left;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Level 1: Transaction Tracker</h1>
+    {% if txn %}
+    <div class="txn">
+      <p><strong>From:</strong> {{ txn.from }}</p>
+      <p><strong>To:</strong> {{ txn.to }}</p>
+      <p><strong>Amount:</strong> ₹{{ txn.amount }}</p>
+    </div>
+    <form method="POST">
+      <button name="action" value="apply" class="btn apply">Apply Transaction</button>
+      <button name="action" value="skip" class="btn skip">Skip Transaction</button>
+    </form>
+    {% endif %}
+    <div class="ledger">
+      <h3>Ledger Balances</h3>
+      <ul>
+        {% for user, balance in ledger.items() %}
+        <li>{{ user }}: ₹{{ balance }}</li>
+        {% endfor %}
+      </ul>
+    </div>
+    <p><strong>Score:</strong> {{ score }}</p>
+  </div>
+</body>
+</html>

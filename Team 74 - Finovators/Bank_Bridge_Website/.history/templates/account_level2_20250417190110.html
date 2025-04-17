@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Piggy Bank Power-Up!</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: linear-gradient(to right, #e0f7fa, #ffffff);
+      text-align: center;
+      padding: 2rem;
+      color: #333;
+    }
+
+    h1 {
+      color: #2e7d32;
+      margin-bottom: 1rem;
+    }
+
+    .avatar {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .piggy {
+      font-size: 5rem;
+      margin: 1rem;
+    }
+
+    .balance {
+      font-size: 1.4rem;
+      background: #dcedc8;
+      padding: 1rem;
+      border-radius: 10px;
+      display: inline-block;
+    }
+
+    input {
+      padding: 0.5rem;
+      border: 2px solid #4caf50;
+      border-radius: 8px;
+      margin-top: 1rem;
+      width: 160px;
+    }
+
+    button {
+      background: #4caf50;
+      color: white;
+      padding: 0.6rem 1.2rem;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      margin-left: 1rem;
+      font-weight: 600;
+    }
+
+    button:hover {
+      background: #388e3c;
+    }
+
+    .message {
+      margin-top: 1rem;
+      font-weight: bold;
+      font-size: 1rem;
+      color: #2e7d32;
+    }
+
+    .happiness-bar {
+      width: 80%;
+      height: 20px;
+      margin: 1.5rem auto;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .progress {
+      height: 100%;
+      width: 0%;
+      background-color: #81c784;
+      transition: width 0.5s ease;
+    }
+
+    .nav-buttons {
+      margin-top: 2rem;
+    }
+
+    .nav-buttons a {
+      text-decoration: none;
+      margin: 0 1rem;
+    }
+
+    .nav-buttons button {
+      background: #2e7d32;
+      padding: 0.6rem 1.5rem;
+    }
+
+    .nav-buttons button:hover {
+      background: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <h1>🐷 Level 2: Piggy Bank Power-Up!</h1>
+  <div class="avatar" id="grandmaText">🧓 Grandma: “Can you help me deposit ₹___ into my piggy bank?”</div>
+
+  <div class="piggy">🐖</div>
+
+  <div class="balance" id="balanceDisplay">Piggy Bank Balance: ₹0</div><br>
+
+  <input type="number" id="depositInput" placeholder="Enter deposit amount">
+  <button onclick="deposit()">Deposit</button>
+
+  <div class="message" id="messageBox"></div>
+
+  <div class="happiness-bar">
+    <div class="progress" id="progressBar"></div>
+  </div>
+
+  <div class="nav-buttons">
+    <a href="level1_account_intro.html"><button>⬅ Back to Level 1</button></a>
+    <a href="level3_withdrawal.html"><button>Next: Level 3 ➡</button></a>
+  </div>
+
+  <script>
+    let balance = 0;
+    let targetAmount = getRandomAmount();
+
+    const grandmaText = document.getElementById("grandmaText");
+    const balanceDisplay = document.getElementById("balanceDisplay");
+    const messageBox = document.getElementById("messageBox");
+    const progressBar = document.getElementById("progressBar");
+
+    function getRandomAmount() {
+      return Math.floor(Math.random() * 46) * 10 + 50;
+    }
+
+    function updateGrandmaText() {
+      grandmaText.innerText = `🧓 Grandma: “Can you help me deposit ₹${targetAmount} into my piggy bank?”`;
+    }
+
+    function deposit() {
+      const input = document.getElementById("depositInput");
+      const amount = parseInt(input.value);
+
+      if (isNaN(amount) || amount <= 0) {
+        messageBox.innerText = "🚫 Oops! Enter a valid number!";
+        return;
+      }
+
+      if (amount !== targetAmount) {
+        messageBox.innerText = `❌ Grandma says: “Hmm, that’s not the amount I asked for!”`;
+        return;
+      }
+
+      balance += amount;
+      balanceDisplay.innerText = `Piggy Bank Balance: ₹${balance}`;
+      messageBox.innerText = `✅ Yay! ₹${amount} deposited! Grandma is happy!`;
+
+      let percent = Math.min((balance / 1000) * 100, 100);
+      progressBar.style.width = percent + "%";
+
+      if (percent === 100) {
+        messageBox.innerText = "🎉 You filled the piggy bank! Grandma is overjoyed!";
+      } else {
+        targetAmount = getRandomAmount();
+        updateGrandmaText();
+      }
+
+      input.value = '';
+    }
+
+    updateGrandmaText();
+  </script>
+</body>
+</html>

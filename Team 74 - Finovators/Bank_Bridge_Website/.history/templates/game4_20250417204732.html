@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Level 0 – Transaction Management Theory</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      background: linear-gradient(to right, #a8edea, #fed6e3);
+      font-family: 'Georgia', serif;
+      margin: 0;
+      padding: 2rem 1rem;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      overflow-y: auto;
+    }
+    .container {
+      background: white;
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      max-width: 700px;
+      text-align: center;
+    }
+    h1 {
+      color: #3c3c3c;
+      margin-bottom: 1rem;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #555;
+      text-align: left;
+    }
+    .btn {
+      margin-top: 2rem;
+      padding: 0.8rem 2rem;
+      font-size: 1rem;
+      background: #0077b6;
+      color: white;
+      border: none;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    .btn:hover {
+      background: #023e8a;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Level 0: What is Transaction Management?</h1>
+    <p>
+      💰 <strong>What is Transaction Management?</strong><br><br>
+      Imagine you’re buying candy from a vending machine 🍬.<br>
+      You press a button, put your money in, and wait for the candy to come out.<br>
+      Now imagine the machine takes your money but gives no candy — that's not fair, right?<br><br>
+
+      So, banks and computers use transaction management to make sure things like that don’t happen with your money.<br><br>
+
+      🧠 <strong>How it Works (Simple Rules):</strong><br><br>
+
+      <strong>All or Nothing!</strong><br>
+      A transaction must finish completely or not at all.<br>
+      Just like: You get candy or you get your money back — no cheating!<br><br>
+
+      <strong>Safe and Secure</strong><br>
+      If something goes wrong (like a power cut ⚡), the bank cancels the transaction and keeps your money safe.<br><br>
+
+      <strong>No Mix-ups</strong><br>
+      Even if 100 people are using the bank at once, the system keeps everyone's transaction separate and clean. Like separate lines in a candy shop!<br><br>
+
+      <strong>No Negative Money!</strong><br>
+      You can’t send more money than you have.<br>
+      The bank checks your balance first — just like you can’t buy candy if you don’t have enough coins!<br><br>
+
+      Let’s see how this works in a real banking system!
+    </p>
+    <form action="/transaction-level1">
+      <button class="btn" type="submit">Start Game →</button>
+    </form>
+  </div>
+</body>
+</html>
