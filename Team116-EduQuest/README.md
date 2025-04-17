@@ -7,4 +7,4 @@ Data structures & Algorithms used:
 3.	Priority queue : Maintains a priority-based ordering of courses by rating (highest to lowest)
 4.	Regex (Pattern & Matcher) Algorithm: Keyword highlighting
 
-
+Video link:https://drive.google.com/file/d/1fncFvNRGg9BiybZTaVhQWsYIbZ9OWqzg/view?usp=sharing
