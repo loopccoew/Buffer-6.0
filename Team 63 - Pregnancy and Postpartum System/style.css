@@ -1,0 +1,181 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  transition: all 0.3s ease;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background: linear-gradient(to right, #fce4ec, #e1f5fe);
+  color: #2e2e2e;
+  padding: 30px;
+}
+
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+
+section {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(12px);
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  padding: 30px;
+  margin-bottom: 40px;
+  animation: fadeInUp 0.7s ease both;
+}
+
+/* Headings */
+h1, h2 {
+  color: #7b1fa2;
+  margin-bottom: 16px;
+  position: relative;
+}
+
+h2::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  height: 4px;
+  width: 50px;
+  background-color: #ba68c8;
+  border-radius: 2px;
+}
+
+/* Inputs & Select */
+form input,
+form select {
+  display: block;
+  width: 100%;
+  padding: 12px;
+  margin: 10px 0 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+}
+
+/* Buttons */
+form button,
+button {
+  background-color: #7b1fa2;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  font-size: 16px;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(123, 31, 162, 0.4);
+}
+
+form button:hover,
+button:hover {
+  background-color: #6a1b9a;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(123, 31, 162, 0.5);
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* Lists */
+ul {
+  padding-left: 20px;
+  margin-top: 10px;
+}
+
+li {
+  margin-bottom: 8px;
+  line-height: 1.5;
+}
+
+ /* Delete Button  */
+.delete-btn {
+  background-color: #e53935;
+  margin-left: 10px;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  font-size: 14px;
+  border-radius: 6px;
+}
+
+.delete-btn:hover {
+  background-color: #c62828;
+}
+
+/* Notification Box */
+@keyframes fadeSlide {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.notification {
+  background-color: #c8e6c9;
+  color: #2e7d32;
+  padding: 15px 20px;
+  border-left: 6px solid #43a047;
+  margin-top: 15px;
+  border-radius: 6px;
+  animation: fadeSlide 0.5s ease-in-out;
+}
+
+/* Animation: Section Fade-in */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+
+@media (max-width: 600px) {
+  form input,
+  form select,
+  form button {
+    font-size: 14px;
+  }
+
+  section {
+    padding: 20px;
+  }
+}
+
+
+.progress-container {
+  background-color: #ddd;
+  border-radius: 20px;
+  overflow: hidden;
+  margin: 10px 0;
+}
+
+.progress-bar {
+  background-color: #7b1fa2;
+  height: 20px;
+  color: white;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  transition: width 0.4s ease-in-out;
+}
