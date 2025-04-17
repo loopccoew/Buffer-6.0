@@ -56,7 +56,7 @@ public ResponseEntity<String> googleSignup(@RequestBody Map<String, String> body
     try {
         GoogleIdTokenVerifier verifier = new GoogleIdTokenVerifier.Builder(
                 Utils.getDefaultTransport(), Utils.getDefaultJsonFactory())
-                .setAudience(Collections.singletonList("928398342317-imh2rqn0jt5amm9k1vt6glur3550kkdg.apps.googleusercontent.com")) // <-- Replace this!
+                .setAudience(Collections.singletonList("Auth CLIENT ID")) // <-- Replace this!
                 .build();
 
         GoogleIdToken idToken = verifier.verify(token);
