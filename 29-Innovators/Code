@@ -1,0 +1,173 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+import java.io.*;
+import java.util.*;
+import javax.sound.sampled.*;
+
+public class FinanceQuestGame extends JFrame {
+    private final java.util.List<String[]> level1 = Arrays.asList(
+        new String[]{"What is a budget?", "A plan for saving and spending money", "A tax document", "A type of loan", "A plan for saving and spending money"},
+        new String[]{"Which is a fixed expense?", "Movie ticket", "Electric bill", "Rent", "Rent"},
+        new String[]{"What does APR stand for?", "Annual Percentage Rate", "Applied Payment Rate", "Average Purchase Rate", "Annual Percentage Rate"}
+    );
+
+    private final java.util.List<String[]> level2 = Arrays.asList(
+        new String[]{"What is compound interest?", "Interest on interest earned", "Fixed interest", "Bank fee", "Interest on interest earned"},
+        new String[]{"Best way to build credit?", "Ignore bills", "Use credit responsibly", "Max out card", "Use credit responsibly"},
+        new String[]{"Which affects your credit score?", "Credit usage", "Favorite color", "City you live in", "Credit usage"}
+    );
+
+    private final java.util.List<String[]> level3 = Arrays.asList(
+        new String[]{"What is an ETF?", "Exchange-Traded Fund", "Electronic Transfer Fee", "Easy Tax Form", "Exchange-Traded Fund"},
+        new String[]{"What is diversification in investing?", "Spreading investments", "Buying same stock", "Avoiding investments", "Spreading investments"},
+        new String[]{"Which is a liability?", "Car loan", "Savings", "Investment", "Car loan"}
+    );
+
+    private final java.util.List<String> events = Arrays.asList(
+        "You won a small lottery! +₹500",
+        "Unexpected medical bill. -₹400",
+        "Side hustle earned you ₹300",
+        "Lost your wallet! -₹250"
+    );
+
+    private int level = 1;
+    private int score = 0;
+    private int currentQuestion = 0;
+    private String playerName = "";
+
+    private JLabel questionLabel = new JLabel("", SwingConstants.CENTER);
+    private JButton[] optionButtons = new JButton[3];
+    private JLabel scoreLabel = new JLabel("Score: 0");
+    private JLabel levelLabel = new JLabel("Level 1");
+
+    public FinanceQuestGame() {
+        setTitle("Finance Quest Game");
+        setSize(500, 350);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
+        setLocationRelativeTo(null);
+        setLayout(new BorderLayout());
+
+        playerName = JOptionPane.showInputDialog(this, "Enter your name:");
+        if (playerName == null || playerName.trim().isEmpty()) playerName = "Player";
+
+        playSound("start.wav");
+
+        JPanel topPanel = new JPanel(new GridLayout(2, 1));
+        topPanel.setBackground(new Color(255, 105, 180)); // hotpink background
+        scoreLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        levelLabel.setFont(new Font("Arial", Font.BOLD, 16));
+        scoreLabel.setForeground(new Color(128, 0, 128)); // purple text
+        levelLabel.setForeground(new Color(128, 0, 128)); // purple text
+
+        topPanel.add(scoreLabel);
+        topPanel.add(levelLabel);
+        add(topPanel, BorderLayout.NORTH);
+
+        questionLabel.setFont(new Font("Arial", Font.BOLD, 15));
+        questionLabel.setForeground(new Color(128, 0, 128)); // purple
+        add(questionLabel, BorderLayout.CENTER);
+
+        JPanel buttonPanel = new JPanel(new GridLayout(3, 1));
+        for (int i = 0; i < 3; i++) {
+            optionButtons[i] = new JButton();
+            optionButtons[i].setBackground(new Color(255, 105, 180)); // hotpink
+            optionButtons[i].setForeground(Color.WHITE);
+            optionButtons[i].setFont(new Font("Arial", Font.BOLD, 14));
+            buttonPanel.add(optionButtons[i]);
+            int index = i;
+            optionButtons[i].addActionListener(e -> checkAnswer(optionButtons[index].getText()));
+        }
+        add(buttonPanel, BorderLayout.SOUTH);
+
+        loadQuestion();
+    }
+
+    private void checkAnswer(String selected) {
+        String correct = getCurrentLevelQuestions().get(currentQuestion)[4];
+        if (selected.equals(correct)) {
+            score += 1;
+            playSound("success.wav");
+        } else {
+            playSound("failure.wav");
+        }
+
+        currentQuestion++;
+        scoreLabel.setText("Score: " + score);
+        loadQuestion();
+    }
+
+    private java.util.List<String[]> getCurrentLevelQuestions() {
+        if (level == 1) return level1;
+        if (level == 2) return level2;
+        return level3;
+    }
+
+    private void loadQuestion() {
+        java.util.List<String[]> questions = getCurrentLevelQuestions();
+        if (currentQuestion < questions.size()) {
+            String[] q = questions.get(currentQuestion);
+            questionLabel.setText("<html><div style='text-align:center;width:400px;'>" + q[0] + "</div></html>");
+            for (int i = 0; i < 3; i++) optionButtons[i].setText(q[i + 1]);
+        } else {
+            if (level < 3) {
+                if (score < level * 3) {
+                    JOptionPane.showMessageDialog(this, "Sorry " + playerName + ", your score is too low to continue.");
+                    gameOver();
+                } else {
+                    level++;
+                    currentQuestion = 0;
+                    levelLabel.setText("Level " + level);
+                    loadQuestion();
+                }
+            } else {
+                gameOver();
+            }
+        }
+    }
+
+    private void gameOver() {
+        playSound("end.wav");
+        saveScore();
+        StringBuilder lb = new StringBuilder("Leaderboard:\n");
+        try (BufferedReader br = new BufferedReader(new FileReader("leaderboard.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null) lb.append(line).append("\n");
+        } catch (IOException e) {
+            lb.append("No leaderboard yet.\n");
+        }
+        JOptionPane.showMessageDialog(this, "Game Over, " + playerName + "! Your score: " + score + "\n" + lb);
+        System.exit(0);
+    }
+
+    private void saveScore() {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter("leaderboard.txt", true))) {
+            bw.write(playerName + ": " + score);
+            bw.newLine();
+        } catch (IOException e) {
+            System.out.println("Leaderboard write error");
+        }
+    }
+
+    private void playSound(String fileName) {
+        try {
+            File soundFile = new File(fileName);
+            if (soundFile.exists()) {
+                AudioInputStream audio = AudioSystem.getAudioInputStream(soundFile);
+                Clip clip = AudioSystem.getClip();
+                clip.open(audio);
+                clip.start();
+            } else {
+                System.out.println("Sound error: " + fileName);
+            }
+        } catch (Exception e) {
+            System.out.println("Sound error: " + fileName);
+        }
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(() -> {
+            new FinanceQuestGame().setVisible(true);
+        });
+    }
+}
