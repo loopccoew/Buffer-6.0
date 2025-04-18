@@ -3,7 +3,7 @@
 ---
 
 ## **Project Title**
-**Fintellect: Smart Financial Planner**
+**Fintellect: Smart Investment Planner**
 
 ---
 
