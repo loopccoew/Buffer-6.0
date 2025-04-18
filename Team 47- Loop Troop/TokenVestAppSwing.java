@@ -398,7 +398,7 @@ public class TokenVestAppSwing {
 //        JScrollPane scrollPane = new JScrollPane(table);
 //        table.setFillsViewportHeight(true);
 //    
-//        // Show in JOptionPane
+//         Show in JOptionPane
 //        JOptionPane.showMessageDialog(null, scrollPane, "Property List", JOptionPane.INFORMATION_MESSAGE);
 //    }
 
