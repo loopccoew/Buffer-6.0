@@ -1,21 +1,20 @@
-from flask import Flask, render_template, request, redirect, url_for
+from flask import Flask, render_template, request, redirect
 from flask_sqlalchemy import SQLAlchemy
+import re, random
+import numpy as np
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
-from sumy.parsers.plaintext import PlaintextParser
-from sumy.summarizers.lsa import LsaSummarizer
-from sumy.summarizers.luhn import LuhnSummarizer
-from sumy.summarizers.text_rank import TextRankSummarizer
-
+from summa import summarizer
+from transformers import T5ForConditionalGeneration, T5Tokenizer
 
 app = Flask(__name__)
 
-# ✅ 1. Set up database configs
+#  ---------- DATABASE SETUP ---------
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///papers.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
-# ✅ 2. Define DB Model
+#  ---------- DATABASE MODELS ---------
 class Paper(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(100))
@@ -24,7 +23,27 @@ class Paper(db.Model):
     year = db.Column(db.Integer)
     summary = db.Column(db.Text)
 
-# Citation model to store related papers and similarity score
+with app.app_context():
+    db.create_all()
+
+#    sample_papers = [
+#    Paper(title="AI in Healthcare", authors="Aastha", publication="MedAI", year=2022, summary="This paper explores AI in healthcare and its applications."),
+#    Paper(title="ML for Diagnosis", authors="Harshit", publication="AIConf", year=2023, summary="This study investigates ML models for medical diagnosis."),
+#    Paper(title="AI in Radiology", authors="Biresh", publication="HealthTech", year=2021, summary="Using CNNs in radiology for image analysis."),
+#    Paper(title="Natural Language Processing for Clinical Text", authors="Chaitrali", publication="NLP4Health", year=2020, summary="This paper discusses NLP applications in analyzing clinical and medical records."),
+#    Paper(title="Reinforcement Learning for Drug Discovery", authors="Mehul", publication="BioAI", year=2023, summary="Explores how reinforcement learning is used for drug molecule optimization."),
+#    Paper(title="Generative Adversarial Networks for Medical Imaging", authors="Pranav", publication="MedVision", year=2021, summary="GANs are applied to synthesize high-quality medical images for training data augmentation."),
+#    Paper(title="Explainable AI in Medical Diagnostics", authors="Ananya", publication="XAIConf", year=2022, summary="This paper emphasizes the importance of explainable models in medical diagnosis systems."),
+#    Paper(title="AI-Powered Wearables for Health Monitoring", authors="Sanya", publication="SmartHealth", year=2023, summary="Explores the use of AI in analyzing data from wearable health devices."),
+#    Paper(title="Predictive Models for Pandemic Response", authors="Ritvik", publication="EpiAI", year=2020, summary="Analyzes how AI was used to predict outbreaks and manage healthcare resources during COVID-19."),
+#    Paper(title="AI for Mental Health Detection", authors="Ishita", publication="NeuroAI", year=2023, summary="Investigates sentiment analysis and emotion detection models for mental health prediction."),
+#]
+
+#    Add sample papers to the database
+#    db.session.add_all(sample_papers)
+#    db.session.commit()
+
+
 class Citation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     paper_id = db.Column(db.Integer, db.ForeignKey('paper.id'), nullable=False)
@@ -34,113 +53,113 @@ class Citation(db.Model):
     paper = db.relationship('Paper', foreign_keys=[paper_id], backref='citations_from')
     related_paper = db.relationship('Paper', foreign_keys=[related_paper_id], backref='citations_to')
 
-
-
-# ✅ 3. Create DB Tables
 with app.app_context():
     db.create_all()
 
 
+# ---------- SUMMARIZER FUNCTIONS ----------
+def split_into_sentences(text):
+    sentences = re.split(r'(?<=[.!?]) +', text.strip())
+    return [s for s in sentences if len(s.split()) > 2]
+
+def tfidf_cosine_summarizer(text, top_n=None):
+    sentences = split_into_sentences(text)
+    if len(sentences) < 3:
+        return "Not enough content to summarize."
+    top_n = top_n or max(3, int(0.7 * len(sentences)))
+    tfidf_vectorizer = TfidfVectorizer(stop_words='english')
+    tfidf_matrix = tfidf_vectorizer.fit_transform(sentences)
+    scores = cosine_similarity(tfidf_matrix).sum(axis=1)
+    ranked = np.argsort(scores)[::-1][:top_n]
+    selected = sorted(random.sample(ranked.tolist(), min(top_n, len(ranked))))
+    return ' '.join([sentences[i] for i in selected])
+
+def textrank_summarizer(text, top_n=None):
+    summary = summarizer.summarize(text, ratio=0.5)
+    return summary or "Summary not available due to content length or complexity."
+
+def abstractive_summarizer(text, top_n=None):
+    model = T5ForConditionalGeneration.from_pretrained("t5-small")
+    tokenizer = T5Tokenizer.from_pretrained("t5-small")
+    inputs = tokenizer.encode("summarize: " + text, return_tensors="pt", max_length=512, truncation=True)
+    ids = model.generate(inputs, max_length=250, min_length=100, length_penalty=2.0, num_beams=6, early_stopping=True)
+    return tokenizer.decode(ids[0], skip_special_tokens=True)
+
+def hybrid_summarizer(text, top_n=None):
+    return abstractive_summarizer(textrank_summarizer(text, top_n))
 
 
-    # Temporary script (add sample papers to the DB)
-    #sample_papers = [
-    #    Paper(title="ML for Diagnosis", authors="Harshit", publication="AIConf", year=2023, summary="This study investigates ML models for medical diagnosis."),
-    #    Paper(title="AI in Radiology", authors="Biresh", publication="HealthTech", year=2021, summary="Using CNNs in radiology for image analysis."),
-    #]
-
-     #Add sample papers to the database
-    #db.session.add_all(sample_papers)
-    #db.session.commit()
-
-# ✅ 4. Home route
+# ---------- ROUTES ----------
 @app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/textinsert')
 def home():
-    return render_template('index.html') 
+    return render_template('home2.html')
 
-# ✅ 5. Paper form route
-@app.route('/paper', methods=['GET', 'POST'])
-def paper_submit():
-    if request.method == 'POST':
-        try:
-            new_paper = Paper(
-                title=request.form['title'],
-                authors=request.form['authors'],
-                publication=request.form['publication'],
-                year=request.form['year'],
-                summary=request.form['summary']
-            )
-            db.session.add(new_paper)
-            db.session.commit()
-            return 'Paper submitted successfully!'
-        except Exception as e:
-            db.session.rollback()
-            return f'Error: {str(e)}'
-    return render_template('form.html')
+@app.route('/summarize', methods=['POST'])
+def summarize():
+    title = request.form['title']
+    author = request.form['author']
+    year = request.form['year']
+    text = request.form['text']
+    qualification = request.form['qualification'].lower()
 
-# ✅ 6. Vectorizing summaries (run after some papers exist)
-@app.route('/vectorize')
-def vectorize_papers():
-    papers = Paper.query.all()
-    all_summaries = [p.summary for p in papers]
+    if "school" in qualification:
+        summary = tfidf_cosine_summarizer(text, top_n=3)
+    elif "phd" in qualification:
+        summary = tfidf_cosine_summarizer(text, top_n=7)
+    else:
+        summary = textrank_summarizer(text, top_n=5)
 
-    if not all_summaries:
-        return "No papers in DB to vectorize."
-
-    vectorizer = TfidfVectorizer()
-    vectors = vectorizer.fit_transform(all_summaries)
-
-    return "Papers vectorized successfully!"
+    return render_template('summary.html', title=title, summary=summary)
 
 
-@app.route('/similarities')
-def get_similarities():
-    papers = Paper.query.all()
-    all_summaries = [p.summary for p in papers]
+@app.route('/generate_citations', methods=['POST'])
+def generate_citations():
+    title = request.form['title']
+    summary_text = request.form['summary']
 
-    if len(all_summaries) < 2:
-        return "Need at least two papers to compute similarity."
-
-    vectorizer = TfidfVectorizer()
-    vectors = vectorizer.fit_transform(all_summaries)
-
-    similarities = cosine_similarity(vectors)
-
-    # ✅ Clear existing citations before re-calculating
-    Citation.query.delete()
-
-    for i in range(len(papers)):
-        for j in range(i + 1, len(papers)):
-            score = similarities[i][j]
-            if score > 0.5:  # Threshold
-                c1 = Citation(paper_id=papers[i].id, related_paper_id=papers[j].id, similarity_score=score)
-                c2 = Citation(paper_id=papers[j].id, related_paper_id=papers[i].id, similarity_score=score)
-                db.session.add_all([c1, c2])
-    
+    # Save summarized paper only
+    new_paper = Paper(
+        title=title,
+        authors="Summarizer",
+        publication="Auto-generated",
+        year=2025,
+        summary=summary_text
+    )
+    db.session.add(new_paper)
     db.session.commit()
 
-    return "Similarity computation and citation creation done!"
+    # Vectorize all paper summaries
+    papers = Paper.query.all()
+    summaries = [p.summary for p in papers]
+    vectors = TfidfVectorizer().fit_transform(summaries)
+    sim_matrix = cosine_similarity(vectors)
 
+    # Clear old citations
+    Citation.query.delete()
+    db.session.commit()
 
+    # Add new citations (if similarity > 0.5)
+    for i, p1 in enumerate(papers):
+        for j, p2 in enumerate(papers):
+            if i != j and sim_matrix[i][j] > 0.5:
+                db.session.add(Citation(paper_id=p1.id, related_paper_id=p2.id, similarity_score=sim_matrix[i][j]))
+
+    db.session.commit()
+    return redirect(f"/citations/{new_paper.id}")
 
 
 @app.route('/citations/<int:paper_id>')
 def get_citations(paper_id):
     paper = Paper.query.get_or_404(paper_id)
     citations = Citation.query.filter_by(paper_id=paper_id).all()
-
-    related_papers = []
-    for citation in citations:
-        related = Paper.query.get(citation.related_paper_id)
-        if related:
-            related_papers.append((related, citation.similarity_score))  # Pass similarity score too
-
-    return render_template('citations.html', paper=paper, related_papers=related_papers)
+    related = [(Paper.query.get(c.related_paper_id), c.similarity_score) for c in citations]
+    return render_template('citations.html', paper=paper, related_papers=related)
 
 
-
-
-
-# ✅ 7. Run server
+# ---------- MAIN ----------
 if __name__ == '__main__':
     app.run(debug=True)
