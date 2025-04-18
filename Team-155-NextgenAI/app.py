@@ -94,7 +94,7 @@ def hybrid_summarizer(text, top_n=None):
 def index():
     return render_template('index.html')
 
-@app.route('/textinsert')
+@app.route('/upload')
 def home():
     return render_template('home2.html')
 
