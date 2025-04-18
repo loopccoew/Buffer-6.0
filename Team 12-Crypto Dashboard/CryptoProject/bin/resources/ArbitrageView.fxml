@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ui.ArbitrageViewController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <!-- Arbitrage Controls -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Min Profit:"/>
+        <Slider fx:id="minProfitSlider" min="0.1" max="5.0" value="0.5" 
+                showTickLabels="true" showTickMarks="true" prefWidth="200"/>
+        <Label fx:id="minProfitLabel"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ToggleButton fx:id="autoRefreshToggle" text="Auto Refresh"/>
+        <Button text="Refresh" onAction="#refreshArbitrage"/>
+    </HBox>
+    
+    <!-- Arbitrage Opportunities Table -->
+    <TableView fx:id="arbitrageTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="pairCol" text="Trading Pair" prefWidth="150"/>
+            <TableColumn fx:id="buyExchangeCol" text="Buy At" prefWidth="120"/>
+            <TableColumn fx:id="buyPriceCol" text="Buy Price" prefWidth="120"/>
+            <TableColumn fx:id="sellExchangeCol" text="Sell At" prefWidth="120"/>
+            <TableColumn fx:id="sellPriceCol" text="Sell Price" prefWidth="120"/>
+            <TableColumn fx:id="volumeCol" text="Volume" prefWidth="150"/>
+            <TableColumn fx:id="profitCol" text="Profit %" prefWidth="100"/>
+            <TableColumn fx:id="profitUsdCol" text="Profit USD" prefWidth="120"/>
+        </columns>
+        <placeholder>
+            <Label text="No arbitrage opportunities found"/>
+        </placeholder>
+    </TableView>
+    
+    <!-- Stats Panel -->
+    <TitledPane text="Statistics" expanded="true">
+        <GridPane hgap="10" vgap="5">
+            <Label text="Total Opportunities:" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            <Label fx:id="totalOppsLabel" GridPane.columnIndex="1" GridPane.rowIndex="0"/>
+            <Label text="Avg. Profit %:" GridPane.columnIndex="2" GridPane.rowIndex="0"/>
+            <Label fx:id="avgProfitLabel" GridPane.columnIndex="3" GridPane.rowIndex="0"/>
+            <Label text="Max Profit %:" GridPane.columnIndex="4" GridPane.rowIndex="0"/>
+            <Label fx:id="maxProfitLabel" GridPane.columnIndex="5" GridPane.rowIndex="0"/>
+        </GridPane>
+    </TitledPane>
+    
+    <!-- Status Bar -->
+    <HBox spacing="10" styleClass="status-bar">
+        <Label fx:id="statusLabel"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Label fx:id="lastUpdateLabel"/>
+    </HBox>
+</VBox>

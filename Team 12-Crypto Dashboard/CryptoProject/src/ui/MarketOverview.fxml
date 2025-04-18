@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ui.MarketOverviewController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <HBox spacing="10">
+        <TextField fx:id="searchBar" promptText="Search cryptocurrency..." HBox.hgrow="ALWAYS"/>
+        <Button text="Search" onAction="#search"/>
+        <Button text="Refresh" onAction="#refreshData"/>
+    </HBox>
+    
+    <TableView fx:id="cryptoTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="nameCol" text="Name"/>
+            <TableColumn fx:id="symbolCol" text="Symbol"/>
+            <TableColumn fx:id="priceCol" text="Price (USD)"/>
+            <TableColumn fx:id="changeCol" text="24h Change (%)"/>
+            <TableColumn fx:id="highCol" text="24h High"/>
+            <TableColumn fx:id="lowCol" text="24h Low"/>
+            <TableColumn fx:id="marketCapCol" text="Market Cap"/>
+            <TableColumn fx:id="volumeCol" text="Volume"/>
+        </columns>
+    </TableView>
+    
+    <Label fx:id="statusBar" text="Status: Ready"/>
+</VBox>

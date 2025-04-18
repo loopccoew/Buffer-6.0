@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.ProgressIndicator?>
+
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="ui.CryptoDashboardController">
+    <top>
+        <HBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <TextField fx:id="searchBar" promptText="Search cryptocurrency..." HBox.hgrow="ALWAYS"/>
+            <Button text="Search" onAction="#search"/>
+            <Button text="Refresh" onAction="#refreshData"/>
+            <Button text="Find Arbitrage" onAction="#refreshArbitrage"/>
+        </HBox>
+    </top>
+
+    <center>
+        <StackPane>
+            <SplitPane orientation="VERTICAL">
+                <!-- Crypto Table Section -->
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="Crypto Market Overview"/>
+                    <TableView fx:id="cryptoTable" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="nameCol" text="Name" prefWidth="150"/>
+                            <TableColumn fx:id="symbolCol" text="Symbol" prefWidth="100"/>
+                            <TableColumn fx:id="priceCol" text="Price (USD)" prefWidth="120"/>
+                            <TableColumn fx:id="change1hCol" text="1h Change (%)" prefWidth="100"/>
+                            <TableColumn fx:id="change24hCol" text="24h Change (%)" prefWidth="100"/>
+                            <TableColumn fx:id="change7dCol" text="7d Change (%)" prefWidth="100"/>
+                            <TableColumn fx:id="change30dCol" text="30d Change (%)" prefWidth="100"/>
+                            <TableColumn fx:id="changeCol" text="24h Change (%)" prefWidth="120"/>
+                            <TableColumn fx:id="sevenDayGraphCol" text="7d Chart" prefWidth="200"/>
+                            <TableColumn fx:id="highCol" text="24h High" prefWidth="120"/>
+                            <TableColumn fx:id="lowCol" text="24h Low" prefWidth="120"/>
+                            <TableColumn fx:id="marketCapCol" text="Market Cap" prefWidth="150"/>
+                        </columns>
+                    </TableView>
+                </VBox>
+
+                <!-- Graph Visualization Section -->
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="Graph Visualization"/>
+                    <Pane fx:id="graphPane" prefHeight="200" style="-fx-background-color: white;"/>
+                    <HBox spacing="10">
+                        <Button text="Visualize Graph" onAction="#visualizeCurrentGraph"/>
+                        <Button text="Show Path" onAction="#showShortestPath"/>
+                    </HBox>
+                </VBox>
+
+                <!-- Arbitrage Table Section -->
+                <VBox spacing="10">
+                    <padding>
+                        <Insets top="10" right="10" bottom="10" left="10"/>
+                    </padding>
+                    <Label text="Arbitrage Opportunities" styleClass="section-header"/>
+                    <TableView fx:id="arbitrageTable" prefHeight="300">
+                        <columns>
+                            <TableColumn fx:id="marketCol" text="Market" prefWidth="150"/>
+                            <TableColumn fx:id="pairCol" text="Pair" prefWidth="100"/>
+                            <TableColumn fx:id="buyPriceCol" text="Buy Price" prefWidth="120"/>
+                            <TableColumn fx:id="sellPriceCol" text="Sell Price" prefWidth="120"/>
+                            <TableColumn fx:id="profitCol" text="Profit (%)" prefWidth="100"/>
+                            <TableColumn fx:id="volumeCol" text="24h Volume" prefWidth="150"/>
+                        </columns>
+                        <placeholder>
+                            <Label text="No arbitrage opportunities found"/>
+                        </placeholder>
+                    </TableView>
+                    <HBox spacing="10" alignment="CENTER_LEFT">
+                        <Label text="Min. Profit:" />
+                        <Slider fx:id="minProfitSlider" min="0.01" max="5.0" value="0.05" />
+                        <Label fx:id="minProfitLabel" text="0.05%" />
+                        <Button text="Refresh" onAction="#refreshArbitrage" />
+                        <Button text="Auto-Refresh" fx:id="autoRefreshButton" onAction="#toggleAutoRefresh" />
+                    </HBox>
+                </VBox>
+            </SplitPane>
+
+            <!-- Loading overlay -->
+            <StackPane fx:id="loadingOverlay" visible="false">
+                <Rectangle fill="#000000" opacity="0.3"/>
+                <VBox alignment="CENTER" spacing="10">
+                    <ProgressIndicator fx:id="loadingIndicator"/>
+                    <Label fx:id="errorLabel" styleClass="error-label" visible="false"/>
+                </VBox>
+            </StackPane>
+        </StackPane>
+    </center>
+
+    <bottom>
+        <VBox spacing="10">
+            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>
+            <!-- Currency Conversion Section -->
+            <HBox spacing="10">
+                <TextField fx:id="currencyInput" promptText="Amount"/>
+                <ChoiceBox fx:id="currencyFrom" prefWidth="100"/>
+                <ChoiceBox fx:id="currencyTo" prefWidth="100"/>
+                <Button text="Convert" onAction="#convertCurrency"/>
+            </HBox>
+            <Label fx:id="conversionResult" text="Conversion Result: "/>
+
+            <!-- Best Conversion Path -->
+            <HBox spacing="10">
+                <Button text="Find Best Conversion Path" onAction="#findBestConversion"/>
+            </HBox>
+            <Label fx:id="statusBar" text="Status: Ready"/>
+        </VBox>
+    </bottom>
+</BorderPane>

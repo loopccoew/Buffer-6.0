@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<TabPane xmlns:fx="http://javafx.com/fxml" fx:controller="ui.MainViewController">
+    <tabs>
+        <Tab text="Market Overview" closable="false">
+            <fx:include source="MarketOverview.fxml"/>
+        </Tab>
+        <Tab text="Arbitrage" closable="false">
+            <fx:include source="ArbitrageView.fxml"/>
+        </Tab>
+    </tabs>
+</TabPane>

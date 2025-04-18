@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ui.MarketViewController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <!-- Top Control Bar -->
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <TextField fx:id="searchBar" promptText="Search cryptocurrencies..." HBox.hgrow="ALWAYS"/>
+        <ComboBox fx:id="timeframeCombo" prefWidth="120"/>
+        <ToggleButton fx:id="autoRefreshToggle" text="Auto Refresh"/>
+        <Button text="Refresh" onAction="#refreshData"/>
+        <Label fx:id="lastUpdateLabel"/>
+    </HBox>
+    
+    <!-- Market Overview Section -->
+    <TitledPane text="Market Overview" expanded="true">
+        <VBox spacing="10">
+            <HBox spacing="10" alignment="CENTER">
+                <Label text="Market Cap: " styleClass="market-stat"/>
+                <Label fx:id="totalMarketCap" styleClass="market-value"/>
+                <Label text="24h Volume: " styleClass="market-stat"/>
+                <Label fx:id="total24hVolume" styleClass="market-value"/>
+                <Label text="BTC Dominance: " styleClass="market-stat"/>
+                <Label fx:id="btcDominance" styleClass="market-value"/>
+            </HBox>
+        </VBox>
+    </TitledPane>
+    
+    <!-- Crypto Table with Live Updates -->
+    <TableView fx:id="cryptoTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="rankCol" text="#" prefWidth="50"/>
+            <TableColumn fx:id="iconCol" text="" prefWidth="40"/>
+            <TableColumn fx:id="nameCol" text="Name" prefWidth="200"/>
+            <TableColumn fx:id="priceCol" text="Price" prefWidth="120"/>
+            <TableColumn fx:id="change1hCol" text="1h %" prefWidth="80"/>
+            <TableColumn fx:id="change24hCol" text="24h %" prefWidth="80"/>
+            <TableColumn fx:id="change7dCol" text="7d %" prefWidth="80"/>
+            <TableColumn fx:id="volumeCol" text="24h Volume" prefWidth="150"/>
+            <TableColumn fx:id="marketCapCol" text="Market Cap" prefWidth="150"/>
+            <TableColumn fx:id="chartCol" text="7d Chart" prefWidth="200"/>
+        </columns>
+    </TableView>
+    
+    <!-- Bottom Section with Charts -->
+    <SplitPane dividerPositions="0.5">
+        <!-- Price Chart -->
+        <VBox>
+            <TitledPane text="Price Chart" expanded="true">
+                <LineChart fx:id="priceChart" createSymbols="false" animated="false"/>
+            </TitledPane>
+        </VBox>
+        
+        <!-- Trading Volume Chart -->
+        <VBox>
+            <TitledPane text="Volume Chart" expanded="true">
+                <BarChart fx:id="volumeChart" animated="false"/>
+            </TitledPane>
+        </VBox>
+    </SplitPane>
+</VBox>

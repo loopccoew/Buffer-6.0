@@ -1,0 +1,114 @@
+.table-view {
+    -fx-background-color: #1e1e1e;
+    -fx-table-cell-border-color: #2e2e2e;
+    background-color: #2a2a2a;
+    /* Standard property */
+}
+
+.table-view .column-header-background {
+    -fx-background-color: #1e1e1e;
+    background-color: #1e1e1e;
+    /* Standard property */
+}
+
+.table-view .column-header,
+.table-view .cell {
+    -fx-text-fill: white;
+    -fx-font-size: 16px;
+    font-size: 16px;
+    /* Standard property */
+}
+
+.table-view .column-header {
+    -fx-background-color: #2e2e2e;
+    -fx-text-fill: white;
+}
+
+.label {
+    -fx-text-fill: white;
+}
+
+.root {
+    -fx-background-color: #1e1e1e;
+    background-color: #1e1e1e;
+    /* Standard property */
+}
+
+.button {
+    -fx-background-color: #f0b90b;
+    background-color: #f0b90b;
+    /* Standard property */
+    -fx-text-fill: black;
+}
+
+.button:hover {
+    -fx-background-color: #ffcd3c;
+}
+
+.table-view .cell:filled:selected,
+.table-view .cell:focused {
+    -fx-background-color: #f0b90b;
+    background-color: #f0b90b;
+    /* Standard property */
+}
+
+.table-row-cell {
+    -fx-background-color: #1e1e1e;
+    -fx-text-fill: white;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: #252525;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #3e3e3e;
+}
+
+.table-column {
+    -fx-alignment: CENTER-RIGHT;
+}
+
+.table-cell {
+    -fx-text-fill: white;
+}
+
+.dark-theme {
+    -fx-background-color: #121212;
+    -fx-text-fill: white;
+}
+
+.highlight-text {
+    -fx-text-fill: #f0b90b;
+    -fx-font-weight: bold;
+}
+
+.choice-box {
+    -fx-background-color: #2e2e2e;
+    -fx-mark-color: #f0b90b;
+}
+
+.choice-box .context-menu {
+    -fx-background-color: #2e2e2e;
+}
+
+.choice-box .menu-item:focused {
+    -fx-background-color: #f0b90b;
+}
+
+.text-field {
+    -fx-background-color: #2e2e2e;
+    -fx-text-fill: white;
+}
+
+.check-box {
+    -fx-text-fill: white;
+}
+
+.check-box .box {
+    -fx-background-color: #2e2e2e;
+}
+
+.check-box:selected .mark {
+    -fx-background-color: #f0b90b;
+}

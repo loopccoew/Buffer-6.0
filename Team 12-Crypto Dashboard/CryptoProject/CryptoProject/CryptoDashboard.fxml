@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="ui.CryptoDashboardController">
+    <top>    <top>
+        <HBox spacing="10">        <HBox spacing="10">
+            <padding>            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>            </padding>
+            <TextField fx:id="searchBar" promptText="Search cryptocurrency..." HBox.hgrow="ALWAYS"/>            <TextField fx:id="searchBar" promptText="Search cryptocurrency..." HBox.hgrow="ALWAYS"/>
+            <Button text="Search" onAction="#search"/>            <Button text="Search" onAction="#search"/>
+            <Button text="Refresh Data" onAction="#refreshData"/>            <Button text="Refresh Data" onAction="#refreshData"/>
+            <Button text="Refresh Arbitrage" onAction="#refreshArbitrage"/>            <Button text="Refresh Arbitrage" onAction="#refreshArbitrage"/>
+        </HBox>        </HBox>
+    </top>    </top>
+
+    <center>    <center>
+        <SplitPane orientation="VERTICAL">        <SplitPane orientation="VERTICAL">
+            <!-- Crypto Table Section -->            <!-- Crypto Table Section -->
+            <VBox spacing="10">            <VBox spacing="10">
+                <padding>                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>                </padding>
+                <Label text="Crypto Market Overview"/>                <Label text="Crypto Market Overview"/>
+                <TableView fx:id="cryptoTable" prefHeight="300">                <TableView fx:id="cryptoTable" prefHeight="300">
+                    <columns>                    <columns>
+                        <TableColumn fx:id="symbolCol" text="Symbol"/>                        <TableColumn fx:id="symbolCol" text="Symbol"/>
+                        <TableColumn fx:id="priceCol" text="Price"/>                        <TableColumn fx:id="priceCol" text="Price"/>
+                        <TableColumn fx:id="changeCol" text="Change (%)"/>                        <TableColumn fx:id="changeCol" text="Change (%)"/>
+                        <TableColumn fx:id="highCol" text="24h High"/>                        <TableColumn fx:id="highCol" text="24h High"/>
+                        <TableColumn fx:id="lowCol" text="24h Low"/>                        <TableColumn fx:id="lowCol" text="24h Low"/>
+                        <TableColumn fx:id="graphCol" text="Trend"/>                        <TableColumn fx:id="graphCol" text="Trend"/>
+                    </columns>                    </columns>
+                </TableView>                </TableView>
+            </VBox>            </VBox>
+
+            <!-- Arbitrage Table Section -->            <!-- Arbitrage Table Section -->
+            <VBox spacing="10">            <VBox spacing="10">
+                <padding>                <padding>
+                    <Insets top="10" right="10" bottom="10" left="10"/>                    <Insets top="10" right="10" bottom="10" left="10"/>
+                </padding>                </padding>
+                <Label text="Arbitrage Opportunities" />                <Label text="Arbitrage Opportunities" />
+                <TableView fx:id="arbitrageTable" prefHeight="200">                <TableView fx:id="arbitrageTable" prefHeight="200">
+                    <columns>                    <columns>
+                        <TableColumn fx:id="marketCol" text="Market"/>                        <TableColumn fx:id="marketCol" text="Market"/>
+                        <TableColumn fx:id="pairCol" text="Pair"/>                        <TableColumn fx:id="pairCol" text="Pair"/>
+                        <TableColumn fx:id="buyPriceCol" text="Buy Price"/>                        <TableColumn fx:id="buyPriceCol" text="Buy Price"/>
+                        <TableColumn fx:id="sellPriceCol" text="Sell Price"/>                        <TableColumn fx:id="sellPriceCol" text="Sell Price"/>
+                        <TableColumn fx:id="profitCol" text="Profit (%)"/>                        <TableColumn fx:id="profitCol" text="Profit (%)"/>
+                    </columns>                    </columns>
+                </TableView>                </TableView>
+                <Label fx:id="profitPercentageLabel" text="Profit: N/A"/>                <Label fx:id="profitPercentageLabel" text="Profit: N/A"/>
+                <Label fx:id="arbitrageAlert"/>                <Label fx:id="arbitrageAlert"/>
+                <Button text="View Details" onAction="#displayArbitrageDetails"/>                <Button text="View Details" onAction="#displayArbitrageDetails"/>
+            </VBox>            </VBox>
+        </SplitPane>        </SplitPane>
+    </center>    </center>
+
+    <bottom>    <bottom>
+        <VBox spacing="10">        <VBox spacing="10">
+            <padding>            <padding>
+                <Insets top="10" right="10" bottom="10" left="10"/>                <Insets top="10" right="10" bottom="10" left="10"/>
+            </padding>            </padding>
+            <!-- Currency Conversion Section -->            <!-- Currency Conversion Section -->
+            <HBox spacing="10">            <HBox spacing="10">
+                <TextField fx:id="currencyInput" promptText="Amount"/>                <TextField fx:id="currencyInput" promptText="Amount"/>
+                <ChoiceBox fx:id="currencyFrom" prefWidth="100"/>                <ChoiceBox fx:id="currencyFrom" prefWidth="100"/>
+                <ChoiceBox fx:id="currencyTo" prefWidth="100"/>                <ChoiceBox fx:id="currencyTo" prefWidth="100"/>
+                <Button text="Convert" onAction="#convertCurrency"/>                <Button text="Convert" onAction="#convertCurrency"/>
+            </HBox>            </HBox>
+            <Label fx:id="conversionResult" text="Conversion Result: "/>            <Label fx:id="conversionResult" text="Conversion Result: "/>
+
+            <!-- Best Conversion Path -->            <!-- Best Conversion Path -->
+            <HBox spacing="10">            <HBox spacing="10">
+                <Button text="Find Best Conversion Path" onAction="#findBestConversion"/>                <Button text="Find Best Conversion Path" onAction="#findBestConversion"/>
+            </HBox></BorderPane>    </bottom>        </VBox>            <Label fx:id="statusBar" text="Status: Ready"/>            </HBox>                <Button text="Find Best Conversion Path" onAction="#findBestConversion"/>            <HBox spacing="10">            <!-- Best Conversion Path -->            <Label fx:id="conversionResult" text="Conversion Result: "/>            </HBox>                <Button text="Convert" onAction="#convertCurrency"/>                <ChoiceBox fx:id="currencyTo" prefWidth="100"/>                <ChoiceBox fx:id="currencyFrom" prefWidth="100"/>                <TextField fx:id="currencyInput" promptText="Amount"/>            <HBox spacing="10">            <!-- Currency Conversion Section -->            </padding>                <Insets top="10" right="10" bottom="10" left="10"/>            <padding>        <VBox spacing="10">    <bottom>    </center>        </SplitPane>            </VBox>                <Button text="View Details" onAction="#displayArbitrageDetails"/>                <Label fx:id="arbitrageAlert"/>                <Label fx:id="profitPercentageLabel" text="Profit: N/A"/>                </TableView>                    </columns>                        <TableColumn fx:id="profitCol" text="Profit (%)"/>                        <TableColumn fx:id="sellPriceCol" text="Sell Price"/>                        <TableColumn fx:id="buyPriceCol" text="Buy Price"/>                        <TableColumn fx:id="pairCol" text="Pair"/>                        <TableColumn fx:id="marketCol" text="Market"/>                    <columns>                <TableView fx:id="arbitrageTable" prefHeight="200">                <Label text="Arbitrage Opportunities" />                </padding>                    <Insets top="10" right="10" bottom="10" left="10"/>                <padding>            <VBox spacing="10">            <!-- Arbitrage Table Section -->            </VBox>                </TableView>                    </columns>                        <TableColumn fx:id="graphCol" text="Trend"/>                        <TableColumn fx:id="lowCol" text="24h Low"/>                        <TableColumn fx:id="highCol" text="24h High"/>                        <TableColumn fx:id="changeCol" text="Change (%)"/>                        <TableColumn fx:id="priceCol" text="Price"/>                        <TableColumn fx:id="symbolCol" text="Symbol"/>                    <columns>                <TableView fx:id="cryptoTable" prefHeight="300">                <Label text="Crypto Market Overview"/>                </padding>                    <Insets top="10" right="10" bottom="10" left="10"/>                <padding>            <VBox spacing="10">            <!-- Crypto Table Section -->        <SplitPane orientation="VERTICAL">    <center>    </top>        </HBox>            <Button text="Refresh Arbitrage" onAction="#refreshArbitrage"/>            <Button text="Refresh Data" onAction="#refreshData"/>            <Button text="Search" onAction="#search"/>            <TextField fx:id="searchBar" promptText="Search cryptocurrency..." HBox.hgrow="ALWAYS"/>            </padding>                <Insets top="10" right="10" bottom="10" left="10"/>            <padding>        <HBox spacing="10">    <top><BorderPane xmlns:fx="http://javafx.com/fxml" fx:controller="ui.CryptoDashboardController"><?import javafx.geometry.Insets?><?import javafx.scene.layout.*?><?import javafx.scene.control.*?><?import javafx.scene.chart.*?>    <top>            </HBox>
+        <HBox spacing="10">
+            <Label fx:id="statusBar" text="Status: Ready"/>            <padding>            <Label fx:id="statusBar" text="Status: Ready"/>
+        </VBox>                <Insets top="10" right="10" bottom="10" left="10"/>        </VBox>
+    </bottom>            </padding>    </bottom>
+</BorderPane>

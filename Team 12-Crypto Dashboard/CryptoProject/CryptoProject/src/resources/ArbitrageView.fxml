@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ui.ArbitrageViewController" styleClass="dark-theme" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Button text="Find Opportunities" onAction="#findArbitrage"/>
+        <CheckBox fx:id="autoRefresh" text="Auto-refresh" selected="true"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <ChoiceBox fx:id="languageChoice"/>
+    </HBox>
+
+    <TableView fx:id="arbitrageTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="marketCol" text="Market" prefWidth="150"/>
+            <TableColumn fx:id="pairCol" text="Pair" prefWidth="120"/>
+            <TableColumn fx:id="buyPriceCol" text="Buy Price" prefWidth="120"/>
+            <TableColumn fx:id="sellPriceCol" text="Sell Price" prefWidth="120"/>
+            <TableColumn fx:id="profitCol" text="Profit (%)" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <Label fx:id="statusBar" text="Ready"/>
+</VBox>

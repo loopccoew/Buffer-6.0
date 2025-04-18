@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns="http://javafx.com/javafx"
+      xmlns:fx="http://javafx.com/fxml"
+      fx:controller="ui.ArbitrageViewController"
+      spacing="10" padding="15">
+
+    <Label text="Arbitrage Opportunities" style="-fx-font-size: 18px; -fx-font-weight: bold;" />
+
+    <!-- Filter and extra action controls -->
+    <HBox spacing="10">
+        <Label text="Min Profit (%)" />
+        <TextField fx:id="minProfitField" promptText="e.g. 1.5" />
+        <Button text="Apply Filter" onAction="#applyProfitFilter" />
+        <CheckBox fx:id="highlightToggle" text="Highlight > 5%" />
+        <Button fx:id="exportCsvButton" text="Export CSV" />
+    </HBox>
+
+    <!-- Arbitrage table -->
+    <TableView fx:id="arbitrageTable" prefHeight="300">
+        <columns>
+            <TableColumn fx:id="marketCol" text="Market/Exchange" prefWidth="120"/>
+            <TableColumn fx:id="pairCol" text="Pair" prefWidth="100"/>
+            <TableColumn fx:id="buyPriceCol" text="Buy Price" prefWidth="100"/>
+            <TableColumn fx:id="sellPriceCol" text="Sell Price" prefWidth="100"/>
+            <TableColumn fx:id="profitCol" text="Profit (%)" prefWidth="100"/>
+        </columns>
+    </TableView>
+
+    <!-- Bar Chart for Top 5 Opportunities -->
+    <BarChart fx:id="profitBarChart" title="Top 5 Opportunities" animated="false" prefHeight="300">
+        <xAxis>
+            <CategoryAxis label="Opportunity"/>
+        </xAxis>
+        <yAxis>
+            <NumberAxis label="Profit (%)"/>
+        </yAxis>
+    </BarChart>
+
+</VBox>

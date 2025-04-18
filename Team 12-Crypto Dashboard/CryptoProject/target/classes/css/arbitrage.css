@@ -1,0 +1,13 @@
+.table-view {
+    -fx-font-size: 13px;
+    -fx-selection-bar: #cce5ff;
+    -fx-selection-bar-non-focused: #e2e3e5;
+}
+
+.table-column-header {
+    -fx-font-weight: bold;
+}
+
+.table-row-cell:filled:selected {
+    -fx-background-color: #f0f8ff;
+}
