@@ -1,10 +1,12 @@
 import javax.swing.*;
+import javax.swing.table.DefaultTableModel;
+
 import java.awt.*;
 import java.awt.event.*;
 import java.time.LocalDate;
 import java.util.*;
 import java.util.List;
-
+  
 class User {
     int id;
     String username;
@@ -399,79 +401,85 @@ public class TokenVestAppSwing {
 //        // Show in JOptionPane
 //        JOptionPane.showMessageDialog(null, scrollPane, "Property List", JOptionPane.INFORMATION_MESSAGE);
 //    }
+
+
     public static void viewPropertiesUI() {
-        JFrame frame = new JFrame("View Properties");
-        frame.setSize(600, 400);
-        frame.setLayout(new BorderLayout());
+    JFrame frame = new JFrame("View Properties");
+    frame.setSize(800, 400);
+    frame.setLayout(new BorderLayout());
 
-        // Dropdown options
-        String[] sortOptions = {
-            "Sort by: Default",
-            "Price: Low to High",
-            "Price: High to Low",
-            "Location: A to Z",
-            "Availability: Most to Least",
-            "KYC: Pending First",
-            "KYC: Approved First"
-        };
+    String[] sortOptions = {
+        "Sort by: Default",
+        "Price: Low to High",
+        "Price: High to Low",
+        "Location: A to Z",
+        "Availability: Most to Least",
+        "KYC: Pending First",
+        "KYC: Approved First"
+    };
 
-        JComboBox<String> sortDropdown = new JComboBox<>(sortOptions);
+    JComboBox<String> sortDropdown = new JComboBox<>(sortOptions);
+    JButton refreshBtn = new JButton("Apply Sort");
 
-        JTextArea textArea = new JTextArea();
-        textArea.setEditable(false);
-        JScrollPane scrollPane = new JScrollPane(textArea);
+    // Table model and table
+    String[] columnNames = {"ID", "Name", "Location", "₹ Total Price", "Available Tokens", "KYC Status", "Token Price"};
+    DefaultTableModel tableModel = new DefaultTableModel(columnNames, 0);
+    JTable table = new JTable(tableModel);
+    JScrollPane scrollPane = new JScrollPane(table);
 
-        JButton refreshBtn = new JButton("Apply Sort");
+    // Populate table with sorted properties
+    ActionListener showSortedProps = e -> {
+        List<Property> sortedProps = new ArrayList<>(propertyMap.values());
+        String selected = (String) sortDropdown.getSelectedItem();
 
-        // Sorting and displaying properties
-        ActionListener showSortedProps = e -> {
-            List<Property> sortedProps = new ArrayList<>(propertyMap.values());
-            String selected = (String) sortDropdown.getSelectedItem();
+        if (selected.equals("Price: Low to High")) {
+            sortedProps.sort(Comparator.comparingDouble(p -> p.totalPrice));
+        } else if (selected.equals("Price: High to Low")) {
+            sortedProps.sort((p1, p2) -> Double.compare(p2.totalPrice, p1.totalPrice));
+        } else if (selected.equals("Location: A to Z")) {
+            sortedProps.sort(Comparator.comparing(p -> p.location.toLowerCase()));
+        } else if (selected.equals("Availability: Most to Least")) {
+            sortedProps.sort((p1, p2) -> Integer.compare(p2.availableTokens, p1.availableTokens));
+        } else if (selected.equals("KYC: Pending First")) {
+            sortedProps.sort(Comparator.comparing(p -> !p.kycStatus.equals("Pending")));
+        } else if (selected.equals("KYC: Approved First")) {
+            sortedProps.sort(Comparator.comparing(p -> !p.kycStatus.equals("Approved")));
+        }
 
-            if (selected.equals("Price: Low to High")) {
-                sortedProps.sort(Comparator.comparingDouble(p -> p.totalPrice));
-            } else if (selected.equals("Price: High to Low")) {
-                sortedProps.sort((p1, p2) -> Double.compare(p2.totalPrice, p1.totalPrice));
-            } else if (selected.equals("Location: A to Z")) {
-                sortedProps.sort(Comparator.comparing(p -> p.location.toLowerCase()));
-            } else if (selected.equals("Availability: Most to Least")) {
-                sortedProps.sort((p1, p2) -> Integer.compare(p2.availableTokens, p1.availableTokens));
-            } else if (selected.equals("KYC: Pending First")) {
-                sortedProps.sort(Comparator.comparing(p -> !p.kycStatus.equals("Pending")));
-            } else if (selected.equals("KYC: Approved First")) {
-                sortedProps.sort(Comparator.comparing(p -> !p.kycStatus.equals("Approved")));
-            }
+        tableModel.setRowCount(0); // Clear previous rows
 
-            StringBuilder sb = new StringBuilder();
-            for (Property p : sortedProps) {
-                sb.append("ID: ").append(p.propertyId)
-                  .append(", Name: ").append(p.name)
-                  .append(", Location: ").append(p.location)
-                  .append(", ₹").append(p.totalPrice)
-                  .append(", Available: ").append(p.availableTokens)
-                  .append(", KYC: ").append(p.kycStatus)
-                  .append(", Token Price: ").append(p.getTokenPrice())
-                  .append("\n");
-            }
+        for (Property p : sortedProps) {
+            Object[] row = {
+                p.propertyId,
+                p.name,
+                p.location,
+                "₹" + p.totalPrice,
+                p.availableTokens,
+                p.kycStatus,
+                "₹" + p.getTokenPrice()
+            };
+            tableModel.addRow(row);
+        }
 
-            textArea.setText(sb.length() == 0 ? "No properties found." : sb.toString());
-        };
+        if (tableModel.getRowCount() == 0) {
+            JOptionPane.showMessageDialog(frame, "No properties found.");
+        }
+    };
 
-        refreshBtn.addActionListener(showSortedProps);
-        showSortedProps.actionPerformed(null); // Initial call to show default listing
+    refreshBtn.addActionListener(showSortedProps);
+    showSortedProps.actionPerformed(null); // Show default on load
 
-        // Top Panel
-        JPanel topPanel = new JPanel(new BorderLayout());
-        topPanel.add(sortDropdown, BorderLayout.CENTER);
-        topPanel.add(refreshBtn, BorderLayout.EAST);
+    JPanel topPanel = new JPanel(new BorderLayout());
+    topPanel.add(sortDropdown, BorderLayout.CENTER);
+    topPanel.add(refreshBtn, BorderLayout.EAST);
 
-        frame.add(topPanel, BorderLayout.NORTH);
-        frame.add(scrollPane, BorderLayout.CENTER);
+    frame.add(topPanel, BorderLayout.NORTH);
+    frame.add(scrollPane, BorderLayout.CENTER);
 
-        frame.setLocationRelativeTo(null);
-        frame.setLocationRelativeTo(null);
-        frame.setVisible(true);
-    }
+    frame.setLocationRelativeTo(null);
+    frame.setVisible(true);
+}
+
 
 
     public static void updateKYCUI() {
