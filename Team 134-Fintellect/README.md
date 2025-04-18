@@ -1,4 +1,4 @@
-### **README: Fintellect - Smart Financial Planner**
+### **README: Fintellect - Smart Investment Planner**
 
 ---
 
