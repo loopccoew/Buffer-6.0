@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+    <title>Register as Recipient</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <nav>
+        <div><strong>Blood Donation App</strong></div>
+        <div>
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+        </div>
+    </nav>
+
+    <h1>Recipient Registration</h1>
+    <form method="post" action="./register-recipient">
+        <table>
+            <tr><th>Name</th><td><input type="text" name="name" required></td></tr>
+            <tr><th>Age</th><td><input type="number" name="age" required></td></tr>
+            <tr><th>Blood Group</th>
+                <td>
+                    <select name="bloodGroup" required>
+                        <option value="">Select</option>
+                        <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+                        <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><th>Address</th><td><input type="text" name="address" required></td></tr>
+            <tr><th>Contact</th><td><input type="text" name="contact" required></td></tr>
+            <tr><th>Urgency</th>
+                <td>
+                    <select name="urgency">
+                        <option>HIGH</option><option>MEDIUM</option><option>LOW</option>
+                    </select>
+                </td>
+            </tr>
+            <tr><th>Required Date</th><td><input type="date" name="date" required></td></tr>
+            <tr><td colspan="2" style="text-align:center;"><input type="submit" value="Register as Recipient"></td></tr>
+        </table>
+    </form>
+
+</body>
+</html>
