@@ -1,4 +1,4 @@
-import webbrowser
+import webbrowser     # Allows your app to open URLs in the default web browser (used later for Google Maps).
 from db import get_connection
 
 
@@ -6,7 +6,7 @@ def get_location_graph():
     connection = get_connection()
     cursor = connection.cursor()
 
-    base_graph = {
+    base_graph = {     #map of 30 locations where each key is location_id whose value is dictionary of neighbouring ids and the base distance/weight between them 
         1: {2: 10, 3: 15}, 2: {3: 25}, 3: {4: 30}, 4: {5: 5}, 5: {6: 20},
         6: {7: 35}, 7: {8: 10}, 8: {9: 15}, 9: {10: 40}, 10: {11: 10},
         11: {12: 25}, 12: {13: 5}, 13: {14: 20}, 14: {15: 15}, 15: {16: 25},
@@ -27,7 +27,7 @@ def get_location_graph():
             graph[node] = {}
         for neighbor, base_weight in neighbors.items():
             penalty = danger_scores.get(node, 0) * danger_penalty
-            adjusted_weight = max(base_weight - penalty, 1)
+            adjusted_weight = base_weight + penalty
 
             graph[node][neighbor] = adjusted_weight
 
@@ -35,7 +35,7 @@ def get_location_graph():
             if neighbor not in graph:
                 graph[neighbor] = {}
             reverse_penalty = danger_scores.get(neighbor, 0) * danger_penalty
-            reverse_weight = max(base_weight - reverse_penalty, 1)
+            reverse_weight = base_weight + reverse_penalty
 
             graph[neighbor][node] = reverse_weight
 
