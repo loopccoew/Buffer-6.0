@@ -95,36 +95,6 @@ def open_offline_report_window(user):
 
             conn.commit()
             
-                        # === Send Email to Logged-In User ===
-            cursor.execute("SELECT email FROM users WHERE user_id = %s", (user[0],))
-            email_result = cursor.fetchone()
-            if email_result:
-                recipient_email = email_result[0]
-
-                import smtplib
-                from email.message import EmailMessage
-
-                try:
-                    sender_email = "Secureher03@gmail.com"      # Replace with your email
-                    sender_password = "aryadavare"            # App password if using Gmail 2FA
-
-                    msg = EmailMessage()
-                    msg['Subject'] = "SecureHer Report Submitted"
-                    msg['From'] = sender_email
-                    msg['To'] = recipient_email
-                    msg.set_content(
-                        f"Dear {user[1]},\n\nThank you for submitting a report on SecureHer.\n\n"
-                        f"Category: {category}\nLocation: {location_name}\nDescription: {description}\n\n"
-                        f"We appreciate your effort in keeping our community safe.\n\n- Team SecureHer"
-                    )
-
-                    with smtplib.SMTP('smtp.gmail.com', 587) as smtp:
-                        smtp.starttls()
-                        smtp.login(sender_email, sender_password)
-                        smtp.send_message(msg)
-
-                except Exception as e:
-                    print(f"Failed to send email: {e}")
 
             
             conn.close()
