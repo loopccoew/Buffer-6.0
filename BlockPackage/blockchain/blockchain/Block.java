@@ -40,4 +40,7 @@ public class Block<T> {
         }
         System.out.println("Block Mined: " + hash);
     }
+    public List<T> getData() 
+    { return data; 
+    }
 }
