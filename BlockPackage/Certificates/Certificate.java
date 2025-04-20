@@ -1,4 +1,4 @@
-package Certificates;
+package BlockPackage.Certificates;
 
 public class Certificate {
     private final String studentName;

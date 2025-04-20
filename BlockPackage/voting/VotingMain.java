@@ -1,11 +1,8 @@
-package voting;
+package BlockPackage.voting;
 
+import BlockPackage.DataStructure.*;
 import java.util.Scanner;
 import java.util.*;
-
-import blockchain.Block;
-import blockchain.Blockchain;
-import blockchain.Utils;
 
 public class VotingMain {
     public static void main(String[] args) {
@@ -14,7 +11,7 @@ public class VotingMain {
         int difficulty = 3;
 
         while (true) {
-            System.out.println("\n🎯 Voting Blockchain Menu:");
+            System.out.println("\n Voting Blockchain Menu:");
             System.out.println("1. Add Vote(s)");
             System.out.println("2. View Blockchain");
             System.out.println("3. Search by Candidate");

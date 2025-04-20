@@ -1,9 +1,6 @@
-package Certificates;
-
-import blockchain.Block;
-import blockchain.Blockchain;
+package BlockPackage.Certificates;
 import java.util.*;
-
+import BlockPackage.DataStructure.*;
 public class CertificateMain {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);

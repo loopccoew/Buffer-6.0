@@ -1,10 +1,6 @@
 
 package Cryptocurrency;
 
-import blockchain.Block;
-import blockchain.Blockchain;
-import blockchain.Utils;
-
 import java.util.*;
 
 public class CryptoMain {

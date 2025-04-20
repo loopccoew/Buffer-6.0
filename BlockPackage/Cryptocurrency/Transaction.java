@@ -1,6 +1,6 @@
 
-package Cryptocurrency;
-
+package BlockPackage.Cryptocurrency;
+import BlockPackage.DataStructure.*;
 public class Transaction {
     private final String sender;
     private final String receiver;

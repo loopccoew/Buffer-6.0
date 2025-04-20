@@ -1,5 +1,4 @@
-package blockchain;
-
+package BlockPackage.DataStructure;
 import java.security.MessageDigest;
 
 public class Utils {

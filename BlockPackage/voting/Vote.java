@@ -1,4 +1,4 @@
-package voting;
+package BlockPackage.voting;
 
 public class Vote {
     public String voterId;
