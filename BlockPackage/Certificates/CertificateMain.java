@@ -1,4 +1,11 @@
+<<<<<<< HEAD
 package BlockPackage.Certificates;
+=======
+package Certificates;
+
+//import blockchain.Block;
+import blockchain.Blockchain;
+>>>>>>> 5c5791f4fa6ab72728bd06d234e96dec4f5fcbec
 import java.util.*;
 import BlockPackage.DataStructure.*;
 public class CertificateMain {
@@ -7,12 +14,13 @@ public class CertificateMain {
         Blockchain<Certificate> certificateChain = new Blockchain<>();
 
         while (true) {
-            System.out.println("\n🎓 Certificate Blockchain Menu:");
-            System.out.println("1. Add Certificate(s)");
-            System.out.println("2. View Blockchain");
+            System.out.println("\n Certificate Blockchain Menu:");
+            System.out.println("1. Add Certificate");
+            System.out.println("2. View Certificate Blockchain");
             System.out.println("3. Search by Student Name");
             System.out.println("4. Reset Blockchain");
             System.out.println("5. Exit");
+            System.out.println("6. Check Blockchain Integrity");
 
             System.out.print("Choose option: ");
             int choice = scanner.nextInt();
@@ -20,24 +28,20 @@ public class CertificateMain {
 
             switch (choice) {
                 case 1:
-                    System.out.print("Enter number of certificates to add: ");
-                    int numCerts = scanner.nextInt();
-                    scanner.nextLine(); // Consume newline
+                    // Add only one certificate at a time
+                    System.out.print("Student Name: ");
+                    String name = scanner.nextLine();
+                    System.out.print("Course: ");
+                    String course = scanner.nextLine();
+                    System.out.print("Grade: ");
+                    String grade = scanner.nextLine();
 
-                    List<Certificate> certs = new ArrayList<>();
-                    for (int i = 0; i < numCerts; i++) {
-                        System.out.print("Student Name: ");
-                        String name = scanner.nextLine();
-                        System.out.print("Course: ");
-                        String course = scanner.nextLine();
-                        System.out.print("Grade: ");
-                        String grade = scanner.nextLine();
+                    Certificate cert = new Certificate(name, course, grade);
+                    List<Certificate> singleCertList = new ArrayList<>();
+                    singleCertList.add(cert);
 
-                        certs.add(new Certificate(name, course, grade));
-                    }
-
-                    certificateChain.addBlock(certs);
-                    System.out.println("Certificates added to blockchain.");
+                    certificateChain.addBlock(singleCertList);
+                    System.out.println("Certificate added to blockchain.");
                     break;
 
                 case 2:
@@ -46,32 +50,28 @@ public class CertificateMain {
 
                 case 3:
                     System.out.print("Enter student name to search: ");
-                    String name = scanner.nextLine();
-                    boolean found = false;
-
-                    for (Block<Certificate> block : certificateChain.getChain()) {
-                        for (Certificate c : block.data) {
-                            if (c.getStudentName().equalsIgnoreCase(name)) {
-                                System.out.println(c);
-                                found = true;
-                            }
-                        }
-                    }
-
-                    if (!found) {
-                        System.out.println("No certificates found for student: " + name);
-                    }
+                    String searchName = scanner.nextLine();
+                    certificateChain.searchByItem(searchName);
                     break;
 
                 case 4:
-                    certificateChain = new Blockchain<>();
-                    System.out.println("Blockchain reset.");
+                    certificateChain.clearChain();
                     break;
 
                 case 5:
                     System.out.println("Exiting...");
                     scanner.close();
                     return;
+                case 6:
+                certificateChain.getBlock(1).getData().get(0).setStudentName("Hacker");
+
+                    if (certificateChain.isChainValid()) {
+                        System.out.println("Blockchain is valid. No tampering detected.");
+                    } else {
+                        System.out.println("Blockchain integrity compromised! Tampering detected.");
+                    }
+                    break;
+                
 
                 default:
                     System.out.println("Invalid option.");

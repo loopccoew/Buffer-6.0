@@ -1,7 +1,7 @@
 package BlockPackage.Certificates;
 
 public class Certificate {
-    private final String studentName;
+    private String studentName;
     private final String course;
     private final String grade;
 
@@ -30,5 +30,10 @@ public class Certificate {
                 ", course='" + course + '\'' +
                 ", grade='" + grade + '\'' +
                 '}';
+    }
+
+    public void setStudentName(String studentName) {
+        this.studentName = studentName;
+       
     }
 }
