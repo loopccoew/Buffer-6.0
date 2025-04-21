@@ -9,7 +9,7 @@ Our goal is to empower these women by connecting them with **relevant job opport
 
 ## 🚀 What the System Does
 - Collects women’s profiles (name, job interests, location) using a **linked list**.
-- Accepts job postings from employers and categorizes them based on fields like IT, Finance, Education, etc.
+- Accepts job postings from employers and categorizes them based on the fields 
 - Connects users to jobs using a **graph-based recommendation system**.
 - Recommends the **top 2 high-paying jobs per category** based on their profile.
 - Tracks each job application using a **queue and status linked list**, with updates like `Applied`, `Interview Scheduled`, or `Selected`.
