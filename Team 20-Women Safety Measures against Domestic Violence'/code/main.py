@@ -161,7 +161,7 @@ def collect_employer_data():
         employer_name = input("Enter employer's name: ")
         organization_name = input("Enter organization name: ")
         job_title = input("Enter job title: ")
-        job_category = input("Enter job category (e.g., IT, Finance): ")
+        job_category = input("Enter job category: ")
         vacancies = int(input("Enter number of vacancies: "))
         salary = float(input("Enter salary offered for the job: "))
         requirements = input("Enter job requirements (comma-separated): ").split(",")
