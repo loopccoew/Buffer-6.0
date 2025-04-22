@@ -8,7 +8,7 @@ import java.util.List;
 public class Block<T> {
     private int index;
     private String timestamp;
-    private List<T> data;
+    public List<T> data;
     private String previousHash;
     private String hash;
     private int nonce; // Nonce for mining
@@ -109,6 +109,8 @@ public class Block<T> {
         this.nonce = nonce;
         this.hash = calculateHash(); // Recalculate the hash with the updated nonce
     }
+    
+    
 
     
 }

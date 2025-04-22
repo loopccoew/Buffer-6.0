@@ -85,14 +85,16 @@ public class Blockchain<T> {
         } else {
             throw new RuntimeException(" PoS Validation Failed. Insufficient stake for role: " + currentRole);
         }
+        
     }
 
     // Method to create the Genesis Block
-    private Block<T> createGenesisBlock() {
+    public Block<T> createGenesisBlock() {
         List<T> emptyData = new ArrayList<>(); // No data in the genesis block
         String currentTimestamp = String.valueOf(System.currentTimeMillis()); // Dynamic time
         return new Block<>(0, currentTimestamp, emptyData, "0"); // Index 0, no previous hash
     }    
+    
 
     // Method to add a new block to the blockchain
     public void addBlock(List<T> blockData) {
@@ -133,6 +135,7 @@ public class Blockchain<T> {
         }
     
         System.out.println("====================== END OF BLOCKCHAIN ======================\n");
+
     }
     
     // Getter method for the blockchain
@@ -162,6 +165,7 @@ public class Blockchain<T> {
             block.calculateHash(); // Optional: ensure hash is consistent
             System.out.println("Block validated and added using PoS.");
         }
+        
     }
     
     
@@ -196,8 +200,10 @@ public class Blockchain<T> {
         return result;
     }
     
-    
-    
+   
+    public Block<T> getLatestBlock() {
+        return chain.get(chain.size() - 1);
+    }
     
     
 }

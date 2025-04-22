@@ -1,5 +1,5 @@
 
-package Cryptocurrency;
+package BlockPackage.Cryptocurrency;
 
 import java.util.*;
 

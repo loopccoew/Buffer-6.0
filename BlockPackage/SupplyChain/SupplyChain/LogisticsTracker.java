@@ -1,13 +1,12 @@
-package BlockPackage.SupplyChain;
+package SupplyChain;
 
-import java.io.FileWriter;
-import java.io.IOException;
 import java.util.*;
 import BlockPackage.DataStructure.*;
 
 public class LogisticsTracker {
     private final Blockchain<Product> blockchain;
     private final List<Product> uncommittedData;
+
 
     public LogisticsTracker(int difficulty) {
         blockchain = new Blockchain<>(difficulty);
@@ -100,26 +99,10 @@ public class LogisticsTracker {
 
     public void validateChain() {
         System.out.println(
-            blockchain.isChainValid()
+            blockchain.isValid()
             ? " Blockchain is valid."
             : " Blockchain tampered!"
         );
-    }
-
-    public void exportToFile(String filename) {
-        try (FileWriter fw = new FileWriter(filename)) {
-            for (Block<Product> block : blockchain.getChain()) {
-                fw.write("Block #" + block.index + "\n");
-                for (Product p : block.data) {
-                    fw.write("  • " + p + "\n");
-                }
-                fw.write("Hash: " + block.hash + "\n");
-                fw.write("Prev: " + block.previousHash + "\n\n");
-            }
-            System.out.println("Exported to " + filename);
-        } catch (IOException e) {
-            System.out.println(" Error exporting file: " + e.getMessage());
-        }
     }
 
     public static void main(String[] args) {
@@ -137,9 +120,8 @@ public class LogisticsTracker {
             System.out.println("7. Live Status Dashboard");
             System.out.println("8. Search by Keyword");
             System.out.println("9. Validate Blockchain");
-            System.out.println("10. Export to File");
-            System.out.println("11. View Full Chain");
-            System.out.println("12. Exit");
+            System.out.println("10. View Full Chain");
+            System.out.println("11. Exit");
             System.out.print("Choose: ");
 
             int ch;
@@ -201,16 +183,12 @@ public class LogisticsTracker {
                     tracker.validateChain();
                     break;
 
+               
                 case 10:
-                    System.out.print("File name: ");
-                    tracker.exportToFile(sc.nextLine());
-                    break;
-
-                case 11:
                     tracker.viewFullChain();
                     break;
 
-                case 12:
+                case 11:
                     System.out.println("Bye!");
                     sc.close();
                     return;
@@ -219,6 +197,7 @@ public class LogisticsTracker {
                     System.out.println(" Invalid option.");
                     break;
             }
+
         }
     }
 }

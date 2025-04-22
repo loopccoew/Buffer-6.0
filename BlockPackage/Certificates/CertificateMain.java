@@ -1,17 +1,11 @@
-<<<<<<< HEAD
 package BlockPackage.Certificates;
-=======
-package Certificates;
-
-//import blockchain.Block;
-import blockchain.Blockchain;
->>>>>>> 5c5791f4fa6ab72728bd06d234e96dec4f5fcbec
 import java.util.*;
 import BlockPackage.DataStructure.*;
+
 public class CertificateMain {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        Blockchain<Certificate> certificateChain = new Blockchain<>();
+        Blockchain<Certificate> certificateChain = new Blockchain<>(3);
 
         while (true) {
             System.out.println("\n Certificate Blockchain Menu:");
@@ -49,28 +43,27 @@ public class CertificateMain {
                     break;
 
                 case 3:
-                    System.out.print("Enter student name to search: ");
-                    String searchName = scanner.nextLine();
-                    certificateChain.searchByItem(searchName);
-                    break;
+                System.out.print("Enter student name to search: ");
+                String searchName = scanner.nextLine();
+                CertificateUtils.searchByName(certificateChain, searchName);
+                break;
 
                 case 4:
-                    certificateChain.clearChain();
-                    break;
+                CertificateUtils.clearCertificateChain(certificateChain);
+                break;
 
                 case 5:
                     System.out.println("Exiting...");
                     scanner.close();
                     return;
                 case 6:
-                certificateChain.getBlock(1).getData().get(0).setStudentName("Hacker");
-
-                    if (certificateChain.isChainValid()) {
-                        System.out.println("Blockchain is valid. No tampering detected.");
-                    } else {
-                        System.out.println("Blockchain integrity compromised! Tampering detected.");
-                    }
-                    break;
+                CertificateUtils.getBlock(certificateChain, 1).getData().get(0).setStudentName("Hacker");
+                if (certificateChain.isValid()) {
+                    System.out.println("Blockchain is valid. No tampering detected.");
+                } else {
+                    System.out.println("Blockchain integrity compromised! Tampering detected.");
+                }
+                break;
                 
 
                 default:
