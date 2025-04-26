@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # Buffer 6.0
 
 ## Blockchain as a Data Structure in Java
@@ -92,7 +91,7 @@ Used extensively to structure the system into reusable and modular components (L
 - Tracks goods from origin to destination.  
 - Increases transparency and prevents fraud.
 
-### *2. Voting application *
+### 2. Voting application 
 - Each vote is a data entry inside a block.
 - Immutable storage prevents vote tampering.
 - Ensures voter anonymity and traceability. 
