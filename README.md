@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Buffer 6.0
 
 ## Blockchain as a Data Structure in Java
@@ -108,3 +109,16 @@ Used extensively to structure the system into reusable and modular components (L
 -This project involves multiple custom packages and files. Before compilation on a different system, adjust the package declarations and import statements to match your local folder structure.
 
 ---
+=======
+# Buffer-6.0
+
+The themes for Buffer 6.0 are -
+
+1. FinTech
+
+2. Women Safety
+
+3. Next-Gen Academic Solutions
+
+4. Custom Data Structure
+>>>>>>> 9643247e3216803f487013d4411286a151d6cdd9
