@@ -10,7 +10,7 @@ public class CryptoMain {
 
         List<Account> accounts = new ArrayList<>();
 
-        System.out.println("📦 Welcome to the Cryptocurrency Application!");
+        System.out.println("Welcome to the Cryptocurrency Application!");
 
         // Step 1: Create Accounts
         System.out.print("Enter number of accounts: ");
@@ -47,12 +47,12 @@ public class CryptoMain {
             }
 
             if (senderAcc == null || receiverAcc == null) {
-                System.out.println("❌ Account not found.");
+                System.out.println(" Account not found.");
                 continue;
             }
 
             if (senderAcc.getBalance() < amount) {
-                System.out.println("❌ Insufficient balance.");
+                System.out.println(" Insufficient balance.");
                 continue;
             }
 
@@ -61,12 +61,12 @@ public class CryptoMain {
             String txId = UUID.randomUUID().toString();
             blockchain.addTransaction(new Transaction(sender, receiver, amount, txId));
             blockchain.addBlock();
-            System.out.println("✅ Transaction ID: " + txId);
+            System.out.println(" Transaction ID: " + txId);
         }
 
         // Final Blockchain and Account Status
         blockchain.printChain();
-        System.out.println("\n📊 Final Account Balances:");
+        System.out.println("\n Final Account Balances:");
         for (Account acc : accounts) {
             System.out.println(acc.getName() + ": ₹" + acc.getBalance());
         }

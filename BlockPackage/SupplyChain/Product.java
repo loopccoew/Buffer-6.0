@@ -1,6 +1,4 @@
-
-package SupplyChain;
-
+package BlockPackage.SupplyChain;
 import java.util.Date;
 
 public class Product {

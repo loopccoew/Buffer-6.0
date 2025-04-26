@@ -1,25 +1,25 @@
-# *Buffer 6.0*
+# Buffer 6.0
 
-## *Blockchain as a Data Structure in Java*
+## Blockchain as a Data Structure in Java
 This project implements a generic blockchain in Java, designed to understand and experiment with blockchain as a data structure. It includes core concepts such as hashing, proof-of-work, and chain validation, and supports multiple real-world applications using the same blockchain base.
 
 ---
 
-## *Problem Statement*
+## Problem Statement
 Traditional data structures like arrays and linked lists provide linear or hierarchical storage but lack features like immutability, tamper detection, and integrity validation.  
 This project proposes a custom blockchain data structure that extends the functionality of traditional data structures by linking blocks using cryptographic hashes and enforcing validation rules, thereby ensuring trust and traceability.
 
 ---
 
-## *Project Description*
+## Project Description
 This project is a simplified implementation of a blockchain-based cryptocurrency using Java. It demonstrates the fundamental principles of blockchain technology including cryptographic hashing, proof-of-work, and block immutability.  
 Each block in the blockchain contains a cryptographic hash, a reference to the previous block's hash (creating a linked structure), transaction data, and a timestamp.  
 The primary goal of this project is to simulate how data integrity and consensus are achieved in decentralized systems like cryptocurrencies (e.g., Bitcoin) using core Java and object-oriented programming concepts.
 
 ---
 
-## *Project Structure*
-```
+## Project Structure
+
 BlockPackage/
 ├── Block.java          // Represents each block in the chain
 ├── Blockchain.java     // Handles chain logic, mining, validation
@@ -29,77 +29,82 @@ Applications/
 ├── expense/            // Decentralized expense logging
 ├── certificates/       // Certificate verification system
 ├── crypto/             // Basic cryptocurrency simulation
-```
+
 
 ---
 
-## *Demo Video & Reports*
-- *Project Video Demo* –    https://drive.google.com/drive/folders/1HbWZuEinzNpNn8Q-aTtlZpRE8D5Go2Mo?usp=sharing 
-- *Final Project Report* –  https://drive.google.com/file/d/1Q0ms8zrkBOc5x9t0xftDzBeEr4rAxmcB/view?usp=sharing
+## Demo Video & Reports
+- Project Video Demo –    https://drive.google.com/file/d/18h2uRusag_oi7VAsteyySPQ83SuVp6xR/view?usp=sharing
+- Final Project Report –  https://drive.google.com/file/d/1UMfviQPBiczd6AdE-jqbNqLvBP4wqKmW/view?usp=sharing
 ---
 
-## *Core Features*
+## Core Features
 - Generic Block Support (<T>)  
-- Proof of Work (PoW) mining  
+- Proof of Work (PoW) mining
+- Proof of Stake(PoS)  
 - Blockchain Validation  
 - Data Pool and Block Mining  
 - Modular & Extendable for real-world applications  
 
 ---
 
-## *Data Structures Used*
+## Data Structures Used
+*ArrayList (ArrayList<Product>, ArrayList<Block<Product>>)*
+Used to store uncommitted shipment entries and maintain the blockchain ledger. Enables dynamic resizing and fast iteration for adding, editing, and committing data.
 
-**ArrayList (ArrayList<Block>)**  
-Used to maintain the blockchain — a dynamic list of blocks. Each block is appended sequentially. Enables quick access and iteration for chain validation or ledger display.
+*HashSet (Set<String>)*
+Used in listAllIds() to collect and display unique product IDs without duplicates.
 
-*String & StringBuilder*  
-Used for cryptographic operations like generating SHA-256 hashes.
+*HashMap (Map<String, Product>)*
+Used in liveStatus() to map each product ID to its latest status, replacing older entries and ensuring the most recent information is retained.
 
-*Custom Block Class (OOP Structure)*  
-Each block encapsulates its own data, previous hash, current hash, timestamp, and nonce.
+*String & StringBuilder*
+Used throughout the application for constructing messages, handling product attributes, and likely in the hashing process within Blockchain and Block classes (especially for SHA-256 generation).
 
+*OOP Principles (Encapsulation, Abstraction, Generics)*
+Used extensively to structure the system into reusable and modular components (LogisticsTracker, Blockchain, Block, and Product).
 ---
 
-## *Blockchain Core*
+## Blockchain Core
 
-### *Block<T>*
+### Block<T>
 - Stores any type of data.  
 - Computes hash using:  
   java
   Utils.applySHA256(index + previousHash + timestamp + data + nonce);
   
 
-### *Proof of Work*
+### Proof of Work
 - mineBlock(int difficulty) changes the nonce until the hash meets difficulty.  
 - Ensures computational effort for block creation.
 
-### *Chain Validation*
-- isChainValid() ensures:
-  - No tampering with block hashes.  
-  - Correct linkage to previous blocks.
+### Proof of Stake
+- Proof of Stake (PoS) selects block validators based on their ownership or "stake" in the network, not computational power. The more coins a participant holds, the higher their chances of being chosen to validate the next block.
 
 ---
 
 
-## *Applications*
+## Applications
 
-### *1. Supply Chain Tracking*
+### 1. Supply Chain Tracking
 - Each product movement is recorded as a block.  
 - Tracks goods from origin to destination.  
 - Increases transparency and prevents fraud.
 
-### *2. Expense Tracking*
-- Logs personal or team expenses block by block.  
-- Tamper-proof financial history.
+### *2. Voting application *
+- Each vote is a data entry inside a block.
+- Immutable storage prevents vote tampering.
+- Ensures voter anonymity and traceability. 
 
-### *3. Certificate Verification*
+### 3. Certificate Verification
 - Stores academic or official certificates on-chain.  
 - Validates authenticity using hash comparison.
 
-### *4. Cryptocurrency Simulation*
+### 4. Cryptocurrency Simulation
 - Basic crypto system built on the blockchain logic.  
 - Supports transaction data, mining, and balances.
 
-> 🔧 All applications use the same blockchain engine but customize the **data structure (<T>)** in each block.
+### Please Note: 
+-This project involves multiple custom packages and files. Before compilation on a different system, adjust the package declarations and import statements to match your local folder structure.
 
---- 
+---

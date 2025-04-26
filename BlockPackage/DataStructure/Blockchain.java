@@ -8,6 +8,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
+import BlockPackage.voting.Vote;
+
 enum ConsensusMode {
     PROOF_OF_WORK,
     PROOF_OF_STAKE
@@ -204,6 +206,25 @@ public class Blockchain<T> {
     public Block<T> getLatestBlock() {
         return chain.get(chain.size() - 1);
     }
-    
+    public void mineBlock(Block<Vote> block, int difficulty) {
+    System.out.println("⛏️ Mining block...");
+
+    String target = new String(new char[difficulty]).replace('\0', '0');
+    int nonce = 0;
+
+    while (true) {
+        block.setNonce(nonce);
+        if (block.getHash().startsWith(target)) {
+            break;
+        }
+        nonce++;
+    }
+
+    System.out.println("✅ Block mined! Hash: " + block.getHash());
+}
+
+public void addBlock(Block<T> block) {
+    chain.add(block);
+}
     
 }
