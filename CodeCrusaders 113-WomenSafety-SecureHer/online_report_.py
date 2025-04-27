@@ -4,6 +4,7 @@ import mysql.connector
 import re
 
 def open_online_report_window(user):
+    # Create a new window
     window = tk.Toplevel()
     window.title("SecureHer - Online Report")
     window.geometry("600x550")
@@ -13,19 +14,20 @@ def open_online_report_window(user):
     heading = tk.Label(window, text="SecureHer", font=("Helvetica", 20, "bold"), fg="skyblue", bg="black")
     heading.pack(pady=(30, 10))
 
+     # Colors for heading animation
     colors = ["deepskyblue", "cyan", "aqua", "lightblue"]
     color_index = [0]
-
+    # Function to animate heading text color
     def animate_heading():
         heading.config(fg=colors[color_index[0]])
         color_index[0] = (color_index[0] + 1) % len(colors)
         window.after(500, animate_heading)
 
     animate_heading()
-
+     # Subheading
     subheading = tk.Label(window, text="Online Harassment Report", font=("Helvetica", 12), fg="white", bg="black")
     subheading.pack(pady=(0, 30))
-
+    # Common style for labels
     label_style = {"font": ("Helvetica", 12), "fg": "white", "bg": "black"}
 
     # === Form Fields ===
@@ -51,12 +53,14 @@ def open_online_report_window(user):
     category_menu = tk.OptionMenu(window, category_var, *categories)
     category_menu.config(font=("Helvetica", 12))
     category_menu.pack(pady=5)
-    category_var.set("Harassment")
+    category_var.set("Harassment")  # Default selection
 
-    # === Other Category Option ===
+     # === Other Category Option ===
+    # Only shown when 'Other' is selected
     other_category_label = tk.Label(window, text="If Other, specify:", **label_style)
     other_category_entry = tk.Entry(window, width=50, font=("Helvetica", 11))
-
+    
+    # Function to show/hide other category entry
     def toggle_other(*args):
         if category_var.get() == "Other":
             other_category_label.pack()
@@ -64,7 +68,8 @@ def open_online_report_window(user):
         else:
             other_category_label.pack_forget()
             other_category_entry.pack_forget()
-
+            
+    # Bind change in selection to toggle function
     category_var.trace_add("write", toggle_other)
 
     # === Button Style ===
@@ -72,18 +77,20 @@ def open_online_report_window(user):
 
     # === Submit Logic ===
     def submit_report():
+          # Collect form data
         description = description_entry.get("1.0", tk.END).strip()
         platform = platform_entry.get().strip()
         url = url_entry.get().strip()
         screenshot = screenshot_entry.get().strip()
         category = category_var.get()
+         # If "Other" category selected, use custom input
         if category == "Other":
             category = other_category_entry.get().strip()
-
+         # Validation: Check if any field is empty
         if not all([description, platform, url, screenshot, category]):
             messagebox.showwarning("Input Error", "Please fill out all fields.")
             return
-
+        # Validation: Check URL formats
         url_pattern = r"^(http|https)://[a-zA-Z0-9-_.]+(\.[a-zA-Z]{2,})+.*$"
         if not re.match(url_pattern, url):
             messagebox.showerror("Invalid URL", "Please enter a valid URL starting with http:// or https://.")
@@ -93,6 +100,7 @@ def open_online_report_window(user):
             return
 
         try:
+            # Connect to MySQL database
             conn = mysql.connector.connect(
                 host="localhost",
                 user="root",
@@ -100,16 +108,18 @@ def open_online_report_window(user):
                 database="secureher"
             )
             cursor = conn.cursor()
+             # Insert data into online_reports table
             cursor.execute("""
                 INSERT INTO online_reports (user_id, name, contact, description, platform, url, screenshot, category)
                 VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
             """, (user[0], user[1], user[2], description, platform, url, screenshot, category))
             conn.commit()
             conn.close()
+            # Success Message
             messagebox.showinfo("Success", "Online report submitted successfully.")
-           
+            # Handle Database Error
         except Exception as e:
             messagebox.showerror("Database Error", f"Error submitting report: {str(e)}")
-
+    # === Submit and Close Buttons ===
     tk.Button(window, text="Submit Report", command=submit_report, **btn_style).pack(pady=20)
     tk.Button(window, text="Close", command=window.destroy, **btn_style).pack()
