@@ -18,10 +18,10 @@ def encrypt_file(filepath):
     messagebox.showinfo("Success", f"Encrypted and saved:\n{encrypted_path}")
 
 def open_evidence_ui(user, return_to_main_menu):
-    """Opens the UI for uploading evidence only."""
+    """Opens the UI for uploading and viewing evidence."""
     window = tk.Toplevel()
     window.title("Evidence Storage")
-    window.geometry("350x400")
+    window.geometry("350x500")
     window.configure(bg="black")
 
     def clear_widgets():
@@ -30,19 +30,32 @@ def open_evidence_ui(user, return_to_main_menu):
 
     def show_main_menu():
         clear_widgets()
-        tk.Label(window, text="🔐 Secure Her", font=("Arial", 16, "bold"), fg="light blue", bg="black").pack(pady=50)
-        tk.Button(window, text="Upload Evidence", width=25, height=2, command=upload_evidence, **button_style).pack(pady=30)
-        tk.Button(window, text="Back", width=25, height=2, command=go_back_to_main_menu, **button_style).pack(pady=30)
+        tk.Label(window, text="🔐 Secure Her", font=("Arial", 16, "bold"), fg="light blue", bg="black").pack(pady=30)
+        tk.Button(window, text="Upload Evidence", width=25, height=2, command=upload_evidence, **button_style).pack(pady=20)
+        tk.Button(window, text="View Evidence", width=25, height=2, command=view_evidence, **button_style).pack(pady=20)
+        tk.Button(window, text="Back", width=25, height=2, command=go_back_to_main_menu, **button_style).pack(pady=20)
 
     def upload_evidence():
         filepath = filedialog.askopenfilename(title="Select file to encrypt")
         if filepath:
             encrypt_file(filepath)
-            # Stay on the same window after upload
+
+    def view_evidence():
+        clear_widgets()
+        tk.Label(window, text="🗂 Uploaded Evidences", font=("Arial", 16, "bold"), fg="light blue", bg="black").pack(pady=20)
+
+        files = os.listdir(ENCRYPTED_DIR)
+        if not files:
+            tk.Label(window, text="No evidence found.", font=("Arial", 12), fg="white", bg="black").pack(pady=10)
+        else:
+            for filename in files:
+                tk.Label(window, text=filename, font=("Arial", 10), fg="white", bg="black").pack(pady=2)
+
+        tk.Button(window, text="Back to Menu", width=25, height=2, command=show_main_menu, **button_style).pack(pady=30)
 
     def go_back_to_main_menu():
         window.destroy()
-        return_to_main_menu()  # This returns to the main menu
+        return_to_main_menu()
 
     button_style = {
         "bg": "light blue",
