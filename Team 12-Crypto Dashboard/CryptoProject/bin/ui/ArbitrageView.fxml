@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.geometry.Insets?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="ui.ArbitrageViewController" spacing="10">
+    <padding>
+        <Insets top="10" right="10" bottom="10" left="10"/>
+    </padding>
+    
+    <HBox spacing="10" alignment="CENTER_LEFT">
+        <Label text="Min. Profit:"/>
+        <Slider fx:id="minProfitSlider" min="0.1" max="5.0" value="0.5"/>
+        <Label fx:id="minProfitLabel" text="0.5%"/>
+        <Region HBox.hgrow="ALWAYS"/>
+        <Button text="Refresh" onAction="#refreshArbitrage"/>
+        <Button fx:id="autoRefreshButton" text="Auto-Refresh" onAction="#toggleAutoRefresh"/>
+    </HBox>
+    
+    <TableView fx:id="arbitrageTable" VBox.vgrow="ALWAYS">
+        <columns>
+            <TableColumn fx:id="marketCol" text="Market"/>
+            <TableColumn fx:id="pairCol" text="Pair"/>
+            <TableColumn fx:id="buyPriceCol" text="Buy Price"/>
+            <TableColumn fx:id="sellPriceCol" text="Sell Price"/>
+            <TableColumn fx:id="profitCol" text="Profit (%)"/>
+        </columns>
+    </TableView>
+    
+    <Label fx:id="statusBar" text="Status: Ready"/>
+</VBox>
